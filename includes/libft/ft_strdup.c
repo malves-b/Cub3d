@@ -1,13 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   page1.c                                            :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: malves-b <malves-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/12 19:22:47 by malves-b          #+#    #+#             */
-/*   Updated: 2025/02/13 15:27:20 by malves-b         ###   ########.fr       */
+/*   Created: 2023/10/10 09:36:26 by pemirand          #+#    #+#             */
+/*   Updated: 2025/02/13 16:05:15 by malves-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub.h"
+#include "../libft.h"
+
+char	*ft_strdup(const char *src)
+{
+	int		len;
+	int		i;
+	char	*s;
+
+	len = ft_strlen(src);
+	s = (char *)malloc(sizeof(char) * (len + 1));
+	if (!s)
+		return (NULL);
+	i = 0;
+	while (src[i] != '\0')
+	{
+		s[i] = src[i];
+		i++;
+	}
+	s[i] = '\0';
+	return (s);
+}

@@ -1,31 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub.c                                              :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: malves-b <malves-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/12 13:33:10 by malves-b          #+#    #+#             */
-/*   Updated: 2025/02/13 16:02:15 by malves-b         ###   ########.fr       */
+/*   Created: 2023/10/15 12:46:33 by pemirand          #+#    #+#             */
+/*   Updated: 2025/02/13 16:05:15 by malves-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub.h"
+#include "../libft.h"
 
-void	init_window(char **argv)
+char	*ft_strtrim(char const *s1, char const *set)
 {
-	(void)argv;
-	t_main	*pgr;
+	int		head;
+	int		tail;
 
-	ft_memset(&pgr, 0, sizeof(pgr));
-	pgr->mlx = mlx_init();
-	pgr->mlx_win = mlx_new_window(pgr->mlx, 320, 320, "CUB3D");
-}
-
-int main(int argc, char **argv)
-{
-	(void)argc;
-	init_window(argv);
-
-	return 0;
+	if (!s1)
+		return (NULL);
+	if (!set)
+		return (ft_strdup(s1));
+	tail = ft_strlen(s1);
+	head = 0;
+	if (tail > 0)
+	{
+		tail--;
+		while (s1[head] && ft_strchr(set, s1[head]))
+			head++;
+		while (tail >= 0 && s1[tail] && ft_strchr(set, s1[tail]))
+			tail--;
+	}
+	return (ft_substr(s1, head, tail - head + 1));
 }

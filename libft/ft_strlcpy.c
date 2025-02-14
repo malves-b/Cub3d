@@ -17,15 +17,15 @@
 //#include <bsd/string.h>
 #include <stdio.h>
 
-int	ft_strlen(const char *s)
-{
-	int	i;
+// int	ft_strlen(const char *s)
+// {
+// 	int	i;
 
-	i = 0;
-	while (s[i] != '\0')
-		i++;
-	return (i);
-}
+// 	i = 0;
+// 	while (s[i] != '\0')
+// 		i++;
+// 	return (i);
+// }
 //copia da str origem para a destino 
 size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
@@ -42,10 +42,10 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 	dst[i] = '\0';
 	return (ft_strlen(src));
 }
-int main () {
-	char dst[3];
-	char src[] = "alguma coisa";
-	printf ("%zu\n", ft_strlcpy(dst, src, 0));
-	printf("%s\n", dst);
-	return (0);
-}
+// int main () {
+// 	char dst[3];
+// 	char src[] = "alguma coisa";
+// 	printf ("%zu\n", ft_strlcpy(dst, src, 0));
+// 	printf("%s\n", dst);
+// 	return (0);
+// }

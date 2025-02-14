@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "libft.h"
 #include <fcntl.h>
 
 char	*trim_stash(char *stash)
@@ -89,7 +89,7 @@ char	*ft_read(char *stash, int fd)
 		temp[rbytes] = '\0';
 		if (!temp)
 			return (NULL);
-		stash = ft_strjoin(stash, temp);
+		stash = ft_strjoin_get(stash, temp);
 		free (temp);
 	}
 	return (stash);

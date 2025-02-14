@@ -16,6 +16,7 @@
 # include <stdlib.h>
 # include <stdarg.h>
 # include <unistd.h>
+# include <fcntl.h>
 
 void	ft_bzero(void *s, size_t n);
 void	ft_putnbr_fd(int n, int fd);
@@ -91,7 +92,7 @@ int		ft_count_nbr(long int nb);
 
 char	*get_next_line(int fd);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
-//char	*ft_strjoin(char *stash, char *temp);
+char	*ft_strjoin_get(char *stash, char *temp);
 int		ft_strlen(const char *str);
 int		ft_check(char *stash);
 

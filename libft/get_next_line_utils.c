@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "libft.h"
 
 int	ft_check(char *stash)
 {
@@ -28,17 +28,7 @@ int	ft_check(char *stash)
 	return (0);
 }
 
-int	ft_strlen(const char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i] != '\0')
-		i++;
-	return (i);
-}
-
-char	*ft_strjoin(char *stash, char *temp)
+char	*ft_strjoin_get(char *stash, char *temp)
 {
 	int		i;
 	int		j;

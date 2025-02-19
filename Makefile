@@ -1,33 +1,56 @@
-NAME = cub3D
+NAME = cub3d
+
+SRCS_DIR = ./srcs
+
+LIBFT = ./includes/libft/libft.a
+LIBFT_DIR = ./includes/libft
+
+MLIBX = ./includes/minilibx-linux/libmlx.a
+MLIBX_DIR = ./includes/minilibx-linux
+
+SRCS = $(SRCS_DIR)/cub.c \
+		$(SRCS_DIR)/parse/validate.c
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g
-#MINILXFLAGS = -L ./minilibx-linux -lmlx -lXext -lX11 -lm -lbsd -no-pie
+CFLAGS = -Wall -Werror -Wextra -g
+MLXFLAGS = -L ./includes/minilibx-linux -lmlx -Ilmlx -lXext -lX11 -lm -lz
+
+# ---------- COLORS ---------- #
+GREEN = \033[1;32m
+BROWN = \033[1;33m
+P = \033[1;31m
+
 
 RM = rm -f
-LIBFT_DIR = ./libft
-LIBFT = $(LIBFT_DIR)/libft.a
 
-SRC = main.c
-OBJ = $(SRC:.c=.o)
+$(NAME): $(LIBFT) $(MLIBX) $(SRCS)
+	@$(CC) $(CFLAGS) $(SRCS) $(LIBFT) $(MLXFLAGS) -o $(NAME)
+	@echo "$(GREEN)\nCOMPILED$(R)"
 
-%.o : %.c
-	$(CC) $(CFLAGS) -c $< -o $@
-
-$(NAME) : $(OBJ) $(LIBFT)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(LIBFT)
+all: $(NAME)
+#bonus
 
 $(LIBFT):
-	$(MAKE) --no-print-directory -C $(LIBFT_DIR)
+	@$(MAKE) -C $(LIBFT_DIR) > /dev/null 2>&1
+	
+$(MLIBX):
+	@$(MAKE) -C $(MLIBX_DIR) > /dev/null 2>&1
 
-all: $(LIBFT) $(NAME)
+#bonus: $(B_NAME)
+
+#$(B_NAME): $(LIBFT) $(MLIBX) $(B_SRCS)
+#	$(CC) $(CFLAGS) $(B_SRCS) $(LIBFT) $(MLXFLAGS) -o $(B_NAME)
 
 clean:
-	$(MAKE) clean -C $(LIBFT_DIR)
-	$(RM) $(OBJ)
+	@$(MAKE) clean -C $(LIBFT_DIR) > /dev/null 2>&1
+	@$(MAKE) clean -C $(MLIBX_DIR) > /dev/null 2>&1
+	@echo "$(BROWN)OBJS REMOVED$(R)"
 
 fclean: clean
-	$(MAKE) fclean -C $(LIBFT_DIR)
-	$(RM) $(NAME)
+	@$(RM) $(NAME) $(LIBFT) $(MLIBX) > /dev/null 2>&1
+	@$(MAKE) fclean -C $(LIBFT_DIR) > /dev/null 2>&1
+	@echo "$(BROWN)EXE REMOVED$(R)"
 
 re: fclean all
+
+.PHONY: all clean fclean re

@@ -32,7 +32,12 @@ typedef struct s_main
 	void	*img;
 }t_main;
 
-/* --------------------------------- PARSING -------------------------------- */
+typedef struct s_cub
+{
+	struct s_parse *parse;
+} t_cub;
+
+/* ----------------------------- PARSING STRUCTS----------------------------- */
 typedef struct s_parse
 {
 	char	*no_path;
@@ -68,14 +73,17 @@ typedef struct s_texture
 {
 	
 }	t_texture;
-
-typedef struct s_cub
-{
-	t_parse *parse;
-} t_cub;
-
-
-bool	check_av(char *map_file, char *prog_name);
+/* --------------------------------- PARSING -------------------------------- */
+//validate_parse
+bool	check_args(int ac, char *map_file, char *prog_name);
+//init_parse_struct
+void	init_parse_struct(t_parse *parse);
+//read_parse_file
+void	init_file(char *file, t_parse **parse);
+bool	ft_read_file(t_parse *parse, char *file);
+void	get_number_lines(char *file, int *file_lines);
+//utils_parse
+void	print_map(char **file);//depois apagar 
 
 
 

@@ -9,7 +9,10 @@ MLIBX = ./includes/minilibx-linux/libmlx.a
 MLIBX_DIR = ./includes/minilibx-linux
 
 SRCS = $(SRCS_DIR)/cub.c \
-		$(SRCS_DIR)/parse/validate.c
+		$(SRCS_DIR)/parse/validate_parse.c \
+		$(SRCS_DIR)/parse/init_parse_structs.c \
+		$(SRCS_DIR)/parse/read_parse_file.c \
+		$(SRCS_DIR)/parse/utils_parse.c 
 
 CC = cc
 CFLAGS = -Wall -Werror -Wextra -g

@@ -28,18 +28,10 @@ void	init_parse_struct(t_parse *parse)
 	parse->ceiling = false;
 }
 
-void	get_number_lines(char *file, int *file_lines)
+void	get_number_lines(char *file, int *file_lines, int fd)
 {
-	int		fd;
 	char	*line;
 
-	//(*file_lines) = 0;
-	fd = open(file, O_RDONLY);
-	if (fd < 0)
-	{
-		printf("Error\n the file doesn't exist!\n");
-		exit (1);//fazer função para exit e frees;
-	}
 	line = get_next_line(fd);
 	while (line != NULL)
 	{ 	
@@ -47,7 +39,6 @@ void	get_number_lines(char *file, int *file_lines)
 		free(line);
 		line = get_next_line(fd);
 	}
-	close(fd);
 	printf("lines na função %d\n", *file_lines);
 }
 
@@ -56,15 +47,22 @@ bool	ft_read_file(t_parse *parse, char *file)
 	int	fd;
 
 	fd = open(file, O_RDONLY);
-	if(fd == -1)
+	if(fd < 0)
 	{
 		printf("Error\n the file doesn't exist!\n");
 		return (false);
 	}
-	get_number_lines(file, &parse->file_lines);
+	get_number_lines(file, &parse->file_lines, fd);
 	printf("lines %d\n", parse->file_lines);
+	parse->file = malloc(sizeof(char *) * parse->file_lines + 1);
+	if(!parse->file)
+	{
+		printf("Error\n Memory allocation error\n");
+		return (false); ///fazer algo paara exit
+	}
+	init_file(file, &parse, fd);
+	//agora que ja descobrou as linhas fazer o malloc necessario
 	//continua fazer a leitura do arquivo para o parse->file
-	//mas antess disso descobrir quantas linhas tem para fazer o malloc necessario
 	//usar get_next_line para pegar cada linha já com o malloc.
 	close(fd);
 	return (true);

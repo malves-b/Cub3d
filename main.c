@@ -47,7 +47,18 @@ void	get_number_lines(char *file, int *file_lines)
 		line = get_next_line(fd);
 	}
 	close(fd);
-	printf("lines na função %d\n", *file_lines);
+	printf("lines in function %d\n", *file_lines);
+}
+
+void print_map(char **file)
+{
+	int i = 0;
+
+	while (file[i])
+	{
+		printf("%s", file[i]);
+		i++;
+	}
 }
 
 void init_file(char *file, t_parse **parse)
@@ -67,11 +78,11 @@ void init_file(char *file, t_parse **parse)
 	while(line)
 	{
 		(*parse)->file[i] = line;
-		printf("%s", (*parse)->file[i]);
 		i++;
 		line = get_next_line(fd);
 	}
 	(*parse)->file[i] = NULL;
+	print_map((*parse)->file);
 	free(line);
 	close(fd);
 }
@@ -81,7 +92,6 @@ bool	ft_read_file(t_parse *parse, char *file)
 {
 
 	get_number_lines(file, &parse->file_lines);
-	printf("lines %d\n", parse->file_lines);
 	parse->file = malloc(sizeof(char *) * parse->file_lines + 1);
 	if(!parse->file)
 	{
@@ -89,7 +99,6 @@ bool	ft_read_file(t_parse *parse, char *file)
 		return (false); ///fazer algo paara exit
 	}
 	init_file(file, &parse);
-	//agora que ja descobrou as linhas fazer o malloc necessario
 	//continua fazer a leitura do arquivo para o parse->file
 	//usar get_next_line para pegar cada linha já com o malloc.
 	return (true);

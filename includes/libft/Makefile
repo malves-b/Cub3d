@@ -4,7 +4,8 @@ OBJS 		=	ft_isalnum.o ft_isprint.o ft_memcmp.o  ft_putchar_fd.o ft_split.o \
 				ft_strnstr.o ft_tolower.o ft_bzero.o   ft_isascii.o \
 				ft_memmove.o ft_putnbr_fd.o  ft_strdup.o  ft_strlen.o  ft_strrchr.o \
 				ft_toupper.o ft_calloc.o  ft_isdigit.o ft_memchr.o  ft_memset.o  \
-				ft_putstr_fd.o  ft_strjoin.o ft_strmapi.o ft_strtrim.o ft_striteri.o
+				ft_putstr_fd.o  ft_strjoin.o ft_strmapi.o ft_strtrim.o ft_striteri.o \
+				get_next_line.o get_next_line_utils.o
 
 OBJS_BONUS	=	ft_lstadd_back.o ft_lstadd_front.o ft_lstclear.o \
 				ft_lstdelone.o ft_lstiter.o ft_lstlast.o \

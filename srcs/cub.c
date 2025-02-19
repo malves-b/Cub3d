@@ -24,7 +24,23 @@ void	init_window(char **argv)
 
 int main(int argc, char **argv)
 {
-	(void)argc;
+	t_cub *cub;
+
+	if(!check_args(argc ,argv[1], argv[0]))
+		return (1);
+	cub = malloc (sizeof(t_cub)); //colocar essas duas linhas em um arquivo de init structs
+	cub->parse = malloc (sizeof(t_parse));
+	if(!cub || !cub->parse)
+	{
+		printf("Error\n Memory allocation error\n");
+		return (1);
+	}
+	init_parse_struct(cub->parse);
+	if(!ft_read_file(cub->parse, argv[1]))
+		return (1);
+	//readmap guardar em algum lugar
+	//fazer a validadação
+	return(0);
 	init_window(argv);
 
 	return 0;

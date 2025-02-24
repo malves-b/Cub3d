@@ -22,3 +22,21 @@ bool	check_args(int ac ,char *map_file, char *prog_name)
 	}
 	return (true);
 }
+
+void	validate_texture(t_parse *parse)
+{
+	int	i;
+	
+	i = 0;
+	while(i < parse->file_lines)
+	{
+		if(ft_strnstr(parse->file[i], "1111", ft_strlen(parse->file[i])))
+		{
+			printf("mapaaaaaaaaaaaaaaaaa\n");
+			break ;
+		}
+		printf("%s", parse->file[i]);
+//		(printf("next %d\n", i));
+		i++;
+	}
+}

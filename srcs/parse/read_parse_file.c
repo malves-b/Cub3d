@@ -48,10 +48,8 @@ void init_file(char *file, t_parse **parse)
 	close(fd);
 }
 
-
 bool	ft_read_file(t_parse *parse, char *file)
 {
-
 	get_number_lines(file, &parse->file_lines);
 	parse->file = malloc(sizeof(char *) * parse->file_lines + 1);
 	if(!parse->file)
@@ -60,6 +58,7 @@ bool	ft_read_file(t_parse *parse, char *file)
 		return (false); ///fazer algo paara exit
 	}
 	init_file(file, &parse);
+	validate_texture(parse);
 	//continua fazer a leitura do arquivo para o parse->file
 	//usar get_next_line para pegar cada linha já com o malloc.
 	return (true);

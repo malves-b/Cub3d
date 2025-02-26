@@ -20,26 +20,21 @@ GREEN = \033[1;32m
 BROWN = \033[1;33m
 P = \033[1;31m
 
-
 RM = rm -f
+
+all: $(NAME)
 
 $(NAME): $(LIBFT) $(MLIBX) $(SRCS)
 	@$(CC) $(CFLAGS) $(SRCS) $(LIBFT) $(MLXFLAGS) -o $(NAME)
 	@echo "$(GREEN)\nCOMPILED$(R)"
 
-all: $(NAME)
-#bonus
-
 $(LIBFT):
+	@echo "Compiling libft..."
 	@$(MAKE) -C $(LIBFT_DIR) > /dev/null 2>&1
 	
 $(MLIBX):
+	@echo "Compiling minilibx..."
 	@$(MAKE) -C $(MLIBX_DIR) > /dev/null 2>&1
-
-#bonus: $(B_NAME)
-
-#$(B_NAME): $(LIBFT) $(MLIBX) $(B_SRCS)
-#	$(CC) $(CFLAGS) $(B_SRCS) $(LIBFT) $(MLXFLAGS) -o $(B_NAME)
 
 clean:
 	@$(MAKE) clean -C $(LIBFT_DIR) > /dev/null 2>&1

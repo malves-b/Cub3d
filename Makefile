@@ -9,7 +9,8 @@ MLIBX = ./includes/minilibx-linux/libmlx.a
 MLIBX_DIR = ./includes/minilibx-linux
 
 SRCS = $(SRCS_DIR)/cub.c \
-	$(SRCS_DIR)/page1.c
+	$(SRCS_DIR)/page1.c $(SRCS_DIR)/free.c \
+	$(SRCS_DIR)/run_cub.c
 
 CC = cc
 CFLAGS = -Wall -Werror -Wextra -g

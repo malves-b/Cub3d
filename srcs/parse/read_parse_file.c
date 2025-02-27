@@ -43,7 +43,7 @@ void init_file(char *file, t_parse **parse)
 		line = get_next_line(fd);
 	}
 	(*parse)->file[i] = NULL;
-	print_map((*parse)->file);
+//print_map((*parse)->file);
 	free(line);
 	close(fd);
 }
@@ -59,7 +59,7 @@ bool	ft_read_file(t_parse *parse, char *file)
 	}
 	init_file(file, &parse);
 	clean_and_add(&parse);//mudar o nome.
-	validate_texture(parse);
+	//validate_texture(parse);
 	//continua fazer a leitura do arquivo para o parse->file
 	//usar get_next_line para pegar cada linha já com o malloc.
 	return (true);

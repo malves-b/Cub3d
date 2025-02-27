@@ -1,11 +1,11 @@
-NO textures/magic_cub/yellow.xpm
+NO ./textures/magic_cub/yellow.xpm
 
 
 
-            SO textures/magic_cub/blue.xpm
+            SO ./textures/magic_cub/blue.xpm
 
-    WE textures/magic_cub/red.xpm
-EA textures/magic_cub/green.xpm
+    WE ./textures/magic_cub/red.xpm
+EA ./textures/magic_cub/green.xpm
 
 
 C 200,200,200

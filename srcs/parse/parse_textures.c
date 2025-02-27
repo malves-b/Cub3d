@@ -6,6 +6,12 @@ void	ft_is_c(char *line, int i, t_parse **parse)
 	int	j;
 
 	j = 0;
+	if((*parse)->ceiling_collor != NULL)
+	{
+		//frees e exit
+		printf("ja tem f\n");
+		exit (1);
+	}
 	len = ft_strlen_i(line, i);
 	(*parse)->ceiling_collor = malloc(sizeof(char) * len + 1);
 	while(line[i] != '\0')
@@ -24,6 +30,12 @@ void	ft_is_f(char *line, int i, t_parse **parse)
 	int	j;
 
 	j = 0;
+	if((*parse)->floor_collor != NULL)
+	{
+		//frees e exit
+		printf("ja tem f\n");
+		exit (1);
+	}
 	len = ft_strlen_i(line, i);
 	(*parse)->floor_collor = malloc(sizeof(char) * len + 1);
 	while(line[i] != '\0')

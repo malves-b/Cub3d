@@ -6,6 +6,12 @@ void ft_is_n(char *line, int i, t_parse **parse)
 	int	j;
 
 	j = 0;
+	if((*parse)->no_path != NULL)
+	{
+		//frees e exit
+		printf("ja tem no\n");
+		exit (1);
+	}
 	len = ft_strlen_i(line, i);
 	(*parse)->no_path = malloc(sizeof(char) * len + 1);
 	while(line[i] != '\0')
@@ -23,6 +29,12 @@ void ft_is_s(char *line, int i, t_parse **parse)
 	int	j;
 
 	j = 0;
+	if((*parse)->so_path != NULL)
+	{
+		//frees e exit
+		printf("ja tem so\n");
+		exit (1);
+	}
 	len = ft_strlen_i(line, i);
 	(*parse)->so_path = malloc(sizeof(char) * len + 1);
 	while(line[i] != '\0')
@@ -40,6 +52,12 @@ void ft_is_w(char *line, int i, t_parse **parse)
 	int	j;
 
 	j = 0;
+	if((*parse)->we_path != NULL)
+	{
+		//frees e exit
+		printf("ja tem we\n");
+		exit (1);
+	}
 	len = ft_strlen_i(line, i);
 	(*parse)->we_path = malloc(sizeof(char) * len + 1);
 	while(line[i] != '\0')
@@ -58,6 +76,12 @@ void ft_is_e(char *line, int i, t_parse **parse)
 	int	j;
 
 	j = 0;
+	if((*parse)->ea_path != NULL)
+	{
+		//frees e exit
+		printf("ja tem ea\n");
+		exit (1);
+	}
 	len = ft_strlen_i(line, i);
 	(*parse)->ea_path = malloc(sizeof(char) * len + 1);
 	while(line[i] != '\0')

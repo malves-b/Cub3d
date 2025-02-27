@@ -44,17 +44,18 @@ typedef struct s_parse
 	char	*so_path;
 	char	*we_path;
 	char	*ea_path;
-	char	*floor_path;
-	char	*ceiling_path;
+	char	*floor_collor;
+	char	*ceiling_collor;
 	char	**map;
 	char	**file;
 	int		file_lines;//ver se precisa
-	bool	no;
-	bool	so;
-	bool	we;
-	bool	ea;
-	bool	floor;
-	bool	ceiling;
+	bool	*is_valid;
+	// bool	no;
+	// bool	so;
+	// bool	we;
+	// bool	ea;
+	// bool	floor;
+	// bool	ceiling; //tiar bool e inicializar os chars a null;
 }	t_parse;
 
 typedef struct s_map
@@ -77,13 +78,25 @@ typedef struct s_texture
 //validate_parse
 bool	check_args(int ac, char *map_file, char *prog_name);
 void	validate_texture(t_parse *parse);
+
 //init_parse_struct
 void	init_parse_struct(t_parse *parse);
+
 //read_parse_file
 void	init_file(char *file, t_parse **parse);
-bool	ft_read_file(t_parse *parse, char *file);
 void	get_number_lines(char *file, int *file_lines);
+bool	ft_read_file(t_parse *parse, char *file);
+
+//parse textures
+int		check_line(char *line);
+void	add_line(char *line, t_parse **parse);
+void	clean_and_add(t_parse **parse);
+
+//parse_textures_info
+void ft_is_n(char *line, int i, t_parse **parse);
+
 //utils_parse
+int		ft_strlen_i(char *line, int i);
 void	print_map(char **file);//depois apagar 
 
 

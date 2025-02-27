@@ -58,6 +58,7 @@ bool	ft_read_file(t_parse *parse, char *file)
 		return (false); ///fazer algo paara exit
 	}
 	init_file(file, &parse);
+	clean_and_add(&parse);//mudar o nome.
 	validate_texture(parse);
 	//continua fazer a leitura do arquivo para o parse->file
 	//usar get_next_line para pegar cada linha já com o malloc.

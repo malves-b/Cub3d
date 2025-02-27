@@ -10,3 +10,16 @@ void print_map(char **file)
 		i++;
 	}
 }
+
+int	ft_strlen_i(char *line, int i)
+{
+	int j;
+
+	j = 0;
+	while(line[i] != '\0')
+	{
+		j++;
+		i++;
+	}
+	return(j);
+}

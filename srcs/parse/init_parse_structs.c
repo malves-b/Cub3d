@@ -2,11 +2,11 @@
 
 void	init_parse_struct(t_parse *parse)
 {
-	parse->no = false;
-	parse->so = false;
-	parse->we = false;
-	parse->ea = false;
-	parse->floor = false;
-	parse->ceiling = false;
+	parse->no_path = NULL;
+	parse->so_path = NULL;
+	parse->we_path = NULL;
+	parse->ea_path = NULL;
+	parse->floor_collor = NULL;
+	parse->ceiling_collor = NULL;
 }
 

@@ -2,7 +2,7 @@
 
 bool	check_args(int ac ,char *map_file, char *prog_name)
 {
-    if(ac != 2)
+	if (ac != 2)
 	{
 		printf("Error\nPlease try again with the corrects informations! \n");
 		printf("%s <maps/map_file.cub>\n", prog_name);

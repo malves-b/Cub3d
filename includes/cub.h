@@ -49,7 +49,7 @@ typedef struct s_parse
 	char	**map;
 	char	**file;
 	int		file_lines;//ver se precisa
-	bool	*is_valid;
+	bool	is_valid;
 	// bool	no;
 	// bool	so;
 	// bool	we;
@@ -77,7 +77,7 @@ typedef struct s_texture
 /* --------------------------------- PARSING -------------------------------- */
 //validate_parse
 bool	check_args(int ac, char *map_file, char *prog_name);
-void	validate_texture(t_parse *parse);
+//void	validate_texture(t_parse *parse);
 
 //init_parse_struct
 void	init_parse_struct(t_parse *parse);
@@ -85,7 +85,7 @@ void	init_parse_struct(t_parse *parse);
 //read_parse_file
 void	init_file(char *file, t_parse **parse);
 void	get_number_lines(char *file, int *file_lines);
-bool	ft_read_file(t_parse *parse, char *file);
+bool	init_parse_info(t_parse *parse, char *file);
 
 //parse textures
 void	ft_is_c(char *line, int i, t_parse **parse);

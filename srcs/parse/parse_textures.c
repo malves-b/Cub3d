@@ -51,6 +51,28 @@ void	check_is_valid(t_parse **parse)
 	}
 }
 
+void	add_map(t_parse **parse, int i)
+{
+	int j;
+
+	j = i;
+	(*parse)->file_lines = 0;
+	while((*parse)->file[j] != NULL)
+	{
+		(*parse)->file_lines++;
+		j++;
+	}
+	(*parse)->map = malloc(sizeof(char*) * (*parse)->file_lines + 1);
+	j = 0;
+	while((*parse)->file[i] != NULL)
+	{
+		(*parse)->map[j] = (*parse)->file[i++];
+		j++;
+	}
+	(*parse)->map[j] = NULL;
+	print_map((*parse)->map);
+}
+
 void	clean_and_add(t_parse **parse)
 {
 	int	i;
@@ -64,7 +86,7 @@ void	clean_and_add(t_parse **parse)
 		{
 			if((*parse)->is_valid == true)
 			{
-				printf("MAPA! \n\n");
+				add_map(parse, i);
 				exit (0);
 			}
 			else

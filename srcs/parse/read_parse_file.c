@@ -22,7 +22,7 @@ void	get_number_lines(char *file, int *file_lines)
 	//printf("lines in file %d\n", *file_lines);
 }
 
-void	init_file(char *file, t_parse **parse)
+void	init_file(char *file, t_parse *parse)
 {
 	char	*line;
 	int		fd;
@@ -38,27 +38,26 @@ void	init_file(char *file, t_parse **parse)
 	line = get_next_line(fd);
 	while (line)
 	{
-		(*parse)->file[i] = line;
+		parse->file[i] = line;
 		i++;
 		line = get_next_line(fd);
 	}
-	//printf("\n\n AQUIIII %d\n\n", i);
-	(*parse)->file[i] = NULL;
-	free(line);
+	parse->file[i] = NULL;
+	//free(line);
 	close(fd);
 }
 
 bool	init_parse_info(t_parse *parse, char *file)
 {
-	get_number_lines(file, &parse->file_lines);
-	parse->file = malloc(sizeof(char *) * parse->file_lines + 1);
+	get_number_lines(file, &parse->file_lines);//verificação se line é menor ou == 0 
+	parse->file = malloc(sizeof(char *) * (parse->file_lines + 1));
 	if (!parse->file)
 	{
 		printf("Error\n Memory allocation error\n");
 		return (false); ///fazer algo paara exit
 	}
-	init_file(file, &parse);
-	clean_and_add(&parse);//mudar o nome.
+	init_file(file, parse);
+	clean_and_add(parse);//mudar o nome.
 	free_array(&parse->file);
 	printf("\n\n");
 	printf("%s", parse->no_path);

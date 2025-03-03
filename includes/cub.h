@@ -103,6 +103,7 @@ void ft_is_e(char *line, int i, t_parse **parse);
 //utils_parse
 int		ft_strlen_i(char *line, int i);
 void	print_map(char **file);//depois apagar 
+void	free_array(char ***arr);
 
 
 

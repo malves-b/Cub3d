@@ -66,7 +66,7 @@ void	add_map(t_parse **parse, int i)
 	j = 0;
 	while((*parse)->file[i] != NULL)
 	{
-		(*parse)->map[j] = (*parse)->file[i++];
+		(*parse)->map[j] = ft_strdup((*parse)->file[i++]);
 		j++;
 	}
 	(*parse)->map[j] = NULL;
@@ -87,7 +87,7 @@ void	clean_and_add(t_parse **parse)
 			if((*parse)->is_valid == true)
 			{
 				add_map(parse, i);
-				exit (0);
+				break ;
 			}
 			else
 			{

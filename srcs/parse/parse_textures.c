@@ -75,7 +75,7 @@ void	add_map(t_parse *parse, int i)
 		j++;
 	}
 	parse->map[j] = NULL;
-	print_map(parse->map);
+	//print_map(parse->map);
 }
 
 void	clean_and_add(t_parse *parse)

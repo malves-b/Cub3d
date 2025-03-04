@@ -40,6 +40,8 @@ int	main(int argc, char **argv)
 		return (1);
 	//readmap guardar em algum lugar
 	//fazer a validadação
+	free_parse(cub->parse);
+	free(cub);
 	return(0);
 	init_window(argv);
 

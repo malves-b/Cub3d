@@ -27,6 +27,18 @@ void	free_array(char ***arr)
 	*arr = NULL;
 }
 
+void	free_parse(t_parse *parse)
+{
+	free(parse->no_path);
+	free(parse->so_path);
+	free(parse->we_path);
+	free(parse->ea_path);
+	free(parse->floor_collor);
+	free(parse->ceiling_collor);
+	free_array(&parse->map);
+	free_array(&parse->file);
+	free(parse);
+}
 
 int	ft_strlen_i(char *line, int i)
 {

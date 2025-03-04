@@ -38,6 +38,7 @@ void	free_parse(t_parse *parse)
 	free_array(&parse->map);
 	free_array(&parse->file);
 	free(parse);
+	init_parse_struct(parse);
 }
 
 int	ft_strlen_i(char *line, int i)

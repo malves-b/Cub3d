@@ -8,8 +8,8 @@ void	ft_is_n(char *line, int i, t_parse *parse)
 	j = 0;
 	if (parse->no_path != NULL)
 	{
-		//frees e exit
-		printf("ja tem no\n");
+		printf("Error\n Map is not valid, NO is duplicaated!\n");
+		free_parse(parse);
 		exit (1);
 	}
 	len = ft_strlen_i(line, i);
@@ -31,8 +31,8 @@ void	ft_is_s(char *line, int i, t_parse *parse)
 	j = 0;
 	if (parse->so_path != NULL)
 	{
-		//frees e exit e mensagem de erro 
-		printf("ja tem so\n");
+		printf("Error\n Map is not valid, SO is duplicaated!\n");
+		free_parse(parse);
 		exit (1);
 	}
 	len = ft_strlen_i(line, i);
@@ -54,8 +54,8 @@ void	ft_is_w(char *line, int i, t_parse *parse)
 	j = 0;
 	if (parse->we_path != NULL)
 	{
-		//frees e exit e mensagem de erro 
-		printf("ja tem we\n");
+		printf("Error\n Map is not valid, WE is duplicaated!\n");
+		free_parse(parse);
 		exit (1);
 	}
 	len = ft_strlen_i(line, i);
@@ -78,8 +78,8 @@ void	ft_is_e(char *line, int i, t_parse *parse)
 	j = 0;
 	if (parse->ea_path != NULL)
 	{
-		//frees e exit e mensagem de erro 
-		printf("ja tem ea\n");
+		printf("Error\n Map is not valid, EA is duplicaated!\n");
+		free_parse(parse);
 		exit (1);
 	}
 	len = ft_strlen_i(line, i);
@@ -101,8 +101,8 @@ void	ft_is_c(char *line, int i, t_parse *parse)
 	j = 0;
 	if (parse->ceiling_collor != NULL)
 	{
-		//frees e exit e mensagem de erro 
-		printf("ja tem c\n");
+		printf("Error\n Map is not valid, C is duplicaated!\n");
+		free_parse(parse);
 		exit (1);
 	}
 	len = ft_strlen_i(line, i);
@@ -125,8 +125,8 @@ void	ft_is_f(char *line, int i, t_parse *parse)
 	j = 0;
 	if (parse->floor_collor != NULL)
 	{
-		//frees e exit e mensagem de erro 
-		printf("ja tem f\n");
+		printf("Error\n Map is not valid, F is duplicaated!\n");
+		free_parse(parse);
 		exit (1);
 	}
 	len = ft_strlen_i(line, i);

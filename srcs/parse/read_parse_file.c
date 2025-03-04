@@ -19,7 +19,6 @@ void	get_number_lines(char *file, int *file_lines)
 		line = get_next_line(fd);
 	}
 	close(fd);
-	//printf("lines in file %d\n", *file_lines);
 }
 
 void	init_file(char *file, t_parse *parse)
@@ -43,7 +42,7 @@ void	init_file(char *file, t_parse *parse)
 		line = get_next_line(fd);
 	}
 	parse->file[i] = NULL;
-	//free(line);
+	free(line);
 	close(fd);
 }
 
@@ -67,8 +66,7 @@ bool	init_parse_info(t_parse *parse, char *file)
 	printf("%s", parse->floor_collor);
 	printf("%s", parse->ceiling_collor);
 	print_map(parse->map);
+	printf("\n\n");
 	//validate_texture(parse);
-	//continua fazer a leitura do arquivo para o parse->file
-	//usar get_next_line para pegar cada linha já com o malloc.
 	return (true);
 }

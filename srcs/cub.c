@@ -37,7 +37,11 @@ int	main(int argc, char **argv)
 	}
 	init_parse_struct(cub->parse);
 	if (!init_parse_info(cub->parse, argv[1]))
+	{
+		free_parse(cub->parse);
+		free(cub);
 		return (1);
+	}
 	//readmap guardar em algum lugar
 	//fazer a validadação
 	free_parse(cub->parse);

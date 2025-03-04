@@ -10,6 +10,7 @@ void	init_parse_struct(t_parse *parse)
 	parse->ceiling_collor = NULL;
 	parse->file = NULL;
 	parse->map = NULL;
+	parse->is_valid = false;
 	parse->file_lines = 0;
 }
 

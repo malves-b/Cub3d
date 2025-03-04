@@ -56,7 +56,8 @@ bool	init_parse_info(t_parse *parse, char *file)
 		return (false); ///fazer algo paara exit
 	}
 	init_file(file, parse);
-	clean_and_add(parse);//mudar o nome.
+	if(!clean_and_add(parse))
+		return (false);
 	free_array(&parse->file);
 	printf("\n\n");
 	printf("%s", parse->no_path);

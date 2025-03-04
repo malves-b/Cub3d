@@ -85,7 +85,7 @@ bool	init_parse_info(t_parse *parse, char *file);
 void	ft_is_c(char *line, int i, t_parse *parse);
 void	ft_is_f(char *line, int i, t_parse *parse);
 void	add_line(char *line, t_parse *parse);
-void	clean_and_add(t_parse *parse);
+bool	clean_and_add(t_parse *parse);
 int		check_line(char *line);
 
 //parse_textures_info

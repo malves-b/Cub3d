@@ -15,7 +15,7 @@ void	free_array(char ***arr)
 {
 	int i = 0;
 
-	if (!arr || !*arr) // Evita segfault
+	if (!arr || !*arr)
 		return;
 	while ((*arr)[i])
 	{
@@ -29,16 +29,22 @@ void	free_array(char ***arr)
 
 void	free_parse(t_parse *parse)
 {
-	free(parse->no_path);
-	free(parse->so_path);
-	free(parse->we_path);
-	free(parse->ea_path);
-	free(parse->floor_collor);
-	free(parse->ceiling_collor);
+	if(parse->no_path != NULL)
+		free(parse->no_path);
+	if(parse->so_path != NULL)
+		free(parse->so_path);
+	if(parse->we_path != NULL)
+		free(parse->we_path);
+	if(parse->ea_path != NULL)
+		free(parse->ea_path);
+	if(parse->floor_collor != NULL)
+		free(parse->floor_collor);
+	if(parse->ceiling_collor != NULL)
+		free(parse->ceiling_collor);
 	free_array(&parse->map);
 	free_array(&parse->file);
+	init_parse_struct(parse);//evita lixo de memoria
 	free(parse);
-	init_parse_struct(parse);
 }
 
 int	ft_strlen_i(char *line, int i)

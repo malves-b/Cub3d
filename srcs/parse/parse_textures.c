@@ -78,7 +78,7 @@ void	add_map(t_parse *parse, int i)
 	//print_map(parse->map);
 }
 
-void	clean_and_add(t_parse *parse)
+bool	clean_and_add(t_parse *parse)
 {
 	int	i;
 
@@ -96,12 +96,15 @@ void	clean_and_add(t_parse *parse)
 			}
 			else
 			{
-				printf("invalid_map\n\n");
+				printf("Invalid_map\n\n");
+				//free_parse(parse);
+				//ENCONTRAR FORMAS DE DAR FREE NO CUBO(OU RETORNA PARA A MAIN)
 				//error message (IDEIA fazer uma função para mensagem de erro personalizada)
-				exit (1);
+				return (false);
 			}
 		}
 		check_is_valid(parse);
 		i++;
 	}
+	return (true);
 }

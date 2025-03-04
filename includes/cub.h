@@ -48,14 +48,8 @@ typedef struct s_parse
 	char	*ceiling_collor;
 	char	**map;
 	char	**file;
-	int		file_lines;//ver se precisa
+	int		file_lines;
 	bool	is_valid;
-	// bool	no;
-	// bool	so;
-	// bool	we;
-	// bool	ea;
-	// bool	floor;
-	// bool	ceiling; //tiar bool e inicializar os chars a null;
 }	t_parse;
 
 typedef struct s_map

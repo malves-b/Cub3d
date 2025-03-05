@@ -34,6 +34,9 @@ typedef struct s_main
 
 typedef struct s_cub
 {
+	struct s_map *s_map;
+	struct s_player *player;
+	struct s_texture *texture;
 	struct s_parse *parse;
 } t_cub;
 
@@ -44,12 +47,13 @@ typedef struct s_parse
 	char	*so_path;
 	char	*we_path;
 	char	*ea_path;
-	char	*floor_collor;
+	char	*floor_collor;//divide em 3 e trandforma em hexa 
 	char	*ceiling_collor;
 	char	**map;
 	char	**file;
 	int		file_lines;
 	bool	is_valid;
+	struct s_cub *cub;
 }	t_parse;
 
 typedef struct s_map
@@ -87,10 +91,7 @@ bool	clean_and_add(t_parse *parse);
 int		check_line(char *line);
 
 //parse_textures_info
-void	ft_is_n(char *line, int i, t_parse *parse);
-void	ft_is_s(char *line, int i, t_parse *parse);
-void	ft_is_w(char *line, int i, t_parse *parse);
-void	ft_is_e(char *line, int i, t_parse *parse);
+void	set_texture_path(char *line, int i, t_parse *parse, char **str);
 void	ft_is_c(char *line, int i, t_parse *parse);
 void	ft_is_f(char *line, int i, t_parse *parse);
 

@@ -1,14 +1,15 @@
-NO textures/materias/wood1.xpm
+NO ./textures/materias/wood1.xpm
 
 
 F 25,25,25
 
-            SO textures/materias/wall_rock.xpm
+            SO ./textures/materias/wall_rock.xpm
 
-    WE textures/materias/wall_rock2.xpm
-EA textures/materias/wood2.xpm
+    WE ./textures/materias/wall_rock2.xpm
+EA ./textures/materias/wood2.xpm
 
 
+C 200,200,200
 C 200,200,200
 
 

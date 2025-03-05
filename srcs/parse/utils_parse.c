@@ -43,8 +43,8 @@ void	free_parse(t_parse *parse)
 		free(parse->ceiling_collor);
 	free_array(&parse->map);
 	free_array(&parse->file);
-	init_parse_struct(parse);//evita lixo de memoria
 	free(parse);
+	//init_parse_struct(parse);//evita lixo de memoria
 }
 
 int	ft_strlen_i(char *line, int i)

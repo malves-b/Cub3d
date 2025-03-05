@@ -1,31 +1,5 @@
 #include "../../includes/cub.h"
 
-
-// void	teste(char *line, int i, t_parse *parse, char *str)
-// {
-// 	int	len;
-// 	int	j;
-
-// 	j = 0;
-// 	if (str != NULL)
-// 	{
-// 		printf("Error\n Map is not valid, SO is duplicaated!\n");
-// 		free_parse(parse);
-// 		exit (1);
-// 	}
-// 	while(line[i] != '.')
-// 		i++;
-// 	len = ft_strlen_i(line, i);
-// 	str = malloc(sizeof(char) * len + 1);
-// 	while (line[i] != '\0')
-// 	{
-// 		str[j] = line[i++];
-// 		j++;
-// 	}
-// 	str[j] = '\0';
-// 	printf("ft_is %s\n", str);
-// }
-
 void	add_line(char *line, t_parse *parse)
 {
 	int		i;
@@ -34,19 +8,19 @@ void	add_line(char *line, t_parse *parse)
 	while(line[i] == ' ')//adicionar outros espaços 
 		i++;
 	if (line[i] == 'N')
-		ft_is_n(line, i, parse);
-		//teste(line, i, parse, parse->no_path);
+		set_texture_path(line, i, parse, &parse->no_path);
 	else if (line[i] == 'S')
-		ft_is_s(line, i, parse);
-	 else if (line[i] == 'W')
-		ft_is_w(line, i, parse);
+		set_texture_path(line, i, parse, &parse->so_path);
+	else if (line[i] == 'W')
+		set_texture_path(line, i, parse, &parse->we_path);
 	else if (line[i] == 'E')
-		ft_is_e(line, i, parse);
+		set_texture_path(line, i, parse, &parse->ea_path);
 	else if (line[i] == 'F')
 		ft_is_f(line, i, parse);
 	else if (line[i] == 'C')
 		ft_is_c(line, i, parse);
 }
+
 int	check_line(char *line)
 {
 	int	i;

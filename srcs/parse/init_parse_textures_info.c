@@ -12,6 +12,8 @@ void	ft_is_n(char *line, int i, t_parse *parse)
 		free_parse(parse);
 		exit (1);
 	}
+	while(line[i] != '.')
+		i++;
 	len = ft_strlen_i(line, i);
 	parse->no_path = malloc(sizeof(char) * len + 1);
 	while (line[i] != '\0')
@@ -35,6 +37,8 @@ void	ft_is_s(char *line, int i, t_parse *parse)
 		free_parse(parse);
 		exit (1);
 	}
+	while(line[i] != '.')
+		i++;
 	len = ft_strlen_i(line, i);
 	parse->so_path = malloc(sizeof(char) * len + 1);
 	while (line[i] != '\0')
@@ -58,6 +62,8 @@ void	ft_is_w(char *line, int i, t_parse *parse)
 		free_parse(parse);
 		exit (1);
 	}
+	while(line[i] != '.')
+		i++;
 	len = ft_strlen_i(line, i);
 	parse->we_path = malloc(sizeof(char) * len + 1);
 	while (line[i] != '\0')
@@ -82,6 +88,8 @@ void	ft_is_e(char *line, int i, t_parse *parse)
 		free_parse(parse);
 		exit (1);
 	}
+	while(line[i] != '.')
+		i++;
 	len = ft_strlen_i(line, i);
 	parse->ea_path = malloc(sizeof(char) * len + 1);
 	while (line[i] != '\0')
@@ -105,6 +113,8 @@ void	ft_is_c(char *line, int i, t_parse *parse)
 		free_parse(parse);
 		exit (1);
 	}
+	while(!ft_isdigit(line[i]))
+		i++;
 	len = ft_strlen_i(line, i);
 	parse->ceiling_collor = malloc(sizeof(char) * len + 1);
 	while (line[i] != '\0')
@@ -129,6 +139,8 @@ void	ft_is_f(char *line, int i, t_parse *parse)
 		free_parse(parse);
 		exit (1);
 	}
+	while(!ft_isdigit(line[i]))
+		i++;
 	len = ft_strlen_i(line, i);
 	parse->floor_collor = malloc(sizeof(char) * len + 1);
 	while (line[i] != '\0')

@@ -1,5 +1,31 @@
 #include "../../includes/cub.h"
 
+
+// void	teste(char *line, int i, t_parse *parse, char *str)
+// {
+// 	int	len;
+// 	int	j;
+
+// 	j = 0;
+// 	if (str != NULL)
+// 	{
+// 		printf("Error\n Map is not valid, SO is duplicaated!\n");
+// 		free_parse(parse);
+// 		exit (1);
+// 	}
+// 	while(line[i] != '.')
+// 		i++;
+// 	len = ft_strlen_i(line, i);
+// 	str = malloc(sizeof(char) * len + 1);
+// 	while (line[i] != '\0')
+// 	{
+// 		str[j] = line[i++];
+// 		j++;
+// 	}
+// 	str[j] = '\0';
+// 	printf("ft_is %s\n", str);
+// }
+
 void	add_line(char *line, t_parse *parse)
 {
 	int		i;
@@ -9,6 +35,7 @@ void	add_line(char *line, t_parse *parse)
 		i++;
 	if (line[i] == 'N')
 		ft_is_n(line, i, parse);
+		//teste(line, i, parse, parse->no_path);
 	else if (line[i] == 'S')
 		ft_is_s(line, i, parse);
 	 else if (line[i] == 'W')

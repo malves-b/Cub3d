@@ -6,7 +6,7 @@
 /*   By: malves-b <malves-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 18:06:24 by malves-b          #+#    #+#             */
-/*   Updated: 2025/03/06 13:34:13 by malves-b         ###   ########.fr       */
+/*   Updated: 2025/03/06 15:46:21 by malves-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ void	set_south(t_raycasting *raycasting)
 	raycasting->direction[1] = 0;
 	raycasting->plane_vector[0] = 0;
 	raycasting->plane_vector[1] = -0.66;
-
 }
 
 void	set_east(t_raycasting *raycasting)

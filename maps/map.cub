@@ -3,10 +3,10 @@ NO textures/materias/wood1.xpm
 
 F 25,25,25
 
-            SO textures/materias/wall_rock.xpm
+            SO textures/xxxx.xpm
 
-    WE textures/materias/wall_rock2.xpm
-EA textures/materias/wood2.xpm
+    WE textures/xxxx.xpm
+EA textures/xxx.xpm
 
 
 C 200,200,200

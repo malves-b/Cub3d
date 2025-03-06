@@ -6,7 +6,7 @@
 /*   By: malves-b <malves-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 18:16:53 by malves-b          #+#    #+#             */
-/*   Updated: 2025/02/26 20:08:24 by malves-b         ###   ########.fr       */
+/*   Updated: 2025/03/05 17:28:22 by malves-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,6 @@ int	key_press(int keycode, t_main *pgr)
 		pgr->player_position[1] += 5;
 	}
 	mlx_clear_window(pgr->mlx.mlx, pgr->mlx.mlx_win);
-	draw_player(pgr);
+	// draw_player(pgr);
 	return (1);
 }

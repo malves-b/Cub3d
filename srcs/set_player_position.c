@@ -1,42 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub.c                                              :+:      :+:    :+:   */
+/*   set_player_position.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: malves-b <malves-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/12 13:33:10 by malves-b          #+#    #+#             */
-/*   Updated: 2025/03/06 15:26:16 by malves-b         ###   ########.fr       */
+/*   Created: 2025/03/06 12:37:47 by malves-b          #+#    #+#             */
+/*   Updated: 2025/03/06 15:39:33 by malves-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub.h"
 
-int	cub_init()
+void	set_player_position(t_raycasting *raycasting, char **map)
 {
-	t_main	*pgr;
+	int	x;
+	int	y;
 
-	pgr = NULL;
-	pgr = safe_calloc(pgr, sizeof(t_main));
-	pgr->mlx = init_mlx();
-	pgr->raycasting = init_raycasting(pgr);
-
-
-
-	// draw_player(pgr);
-
-
-
-	// mlx_hook(pgr->mlx.mlx_win, 2, 1L << 0, key_press, pgr->mlx.img);
-	mlx_loop(pgr->mlx->mlx);
-	return (0);
-}
-
-int main(int argc, char **argv)
-{
-    (void)argc;
-    (void)argv;
-    cub_init();
-
-    return 0;
+	x = 0;
+	y = 0;
+	while (map[x])
+	{
+		while (map[x][y])
+		{
+			if (map[x][y] == 'N' || map[x][y] == 'S'
+				|| map[x][y] == 'E' || map[x][y] == 'W')
+			{
+				raycasting->map_position[0] = x;
+				raycasting->map_position[1] = y;
+				raycasting->player_position[0] = x + 0.5;
+				raycasting->player_position[1] = y + 0.5;
+			}
+			y++;
+		}
+		y = 0;
+		x++;
+	}
 }

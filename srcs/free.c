@@ -6,7 +6,7 @@
 /*   By: malves-b <malves-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 10:39:03 by malves-b          #+#    #+#             */
-/*   Updated: 2025/02/26 13:44:04 by malves-b         ###   ########.fr       */
+/*   Updated: 2025/03/06 15:26:56 by malves-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	free_mlx_struct(t_mlx *mlx);
 void	ft_free(t_main *pgr, int flag)
 {
 	if (flag == 2)
-		free_mlx_struct(&pgr->mlx);
+		free_mlx_struct(pgr->mlx);
 }
 
 void	free_mlx_struct(t_mlx *mlx)

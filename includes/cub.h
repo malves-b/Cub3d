@@ -6,7 +6,7 @@
 /*   By: malves-b <malves-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 13:14:39 by malves-b          #+#    #+#             */
-/*   Updated: 2025/02/26 20:06:28 by malves-b         ###   ########.fr       */
+/*   Updated: 2025/03/06 15:39:27 by malves-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,15 @@
 # define KEY_DOWN 65364
 # define KEY_UP 65362
 
+typedef struct s_raycasting
+{
+	int		map_position[2];// [0] = x , [1] = y
+	double	player_position[2];
+	double	direction[2];
+	double	plane_vector[2];
+}	t_raycasting;
+
+
 typedef struct s_mlx
 {
 	void	*mlx;
@@ -46,10 +55,10 @@ typedef struct s_mlx
 
 typedef struct s_main
 {
-	char	**map;
-	t_mlx	mlx;
-	double	player_position[2];/*test*/
-	char	player_direction;
+	char			**map;
+	t_mlx			*mlx;
+	t_raycasting	*raycasting;
+	char			player_direction;
 }	t_main;
 
 /* --------------------------------- PARSING -------------------------------- */
@@ -58,10 +67,17 @@ typedef struct s_main
 /* ---------------------------------- UTILS --------------------------------- */
 
 void	ft_free(t_main *pgr, int flag);
+void	*safe_calloc(t_main *pgr, size_t size);
+
+/* ------------------------------- RAYCASTING ------------------------------- */
+
+t_raycasting	*init_raycasting(t_main *pgr);
+void			set_direction_vector(char dir, t_raycasting *raycasting);
+void			set_player_position(t_raycasting *raycasting, char **map);
+
 
 /* -------------------------------- INIT GAME ------------------------------- */
 
-int		key_press(int keycode, t_main *pgr);
-void	draw_player(t_main *pgr);
+t_mlx	*init_mlx(void);
 
 #endif

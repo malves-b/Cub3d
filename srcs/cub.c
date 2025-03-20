@@ -29,14 +29,12 @@ int	main(int argc, char **argv)
 	if (!check_args(argc ,argv[1], argv[0]))
 		return (1);
 	cub = malloc (sizeof(t_cub)); //colocar essas duas linhas em um arquivo de init structs
-	cub->parse = malloc (sizeof(t_parse));
-	if (!cub || !cub->parse)
+	if (!cub)
 	{
 		printf("Error\n Memory allocation error\n");
 		return (1);
 	}
-	init_parse_struct(cub->parse);
-	if (!init_parse_info(cub->parse, argv[1]))
+	if (!init_parse_info(cub, argv[1]))
 	{
 		free_parse(cub->parse);
 		free(cub);

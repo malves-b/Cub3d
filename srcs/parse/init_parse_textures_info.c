@@ -63,6 +63,7 @@ void	ft_is_f(char *line, int i, t_parse *parse)
 	{
 		printf("Error\n Map is not valid, F is duplicated!\n");
 		free_parse(parse);
+		//free(parse->cub);
 		//achar uma forma para faze frees do cub aqui
 		exit (1);
 	}

@@ -2,6 +2,7 @@
 
 void	init_parse_struct(t_parse *parse)
 {
+	//parse = malloc (sizeof(t_parse));
 	parse->no_path = NULL;
 	parse->so_path = NULL;
 	parse->we_path = NULL;

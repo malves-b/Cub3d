@@ -34,9 +34,9 @@ typedef struct s_main
 
 typedef struct s_cub
 {
-	struct s_map *s_map;
-	struct s_player *player;
-	struct s_texture *texture;
+	//struct s_map *s_map;
+	//struct s_player *player;
+	//truct s_texture *texture;
 	struct s_parse *parse;
 } t_cub;
 
@@ -75,6 +75,8 @@ typedef struct s_texture
 /* --------------------------------- PARSING -------------------------------- */
 //validate_parse
 bool	check_args(int ac, char *map_file, char *prog_name);
+bool	is_valid_texture(char *path);
+bool	val_textures(t_parse *parse);
 //void	validate_texture(t_parse *parse);
 
 //init_parse_struct
@@ -83,7 +85,7 @@ void	init_parse_struct(t_parse *parse);
 //read_parse_file
 void	init_file(char *file, t_parse *parse);
 void	get_number_lines(char *file, int *file_lines);
-bool	init_parse_info(t_parse *parse, char *file);
+bool	init_parse_info(t_cub *cub, char *file);
 
 //parse textures
 void	add_line(char *line, t_parse *parse);

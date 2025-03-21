@@ -11,7 +11,6 @@ bool	is_valid_texture(char *path)
 	if (path[len - 1] == '\n')
 		len--;
 	if(len < 4 || strncmp(path + len - 4, ".xpm", 4) != 0)
-	//if(ft_strnstr(path, ".xpm", len - 4))
 	{
 		printf("Error: Texture file must have a .xpm extension!\n");
 		return (false);
@@ -26,7 +25,7 @@ bool	is_valid_texture(char *path)
 	return(true);
 }
 
-bool	val_textures(t_parse *parse)//colocar em outro arquivo
+bool	val_textures(t_parse *parse)
 {
 	if(parse->is_valid == true)
 	{
@@ -66,27 +65,3 @@ bool	check_args(int ac ,char *map_file, char *prog_name)
 	}
 	return (true);
 }
-
-// void	validate_texture(t_parse *parse)
-// {
-	//int	i;
-	//char *temp;
-	
-	//i = 0;
-	//clean_file
-	// while(i < parse->file_lines)
-	// {
-	// 	if(ft_strnstr(parse->file[i], "1111", ft_strlen(parse->file[i])))
-	// 	{
-	// 		printf("mapaaaaaaaaaaaaaaaaa\n");
-	// 		break ;
-	// 	}
-	//	printf("%s", parse->file[i]);
-	//	temp = clean_file(parse->file[i]);
-	//	free(parse->file)
-	//	i++;
-	// }
-// }
-
-//varre as linhas isola as linas e remove os espaços e os \n
-//validação para se começar com letras, ainda não é mapa 

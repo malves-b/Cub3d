@@ -14,7 +14,8 @@ SRCS = $(SRCS_DIR)/cub.c \
 		$(SRCS_DIR)/parse/parse_textures.c \
 		$(SRCS_DIR)/parse/read_parse_file.c \
 		$(SRCS_DIR)/parse/utils_parse.c \
-		$(SRCS_DIR)/parse/validate_parse.c 
+		$(SRCS_DIR)/parse/validate_parse.c \
+		$(SRCS_DIR)/parse/validate_map.c 
 
 CC = cc
 CFLAGS = -Wall -Werror -Wextra -g

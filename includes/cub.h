@@ -54,18 +54,21 @@ typedef struct s_parse
 	int		file_lines;
 	bool	is_valid;
 	struct s_cub *cub;
+	struct s_player *player;
 }	t_parse;
 
 typedef struct s_map
 {
-	char **map;
-	int height;
-	int width;
+	char	**map;
+	int		height;
+	int		width;
 }	t_map;
 
 typedef struct s_player
 {
-	
+	char	player;
+	int		x;
+	int		y;
 }	t_player;
 
 typedef struct s_texture
@@ -77,7 +80,6 @@ typedef struct s_texture
 bool	check_args(int ac, char *map_file, char *prog_name);
 bool	is_valid_texture(char *path);
 bool	val_textures(t_parse *parse);
-//void	validate_texture(t_parse *parse);
 
 //init_parse_struct
 void	init_parse_struct(t_parse *parse);
@@ -103,6 +105,8 @@ void	print_map(char **file);//depois apagar
 void	free_array(char ***arr);
 void	free_parse(t_parse *parse);
 
+//validate_map
+bool	val_map(t_parse *parse);
 
 
 /* ---------------------------------- UTILS --------------------------------- */

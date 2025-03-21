@@ -62,6 +62,8 @@ bool	init_parse_info(t_cub *cub, char *file)
 		return (false);
 	if(!val_textures(cub->parse))
 		return (false);
+	if(!val_map(cub->parse))
+		return (false);
 	free_array( &cub->parse->file);
 	printf("\n\n");
 	printf("%s", cub->parse->no_path);

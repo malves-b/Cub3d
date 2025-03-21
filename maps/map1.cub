@@ -1,8 +1,8 @@
-NO ./textures/wall1
-SO ./textures/wall2
+NO ./textures/wall1.xpm
+SO ./textures/wall2.xpm
 F 125,200,10
-WE ./textures/wall3
-EA ./textures/wall5
+WE ./textures/wall3.xpm
+EA ./textures/wall5.xpm
 C 135,206,235
 
 

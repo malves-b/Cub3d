@@ -53,6 +53,9 @@ typedef struct s_parse
 	char	**file;
 	int		file_lines;
 	bool	is_valid;
+	char	parse_player;
+	int		parse_x;
+	int		parse_y;
 	struct s_cub *cub;
 	struct s_player *player;
 }	t_parse;

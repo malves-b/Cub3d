@@ -13,5 +13,8 @@ void	init_parse_struct(t_parse *parse)
 	parse->map = NULL;
 	parse->is_valid = false;
 	parse->file_lines = 0;
+	parse->parse_player = '\0';
+	parse->parse_x = 0;
+	parse->parse_y = 0;
 }
 

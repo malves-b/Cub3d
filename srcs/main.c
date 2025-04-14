@@ -6,7 +6,7 @@
 /*   By: malves-b <malves-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 13:33:10 by malves-b          #+#    #+#             */
-/*   Updated: 2025/04/14 19:18:02 by malves-b         ###   ########.fr       */
+/*   Updated: 2025/04/14 19:45:02 by malves-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,10 @@ int	main(int argc, char **argv)
 		return (1);
 	cub = NULL;
 	cub = safe_calloc(cub, sizeof(t_main));
-	if (!init_parse_info(cub, argv[1]))
-	{
-		// free_parse(cub->parse);
-		// free(cub);
+	cub->parse = safe_calloc(cub, sizeof(t_parse));
+	init_parse_struct(cub->parse);
+	if(!ft_read_file(cub->parse, argv[1]))
 		return (1);
-	}
 	cub_init(cub);
 	//readmap guardar em algum lugar
 	//fazer a validadação

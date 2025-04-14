@@ -6,7 +6,7 @@
 /*   By: malves-b <malves-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 13:14:39 by malves-b          #+#    #+#             */
-/*   Updated: 2025/03/06 15:39:27 by malves-b         ###   ########.fr       */
+/*   Updated: 2025/04/14 19:08:12 by malves-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,17 +41,17 @@ typedef struct s_parse
 	char	*so_path;
 	char	*we_path;
 	char	*ea_path;
-	char	*floor_collor;//divide em 3 e trandforma em hexa 
-	char	*ceiling_collor;
+	char	*floor_path;
+	char	*ceiling_path;
 	char	**map;
 	char	**file;
-	int		file_lines;
-	bool	is_valid;
-	char	parse_player;
-	int		parse_x;
-	int		parse_y;
-	struct s_cub *cub;
-	struct s_player *player;
+	int		file_lines;//ver se precisa
+	bool	no;
+	bool	so;
+	bool	we;
+	bool	ea;
+	bool	floor;
+	bool	ceiling;
 }	t_parse;
 
 typedef struct s_map
@@ -110,7 +110,7 @@ bool	val_textures(t_parse *parse);
 void	init_parse_struct(t_parse *parse);
 
 //read_parse_file
-void	init_file(char *file, t_parse *parse);
+void	init_file(char *file, t_parse **parse);
 void	get_number_lines(char *file, int *file_lines);
 bool	init_parse_info(t_main *cub, char *file);
 
@@ -118,6 +118,7 @@ bool	init_parse_info(t_main *cub, char *file);
 void	add_line(char *line, t_parse *parse);
 bool	clean_and_add(t_parse *parse);
 int		check_line(char *line);
+void	validate_texture(t_parse *parse);
 
 //parse_textures_info
 void	set_texture_path(char *line, int i, t_parse *parse, char **str);

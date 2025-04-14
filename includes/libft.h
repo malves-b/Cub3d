@@ -6,7 +6,7 @@
 /*   By: malves-b <malves-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 17:21:21 by pemirand          #+#    #+#             */
-/*   Updated: 2025/02/13 15:59:32 by malves-b         ###   ########.fr       */
+/*   Updated: 2025/04/14 18:52:26 by malves-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,4 +65,14 @@ void			ft_lstclear(t_list **lst, void (*del)(void*));
 void			ft_lstiter(t_list *lst, void (*f)(void *));
 t_list			*ft_lstmap(t_list *lst, void *(*f)(void *),
 					void (*del)(void *));
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 1
+# endif
+
+char			*get_next_line(int fd);
+char			*ft_substr(char const *s, unsigned int start, size_t len);
+char			*ft_strjoin_get(char *stash, char *temp);
+int				ft_check(char *stash);
+
 #endif

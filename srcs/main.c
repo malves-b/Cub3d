@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub.c                                              :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: malves-b <malves-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 13:33:10 by malves-b          #+#    #+#             */
-/*   Updated: 2025/03/06 15:47:28 by malves-b         ###   ########.fr       */
+/*   Updated: 2025/04/14 19:18:02 by malves-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,14 @@ int	main(int argc, char **argv)
 	cub = safe_calloc(cub, sizeof(t_main));
 	if (!init_parse_info(cub, argv[1]))
 	{
-		free_parse(cub->parse);
-		free(cub);
+		// free_parse(cub->parse);
+		// free(cub);
 		return (1);
 	}
 	cub_init(cub);
 	//readmap guardar em algum lugar
 	//fazer a validadação
-	free_parse(cub->parse);
-	free(cub);
+	// free_parse(cub->parse);
+	// free(cub);
 	return (0);
 }

@@ -12,12 +12,8 @@
 
 #include "../includes/cub.h"
 
-int	cub_init(void)
+int	cub_init(t_main *pgr)
 {
-	t_main	*pgr;
-
-	pgr = NULL;
-	pgr = safe_calloc(pgr, sizeof(t_main));
 	pgr->mlx = init_mlx();
 	pgr->raycasting = init_raycasting(pgr);
 	// draw_player(pgr);
@@ -28,8 +24,22 @@ int	cub_init(void)
 
 int	main(int argc, char **argv)
 {
-	(void)argc;
-	(void)argv;
-	cub_init();
+	t_main	*cub;
+
+	if (!check_args(argc ,argv[1], argv[0]))
+		return (1);
+	cub = NULL;
+	cub = safe_calloc(cub, sizeof(t_main));
+	if (!init_parse_info(cub, argv[1]))
+	{
+		free_parse(cub->parse);
+		free(cub);
+		return (1);
+	}
+	cub_init(cub);
+	//readmap guardar em algum lugar
+	//fazer a validadação
+	free_parse(cub->parse);
+	free(cub);
 	return (0);
 }

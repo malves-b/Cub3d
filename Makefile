@@ -1,6 +1,7 @@
 NAME = cub3d
 
 SRCS_DIR = ./srcs
+PARSE_DIR = ./srcs/parse
 
 LIBFT = ./includes/libft/libft.a
 LIBFT_DIR = ./includes/libft
@@ -8,10 +9,12 @@ LIBFT_DIR = ./includes/libft
 MLIBX = ./includes/minilibx-linux/libmlx.a
 MLIBX_DIR = ./includes/minilibx-linux
 
-SRCS = $(SRCS_DIR)/cub.c \
+SRCS = $(SRCS_DIR)/main.c \
 	$(SRCS_DIR)/set_direction_vector.c $(SRCS_DIR)/free.c \
 	$(SRCS_DIR)/init_mlx.c $(SRCS_DIR)/set_player_position.c \
-	$(SRCS_DIR)/utils.c $(SRCS_DIR)/init_raycasting.c 
+	$(SRCS_DIR)/utils.c $(SRCS_DIR)/init_raycasting.c \
+	$(PARSE_DIR)/init_parse_structs.c $(PARSE_DIR)/read_parse_file.c \
+	$(PARSE_DIR)/utils_parse.c $(PARSE_DIR)/validate_parse.c
 
 CC = cc
 CFLAGS = -Wall -Werror -Wextra -g

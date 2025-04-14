@@ -6,7 +6,7 @@
 /*   By: malves-b <malves-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 13:33:10 by malves-b          #+#    #+#             */
-/*   Updated: 2025/04/14 19:45:02 by malves-b         ###   ########.fr       */
+/*   Updated: 2025/04/14 21:05:17 by malves-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,23 @@
 
 int	cub_init(t_main *pgr)
 {
+	pgr->map = ft_calloc(sizeof(char *), 12);
+	pgr->map[1] = "11111111111111111111111";
+	pgr->map[2] = "10000000000000000000001";
+	pgr->map[3] = "10000000000000000000001";
+	pgr->map[4] = "10000000000000000000001";
+	pgr->map[5] = "11111111111100000100001";
+	pgr->map[6] = "11111111111100000000001";
+	pgr->map[7] = "11111111111100000000001";
+	pgr->map[8] = "11111111111100000000001";
+	pgr->map[9] = "11111111111100000000001";
+	pgr->map[10] = "11111111111100000000001";
+	pgr->map[11] = "11111111111100000N00001";
+	pgr->map[12] = "11111111111111111111111";
+
 	pgr->mlx = init_mlx();
 	pgr->raycasting = init_raycasting(pgr);
-	// draw_player(pgr);
+	mlx_pixel_put(pgr->mlx->mlx, pgr->mlx->mlx_win, 200, 200, RED);
 	// mlx_hook(pgr->mlx.mlx_win, 2, 1L << 0, key_press, pgr->mlx.img);
 	mlx_loop(pgr->mlx->mlx);
 	return (0);

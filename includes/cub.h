@@ -6,7 +6,7 @@
 /*   By: malves-b <malves-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 13:14:39 by malves-b          #+#    #+#             */
-/*   Updated: 2025/04/14 19:08:12 by malves-b         ###   ########.fr       */
+/*   Updated: 2025/04/14 19:10:40 by malves-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,36 +103,15 @@ typedef struct s_main
 /* --------------------------------- PARSING -------------------------------- */
 //validate_parse
 bool	check_args(int ac, char *map_file, char *prog_name);
-bool	is_valid_texture(char *path);
-bool	val_textures(t_parse *parse);
-
+void	validate_texture(t_parse *parse);
 //init_parse_struct
 void	init_parse_struct(t_parse *parse);
-
 //read_parse_file
 void	init_file(char *file, t_parse **parse);
+bool	ft_read_file(t_parse *parse, char *file);
 void	get_number_lines(char *file, int *file_lines);
-bool	init_parse_info(t_main *cub, char *file);
-
-//parse textures
-void	add_line(char *line, t_parse *parse);
-bool	clean_and_add(t_parse *parse);
-int		check_line(char *line);
-void	validate_texture(t_parse *parse);
-
-//parse_textures_info
-void	set_texture_path(char *line, int i, t_parse *parse, char **str);
-void	ft_is_c(char *line, int i, t_parse *parse);
-void	ft_is_f(char *line, int i, t_parse *parse);
-
 //utils_parse
-int		ft_strlen_i(char *line, int i);
 void	print_map(char **file);//depois apagar 
-void	free_array(char ***arr);
-void	free_parse(t_parse *parse);
-
-//validate_map
-bool	val_map(t_parse *parse);
 
 /* ---------------------------------- UTILS --------------------------------- */
 

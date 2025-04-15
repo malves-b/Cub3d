@@ -6,7 +6,7 @@
 /*   By: malves-b <malves-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 13:14:39 by malves-b          #+#    #+#             */
-/*   Updated: 2025/04/14 21:04:21 by malves-b         ###   ########.fr       */
+/*   Updated: 2025/04/15 10:21:11 by malves-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,7 @@ void	print_map(char **file);//depois apagar
 
 /* ---------------------------------- UTILS --------------------------------- */
 
-void	ft_free(t_main *pgr, int flag);
+void	ft_free(t_main *pgr);
 void	*safe_calloc(t_main *pgr, size_t size);
 
 /* ------------------------------- RAYCASTING ------------------------------- */
@@ -127,6 +127,7 @@ void	*safe_calloc(t_main *pgr, size_t size);
 t_raycasting	*init_raycasting(t_main *pgr);
 void			set_direction_vector(char dir, t_raycasting *raycasting);
 void			set_player_position(t_raycasting *raycasting, char **map);
+int	key_press(int keycode, t_main *pgr);
 
 
 /* -------------------------------- INIT GAME ------------------------------- */

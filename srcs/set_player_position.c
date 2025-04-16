@@ -6,7 +6,7 @@
 /*   By: malves-b <malves-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 12:37:47 by malves-b          #+#    #+#             */
-/*   Updated: 2025/03/06 15:39:33 by malves-b         ###   ########.fr       */
+/*   Updated: 2025/04/15 16:49:45 by malves-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@ void	set_player_position(t_raycasting *raycasting, char **map)
 			if (map[x][y] == 'N' || map[x][y] == 'S'
 				|| map[x][y] == 'E' || map[x][y] == 'W')
 			{
-				raycasting->map_position[0] = x;
-				raycasting->map_position[1] = y;
-				raycasting->player_position[0] = x + 0.5;
-				raycasting->player_position[1] = y + 0.5;
+				raycasting->map_position[1] = x;
+				raycasting->map_position[0] = y;
+				raycasting->player_position[1] = x + 0.5;
+				raycasting->player_position[0] = y + 0.5;
 			}
 			y++;
 		}

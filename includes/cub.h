@@ -6,7 +6,7 @@
 /*   By: malves-b <malves-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 13:14:39 by malves-b          #+#    #+#             */
-/*   Updated: 2025/04/15 10:21:11 by malves-b         ###   ########.fr       */
+/*   Updated: 2025/04/15 16:45:51 by malves-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,9 @@
 
 /* ----- COLORS -----*/
 
-#define RED 0xFF0000
+#define	RED	0xFF0000
+#define	BROWN 0x8B4513
+#define	GRAY 0x808080
 
 /* --------------------------------- PARSING -------------------------------- */
 
@@ -77,7 +79,7 @@ typedef struct s_player
 typedef struct s_raycasting
 {
 	int		map_position[2];// [0] = x , [1] = y
-	double	player_position[2];
+	double	player_position[2]; //[0] = x, [1] = y
 	double	direction[2];
 	double	plane_vector[2];
 }	t_raycasting;
@@ -127,7 +129,10 @@ void	*safe_calloc(t_main *pgr, size_t size);
 t_raycasting	*init_raycasting(t_main *pgr);
 void			set_direction_vector(char dir, t_raycasting *raycasting);
 void			set_player_position(t_raycasting *raycasting, char **map);
-int	key_press(int keycode, t_main *pgr);
+int				key_press(int keycode, t_main *pgr);
+void			draw_player(t_main *pgr);
+void			draw_map(t_main *pgr);
+
 
 
 /* -------------------------------- INIT GAME ------------------------------- */

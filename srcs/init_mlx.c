@@ -6,7 +6,7 @@
 /*   By: malves-b <malves-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 16:42:55 by malves-b          #+#    #+#             */
-/*   Updated: 2025/03/06 12:03:10 by malves-b         ###   ########.fr       */
+/*   Updated: 2025/04/16 15:56:00 by malves-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,18 @@ t_mlx	*init_mlx(void)
 	if (!mlx_data)
 		return (NULL);
 	ft_memset(mlx_data, 0, sizeof(t_mlx));
+
 	mlx_data->mlx = mlx_init();
 	if (!mlx_data->mlx)
 		return (free(mlx_data), NULL);
+
 	mlx_data->mlx_win = mlx_new_window(mlx_data->mlx, WIDTH, HEIGHT, "CUB3D");
 	if (!mlx_data->mlx_win)
 	{
 		free(mlx_data);
 		return (NULL);
 	}
+
 	mlx_data->img = mlx_new_image(mlx_data->mlx, WIDTH, HEIGHT);
 	if (!mlx_data->img)
 	{
@@ -39,5 +42,22 @@ t_mlx	*init_mlx(void)
 		free(mlx_data);
 		return (NULL);
 	}
+
+	mlx_data->img_addr = mlx_get_data_addr(
+		mlx_data->img,
+		&mlx_data->bits_per_pixel,
+		&mlx_data->line_length,
+		&mlx_data->endian
+	);
+
+	if (!mlx_data->img_addr)
+	{
+		mlx_destroy_image(mlx_data->mlx, mlx_data->img);
+		mlx_destroy_window(mlx_data->mlx, mlx_data->mlx_win);
+		free(mlx_data);
+		return (NULL);
+	}
+
 	return (mlx_data);
 }
+

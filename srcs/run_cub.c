@@ -6,7 +6,7 @@
 /*   By: malves-b <malves-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 18:16:53 by malves-b          #+#    #+#             */
-/*   Updated: 2025/04/16 14:45:56 by malves-b         ###   ########.fr       */
+/*   Updated: 2025/04/16 19:10:58 by malves-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,44 +14,57 @@
 
 void	draw_component(t_main *pgr, int color, int map_x, int map_y);
 void	draw_map(t_main *pgr);
-
-void	finish_cub(t_main *pgr)
-{
-	ft_free(pgr);
-	exit(EXIT_SUCCESS);
-}
+void	my_put_pixel(t_mlx *mlx, int x, int y, int color);
+void	update_pp(t_main *pgr, int pp_x, int pp_y);
 
 int	key_press(int keycode, t_main *pgr)
 {
 	int	pp_x;
 	int	pp_y;
 
-	pp_x = pgr->raycasting->player_position[0];
-	pp_y = pgr->raycasting->player_position[1];
-	if (keycode == KEY_LEFT)
-		pp_x -= 1;
-	if (keycode == KEY_RIGHT)
-		pp_x += 1;
-	if (keycode == KEY_UP)
-		pp_y -= 1;
-	if (keycode == KEY_DOWN)
-		pp_y += 1;
+	pp_x = (int)pgr->raycasting->player_position[0];
+	pp_y = (int)pgr->raycasting->player_position[1];
+	if (keycode == KEY_LEFT && pgr->map[pp_x - 1][pp_y] != '1')
+		pp_x -= 0.3;
+	if (keycode == KEY_RIGHT && pgr->map[pp_x + 1][pp_y] != '1')
+		pp_x += 0.3;
+	if (keycode == KEY_UP && pgr->map[pp_x][pp_y -1] != '1')
+		pp_y -= 0.3;
+	if (keycode == KEY_DOWN && pgr->map[pp_x][pp_y + 1] != '1')
+		pp_y += 0.3;
 	if (keycode == KEY_ESC)
 	{
 		puts("ESC PRESSED");
-		finish_cub(pgr);
-		exit(1);
+		ft_free(pgr);
+		exit(EXIT_SUCCESS);
 	}
-	if (pgr->map[pp_y][pp_x] != '1')
-	{
-		pgr->raycasting->player_position[0] = pp_x;
-		pgr->raycasting->player_position[1] = pp_y;
-	}
-	// mlx_destroy_image(pgr, )
-	draw_component(pgr, RED, pgr->raycasting->player_position[0], pgr->raycasting->player_position[1]);
-	// mlx_clear_window(pgr->mlx->mlx, pgr->mlx->mlx_win);
+	draw_map(pgr);
 	return (1);
 }
+
+void my_put_pixel(t_mlx *mlx, int x, int y, int color)
+{
+    int offset;
+
+    offset = (y * mlx->line_length) + (x * (mlx->bits_per_pixel / 8));
+    *((unsigned int *)(mlx->img_addr + offset)) = color;
+}
+
+void update_pp(t_main *pgr, int pp_x, int pp_y)
+{
+	int cur_x = (int)pgr->raycasting->player_position[0];
+	int cur_y = (int)pgr->raycasting->player_position[1];
+
+	if (cur_x >= 0 && cur_y >= 0 && pgr->map[cur_x] && pgr->map[cur_x][cur_y])
+		pgr->map[cur_x][cur_y] = '0';
+
+	if (pp_x >= 0 && pp_y >= 0 && pgr->map[pp_x] && pgr->map[pp_x][pp_y])
+		pgr->map[pp_x][pp_y] = 'P';
+
+	pgr->raycasting->player_position[0] = pp_x;
+	pgr->raycasting->player_position[1] = pp_y;
+}
+
 
 void draw_component(t_main *pgr, int color, int map_x, int map_y)
 {
@@ -69,12 +82,11 @@ void draw_component(t_main *pgr, int color, int map_x, int map_y)
             x = map_x * 10 + offset_x;
             y = map_y * 10 + offset_y;
             if (x >= 0 && x < WIDTH && y >= 0 && y < HEIGHT)
-                my_mlx_pixel_put(pgr->mlx->mlx_win, pgr->mlx->img, x, y, color);
+                my_put_pixel(pgr->mlx, x, y, color);
             offset_y++;
         }
         offset_x++;
     }
-	mlx_put_image_to_window(pgr->mlx->mlx, pgr->mlx->mlx_win, pgr->mlx->img, 0, 0);
 }
 
 void draw_map(t_main *pgr)
@@ -98,4 +110,5 @@ void draw_map(t_main *pgr)
 		}
 		y++;
 	}
+	mlx_put_image_to_window(pgr->mlx->mlx, pgr->mlx->mlx_win, pgr->mlx->img, 0, 0);
 }

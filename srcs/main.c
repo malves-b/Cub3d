@@ -6,7 +6,7 @@
 /*   By: malves-b <malves-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 13:33:10 by malves-b          #+#    #+#             */
-/*   Updated: 2025/04/15 16:22:36 by malves-b         ###   ########.fr       */
+/*   Updated: 2025/04/16 15:56:50 by malves-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ int	cub_init(t_main *pgr)
 	printf("PP [0]: %f\n", pgr->raycasting->player_position[0]);
 	printf("PP [1]: %f\n", pgr->raycasting->player_position[1]);
 	draw_map(pgr);
-	// draw_player(pgr);/**/
 	mlx_hook(pgr->mlx->mlx_win, 2, 1L << 0, key_press, pgr);
 	mlx_loop(pgr->mlx->mlx);
 	return (0);

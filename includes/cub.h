@@ -6,7 +6,7 @@
 /*   By: malves-b <malves-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 13:14:39 by malves-b          #+#    #+#             */
-/*   Updated: 2025/04/15 16:45:51 by malves-b         ###   ########.fr       */
+/*   Updated: 2025/04/16 21:08:41 by malves-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 # define WIDTH 800
 # define HEIGHT 600
 
+# define MOVE_SPEED 0.3
 # define KEY_ESC 65307
 # define KEY_LEFT 65361
 # define KEY_RIGHT 65363
@@ -79,7 +80,7 @@ typedef struct s_player
 typedef struct s_raycasting
 {
 	int		map_position[2];// [0] = x , [1] = y
-	double	player_position[2]; //[0] = x, [1] = y
+	double	pp[2]; //Player position ---- [0] = x, [1] = y
 	double	direction[2];
 	double	plane_vector[2];
 }	t_raycasting;

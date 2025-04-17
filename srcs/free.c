@@ -6,7 +6,7 @@
 /*   By: malves-b <malves-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 10:39:03 by malves-b          #+#    #+#             */
-/*   Updated: 2025/04/15 10:49:37 by malves-b         ###   ########.fr       */
+/*   Updated: 2025/04/17 18:46:16 by malves-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	ft_free(t_main *pgr)
 {
 	free_mlx_struct(pgr->mlx);
 	free (pgr->mlx);
-	free (pgr->raycasting);
+	free (pgr->ray);
 	free (pgr->parse);
 	free (pgr->map);
 	free (pgr);

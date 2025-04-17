@@ -6,7 +6,7 @@
 /*   By: malves-b <malves-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 13:14:39 by malves-b          #+#    #+#             */
-/*   Updated: 2025/04/16 21:08:41 by malves-b         ###   ########.fr       */
+/*   Updated: 2025/04/17 19:15:37 by malves-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@
 #define	RED	0xFF0000
 #define	BROWN 0x8B4513
 #define	GRAY 0x808080
+#define GREEN 0x08000
 
 /* --------------------------------- PARSING -------------------------------- */
 
@@ -79,10 +80,10 @@ typedef struct s_player
 
 typedef struct s_raycasting
 {
-	int		map_position[2];// [0] = x , [1] = y
-	double	pp[2]; //Player position ---- [0] = x, [1] = y
+	int		map_position[2];	// [0] = x , [1] = y
+	double	pp[2];//player position | [0] = x, [1] = y
 	double	direction[2];
-	double	plane_vector[2];
+	double	plane_vector[2];	// [0] = x, [1] = y
 }	t_raycasting;
 
 typedef struct s_mlx
@@ -102,7 +103,7 @@ typedef struct s_main
 	char			**map;
 	t_mlx			*mlx;
 	t_parse			*parse; /*---- */
-	t_raycasting	*raycasting;
+	t_raycasting	*ray; //raycasting
 	char			player_direction;
 }	t_main;
 
@@ -124,6 +125,7 @@ void	print_map(char **file);//depois apagar
 
 void	ft_free(t_main *pgr);
 void	*safe_calloc(t_main *pgr, size_t size);
+double	has_decimal(double nbr);
 
 /* ------------------------------- RAYCASTING ------------------------------- */
 

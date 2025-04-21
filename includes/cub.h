@@ -6,7 +6,7 @@
 /*   By: malves-b <malves-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 13:14:39 by malves-b          #+#    #+#             */
-/*   Updated: 2025/04/17 19:15:37 by malves-b         ###   ########.fr       */
+/*   Updated: 2025/04/21 18:25:08 by malves-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,12 +78,17 @@ typedef struct s_player
 
 /*--------------------------------------------------- */
 
+typedef struct s_pos
+{
+	
+}	t_pos;
 typedef struct s_raycasting
 {
 	int		map_position[2];	// [0] = x , [1] = y
-	double	pp[2];//player position | [0] = x, [1] = y
+	double	pp[2];				// [0] = x , [1] = y
+	double	next_pos[2];		// [0] = x , [1] = y
 	double	direction[2];
-	double	plane_vector[2];	// [0] = x, [1] = y
+	double	plane_vector[2];	// [0] = x , [1] = y
 }	t_raycasting;
 
 typedef struct s_mlx

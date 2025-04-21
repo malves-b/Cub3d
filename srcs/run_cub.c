@@ -6,7 +6,7 @@
 /*   By: malves-b <malves-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 18:16:53 by malves-b          #+#    #+#             */
-/*   Updated: 2025/04/17 19:31:42 by malves-b         ###   ########.fr       */
+/*   Updated: 2025/04/21 18:45:30 by malves-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,34 @@ void	draw_component(t_main *pgr, int color, double map_x, double map_y);
 void	draw_map(t_main *pgr);
 void	my_put_pixel(t_mlx *mlx, int x, int y, int color);
 
-void draw_direction(t_main *pgr); /**/
-void rotate_player(t_raycasting *ray, double angle);/**/
+void	draw_direction(t_main *pgr); /**/
+void	rotate_player(t_raycasting *ray, double angle); /**/
 
 #define ROT_SPEED 0.05
 #define SCALE 10
+
+void	check_next_pos(t_main *pgr)
+{
+	double next_x;
+	double next_y;
+
+	next_x = pgr->ray->pp[0] + pgr->ray->direction[0] * 0.3;
+	next_y = pgr->ray->pp[1] + pgr->ray->direction[1] * 0.3;
+	if (pgr->map[(int)next_y][(int)pgr->ray->pp[0]] != '1')
+	{
+		if (has_decimal(next_y) && pgr->map[(int)next_y][(int)pgr->ray->pp[0]] != '1')
+		{
+			pgr->ray->pp[0] = next_y;
+		}
+	}
+	if (pgr->map[(int)pgr->ray->pp[1]][(int)next_x] != '1')
+	{
+		if (has_decimal(next_x) && pgr->map[(int)pgr->ray->pp[1]][(int)next_x + 1] != '1')
+		{
+			pgr->ray->pp[0] = next_x;
+		}
+	}
+}
 
 int	key_press(int keycode, t_main *pgr)
 {
@@ -29,11 +52,20 @@ int	key_press(int keycode, t_main *pgr)
 
 	pp_x = (int)pgr->ray->pp[0];
 	pp_y = (int)pgr->ray->pp[1];
-	if (keycode == KEY_UP && (pgr->map[pp_y -1][pp_x] != '1'))
-		pgr->ray->pp[1] -= 0.3;
-	if (keycode == KEY_DOWN && (pgr->map[pp_y + 1][pp_x] != '1'))
-		pgr->ray->pp[1] += 0.3;
-	if (keycode == KEY_LEFT)
+	if (keycode == KEY_UP)
+	{
+		check_next_pos(pgr);
+	}
+	if (keycode == KEY_DOWN)
+	{
+		double next_x = pgr->ray->pp[0] - pgr->ray->direction[0] * 0.3;
+		double next_y = pgr->ray->pp[1] - pgr->ray->direction[1] * 0.3;
+	
+		if (pgr->map[(int)next_y][(int)pgr->ray->pp[0]] != '1')
+			pgr->ray->pp[1] = next_y;
+		if (pgr->map[(int)pgr->ray->pp[1]][(int)next_x] != '1')
+			pgr->ray->pp[0] = next_x;
+	}	if (keycode == KEY_LEFT)
 		rotate_player(pgr->ray, -ROT_SPEED);/**/
 	if (keycode == KEY_RIGHT)
 		rotate_player(pgr->ray, ROT_SPEED);/**/
@@ -46,8 +78,6 @@ int	key_press(int keycode, t_main *pgr)
 	ft_bzero(pgr->mlx->img_addr, WIDTH * HEIGHT);
 	printf("ppx = %i\n", pp_x);
 	printf("ppy = %i\n", pp_y);
-	printf("PP[0] = %f\n", pgr->ray->pp[0]);
-	printf("PP[1] = %f\n", pgr->ray->pp[1]);
 	printf("Dir[0] = %f\n", pgr->ray->direction[0]);
 	printf("Dir[1] = %f\n", pgr->ray->direction[1]);
 	printf("Plane[0] = %f\n", pgr->ray->plane_vector[0]);
@@ -60,7 +90,6 @@ int	key_press(int keycode, t_main *pgr)
 	draw_direction(pgr);
 	
 	mlx_put_image_to_window(pgr->mlx->mlx, pgr->mlx->mlx_win, pgr->mlx->img, 0, 0);
-
 	return (1);
 }
 

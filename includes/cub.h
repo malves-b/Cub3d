@@ -6,7 +6,7 @@
 /*   By: malves-b <malves-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 13:14:39 by malves-b          #+#    #+#             */
-/*   Updated: 2025/04/21 18:25:08 by malves-b         ###   ########.fr       */
+/*   Updated: 2025/04/22 18:40:04 by malves-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,18 +77,35 @@ typedef struct s_player
 }	t_player;
 
 /*--------------------------------------------------- */
+typedef struct s_main t_main;
 
-typedef struct s_pos
-{
-	
-}	t_pos;
 typedef struct s_raycasting
 {
-	int		map_position[2];	// [0] = x , [1] = y
-	double	pp[2];				// [0] = x , [1] = y
-	double	next_pos[2];		// [0] = x , [1] = y
-	double	direction[2];
-	double	plane_vector[2];	// [0] = x , [1] = y
+	char	start_dir;
+	int		map_position_x;
+	int		map_position_y;
+	double	pp_x;
+	double	pp_y;
+
+	double	next_pos_x;
+	double	next_pos_y;
+
+	double	dir_x;	//Direction
+	double	dir_y;	//Direction
+
+	double	plane_vector[2];
+
+	double	sideDistX;
+	double	sideDistY;
+
+	double	deltaDistX;
+	double	deltaDistY;
+	double	perpWallDist; //comprimento do raio
+	int		stepX;
+	int		stepY;
+	int		hit_wall;
+	int		side;
+	t_main	*mainstruct;
 }	t_raycasting;
 
 typedef struct s_mlx
@@ -109,7 +126,6 @@ typedef struct s_main
 	t_mlx			*mlx;
 	t_parse			*parse; /*---- */
 	t_raycasting	*ray; //raycasting
-	char			player_direction;
 }	t_main;
 
 

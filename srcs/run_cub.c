@@ -6,7 +6,7 @@
 /*   By: malves-b <malves-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 18:16:53 by malves-b          #+#    #+#             */
-/*   Updated: 2025/04/21 18:45:30 by malves-b         ###   ########.fr       */
+/*   Updated: 2025/04/22 18:12:38 by malves-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,20 +27,28 @@ void	check_next_pos(t_main *pgr)
 	double next_x;
 	double next_y;
 
-	next_x = pgr->ray->pp[0] + pgr->ray->direction[0] * 0.3;
-	next_y = pgr->ray->pp[1] + pgr->ray->direction[1] * 0.3;
-	if (pgr->map[(int)next_y][(int)pgr->ray->pp[0]] != '1')
+	next_x = pgr->ray->pp_x + pgr->ray->dir_x * 0.3;
+	next_y = pgr->ray->pp_y + pgr->ray->dir_y * 0.3;
+	printf("PP[0] = %f\n", pgr->ray->pp_x);
+	printf("PP[1] = %f\n", pgr->ray->pp_y);
+	printf("Next X = %f\n", next_x);
+	printf("Next Y = %f\n", next_y);
+	printf("Dist to X = %f\n", pgr->ray->deltaDistX);
+	printf("Dist to Y = %f\n", pgr->ray->deltaDistY);
+
+	if (pgr->map[(int)next_y][(int)pgr->ray->pp_x] != '1')
 	{
-		if (has_decimal(next_y) && pgr->map[(int)next_y][(int)pgr->ray->pp[0]] != '1')
+		if (pgr->map[(int)next_y][(int)pgr->ray->pp_x] != '1')
 		{
-			pgr->ray->pp[0] = next_y;
+			puts("--------- ENTROU -------\n");
+			pgr->ray->pp_y = next_y;
 		}
 	}
-	if (pgr->map[(int)pgr->ray->pp[1]][(int)next_x] != '1')
+	if (pgr->map[(int)pgr->ray->pp_y][(int)next_x] != '1')
 	{
-		if (has_decimal(next_x) && pgr->map[(int)pgr->ray->pp[1]][(int)next_x + 1] != '1')
+		if (pgr->map[(int)pgr->ray->pp_y][(int)next_x] != '1')
 		{
-			pgr->ray->pp[0] = next_x;
+			pgr->ray->pp_x = next_x;
 		}
 	}
 }
@@ -50,25 +58,25 @@ int	key_press(int keycode, t_main *pgr)
 	int	pp_x;
 	int	pp_y;
 
-	pp_x = (int)pgr->ray->pp[0];
-	pp_y = (int)pgr->ray->pp[1];
+	pp_x = (int)pgr->ray->pp_x;
+	pp_y = (int)pgr->ray->pp_y;
 	if (keycode == KEY_UP)
 	{
 		check_next_pos(pgr);
 	}
 	if (keycode == KEY_DOWN)
 	{
-		double next_x = pgr->ray->pp[0] - pgr->ray->direction[0] * 0.3;
-		double next_y = pgr->ray->pp[1] - pgr->ray->direction[1] * 0.3;
+		double next_x = pgr->ray->pp_x - pgr->ray->dir_x * 0.3;
+		double next_y = pgr->ray->pp_y - pgr->ray->dir_y * 0.3;
 	
-		if (pgr->map[(int)next_y][(int)pgr->ray->pp[0]] != '1')
-			pgr->ray->pp[1] = next_y;
-		if (pgr->map[(int)pgr->ray->pp[1]][(int)next_x] != '1')
-			pgr->ray->pp[0] = next_x;
+		if (pgr->map[(int)next_y][(int)pgr->ray->pp_x] != '1')
+			pgr->ray->pp_y = next_y;
+		if (pgr->map[(int)pgr->ray->pp_y][(int)next_x] != '1')
+			pgr->ray->pp_x = next_x;
 	}	if (keycode == KEY_LEFT)
-		rotate_player(pgr->ray, -ROT_SPEED);/**/
+		rotate_player(pgr->ray, -ROT_SPEED);
 	if (keycode == KEY_RIGHT)
-		rotate_player(pgr->ray, ROT_SPEED);/**/
+		rotate_player(pgr->ray, ROT_SPEED);
 	if (keycode == KEY_ESC)
 	{
 		puts("ESC PRESSED");
@@ -76,17 +84,8 @@ int	key_press(int keycode, t_main *pgr)
 		exit(EXIT_SUCCESS);
 	}
 	ft_bzero(pgr->mlx->img_addr, WIDTH * HEIGHT);
-	printf("ppx = %i\n", pp_x);
-	printf("ppy = %i\n", pp_y);
-	printf("Dir[0] = %f\n", pgr->ray->direction[0]);
-	printf("Dir[1] = %f\n", pgr->ray->direction[1]);
-	printf("Plane[0] = %f\n", pgr->ray->plane_vector[0]);
-	printf("Plane[1] = %f\n", pgr->ray->plane_vector[1]);
-
-	
-
 	draw_map(pgr);
-	draw_component(pgr, RED, pgr->ray->pp[0], pgr->ray->pp[1]);
+	draw_component(pgr, RED, pgr->ray->pp_x, pgr->ray->pp_y);
 	draw_direction(pgr);
 	
 	mlx_put_image_to_window(pgr->mlx->mlx, pgr->mlx->mlx_win, pgr->mlx->img, 0, 0);
@@ -154,8 +153,8 @@ void draw_direction(t_main *pgr)
 	i = 0;
 	while (i <= 10)
 	{
-		x = (pgr->ray->pp[0] + pgr->ray->direction[0] * i * 0.1) * SCALE;
-		y = (pgr->ray->pp[1] + pgr->ray->direction[1] * i * 0.1) * SCALE;
+		x = (pgr->ray->pp_x + pgr->ray->dir_x * i * 0.1) * SCALE;
+		y = (pgr->ray->pp_y + pgr->ray->dir_y * i * 0.1) * SCALE;
 		if (x >= 0 && x < WIDTH && y >= 0 && y < HEIGHT)
 			my_put_pixel(pgr->mlx, x, y, GREEN);
 		i++;
@@ -168,10 +167,10 @@ void rotate_player(t_raycasting *ray, double angle)
 	double old_dir_x;
 	double old_plane_x;
 
-	old_dir_x = ray->direction[0];
+	old_dir_x = ray->dir_x;
 	old_plane_x = ray->plane_vector[0];
-	ray->direction[0] = ray->direction[0] * cos(angle) - ray->direction[1] * sin(angle);
-	ray->direction[1] = old_dir_x * sin(angle) + ray->direction[1] * cos(angle);
+	ray->dir_x = ray->dir_x * cos(angle) - ray->dir_y * sin(angle);
+	ray->dir_y = old_dir_x * sin(angle) + ray->dir_y * cos(angle);
 
 	ray->plane_vector[0] = ray->plane_vector[0] * cos(angle) - ray->plane_vector[1] * sin(angle);
 	ray->plane_vector[1] = old_plane_x * sin(angle) + ray->plane_vector[1] * cos(angle);

@@ -6,7 +6,7 @@
 /*   By: malves-b <malves-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 13:33:10 by malves-b          #+#    #+#             */
-/*   Updated: 2025/04/21 16:34:39 by malves-b         ###   ########.fr       */
+/*   Updated: 2025/04/22 16:56:19 by malves-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	cub_init(t_main *pgr)
 	pgr->map = ft_calloc(sizeof(char *), 12);
 	pgr->map[0] = "11111111111111111111111";
 	pgr->map[1] = "10000000000000000000001";
-	pgr->map[2] = "100110N0000000000000001";
+	pgr->map[2] = "1001100000000000N000001";
 	pgr->map[3] = "10000000000000001100001";
 	pgr->map[4] = "11111111111100001100001";
 	pgr->map[5] = "11111111111100000000001";
@@ -31,10 +31,7 @@ int	cub_init(t_main *pgr)
 
 	pgr->mlx = init_mlx();
 	pgr->ray = init_raycasting(pgr);
-	set_direction_vector('N', pgr->ray);
 
-	printf("PP [0]: %f\n", pgr->ray->pp[0]);
-	printf("PP [1]: %f\n", pgr->ray->pp[1]);
 	draw_map(pgr);
 	mlx_hook(pgr->mlx->mlx_win, 2, 1L << 0, key_press, pgr);
 	mlx_loop(pgr->mlx->mlx);

@@ -6,7 +6,7 @@
 /*   By: malves-b <malves-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 18:06:24 by malves-b          #+#    #+#             */
-/*   Updated: 2025/04/17 19:04:24 by malves-b         ###   ########.fr       */
+/*   Updated: 2025/04/22 18:17:12 by malves-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,32 +35,32 @@ void	set_direction_vector(char dir, t_raycasting *raycasting)
 
 void	set_north(t_raycasting *raycasting)
 {
-	raycasting->direction[0] = -1;
-	raycasting->direction[1] = 0;
-	raycasting->plane_vector[0] = 0;
-	raycasting->plane_vector[1] = 0.66;
-}
-
-void	set_south(t_raycasting *raycasting)
-{
-	raycasting->direction[0] = 1;
-	raycasting->direction[1] = 0;
-	raycasting->plane_vector[0] = 0;
-	raycasting->plane_vector[1] = -0.66;
-}
-
-void	set_east(t_raycasting *raycasting)
-{
-	raycasting->direction[0] = 0;
-	raycasting->direction[1] = 1;
+	raycasting->dir_x = 0;
+	raycasting->dir_y = -1;
 	raycasting->plane_vector[0] = 0.66;
 	raycasting->plane_vector[1] = 0;
 }
 
-void	set_west(t_raycasting *raycasting)
+void	set_south(t_raycasting *raycasting)
 {
-	raycasting->direction[0] = 0;
-	raycasting->direction[1] = -1;
+	raycasting->dir_x = 0;
+	raycasting->dir_y = 1;
 	raycasting->plane_vector[0] = -0.66;
 	raycasting->plane_vector[1] = 0;
+}
+
+void	set_east(t_raycasting *raycasting)
+{
+	raycasting->dir_x = 1;
+	raycasting->dir_y = 0;
+	raycasting->plane_vector[0] = 0;
+	raycasting->plane_vector[1] = 0.66;
+}
+
+void	set_west(t_raycasting *raycasting)
+{
+	raycasting->dir_x = -1;
+	raycasting->dir_y = 0;
+	raycasting->plane_vector[0] = 0;
+	raycasting->plane_vector[1] = -0.66;
 }

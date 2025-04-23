@@ -6,23 +6,23 @@
 /*   By: malves-b <malves-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 17:39:22 by malves-b          #+#    #+#             */
-/*   Updated: 2025/04/23 17:15:33 by malves-b         ###   ########.fr       */
+/*   Updated: 2025/04/23 20:02:49 by malves-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub.h"
 
 int		set_color(t_raycasting *ray);
-void	set_step_and_sidedir(t_raycasting *ray, double ray_dir_x, double ray_dir_y);
+void	set_step(t_raycasting *ray, double ray_dir_x, double ray_dir_y);
 void	throw_ray(t_raycasting *ray, char **map);
 void	draw_wall(t_main *pgr, int x);
 
 void	render_frame(t_main *pgr)
 {
-	int x;
-	double camera_x;
-	double ray_dir_x;
-	double ray_dir_y;
+	int		x;
+	double	camera_x;
+	double	ray_dir_x;
+	double	ray_dir_y;
 
 	x = 0;
 	draw_background(pgr);
@@ -43,7 +43,7 @@ void	render_frame(t_main *pgr)
 			pgr->ray->deltaDistX = fabs(1 / ray_dir_x);
 			pgr->ray->deltaDistY = fabs(1 / ray_dir_y);
 		}
-		set_step_and_sidedir(pgr->ray, ray_dir_x, ray_dir_y);
+		set_step(pgr->ray, ray_dir_x, ray_dir_y);
 		throw_ray(pgr->ray, pgr->map);
 		if (pgr->ray->side == 0)
 			pgr->ray->perpWallDist = (pgr->ray->sideDistX - pgr->ray->deltaDistX);
@@ -77,7 +77,7 @@ int	set_color(t_raycasting *ray)
 }
 
 /** @brief Determina step e distancia inicial para o lado */
-void	set_step_and_sidedir(t_raycasting *ray, double ray_dir_x, double ray_dir_y)
+void	set_step(t_raycasting *ray, double ray_dir_x, double ray_dir_y)
 {
 	if (ray_dir_x < 0)
 	{
@@ -87,17 +87,20 @@ void	set_step_and_sidedir(t_raycasting *ray, double ray_dir_x, double ray_dir_y)
 	else
 	{
 		ray->stepX = 1;
-		ray->sideDistX = (ray->map_position_x + 1.0 - ray->pp_x) * ray->deltaDistX;
+		ray->sideDistX = (ray->map_position_x + 1.0 - ray->pp_x)
+			* ray->deltaDistX;
 	}
 	if (ray_dir_y < 0)
 	{
 		ray->stepY = -1;
-		ray->sideDistY = (ray->pp_y - ray->map_position_y) * ray->deltaDistY;
+		ray->sideDistY = (ray->pp_y - ray->map_position_y)
+			* ray->deltaDistY;
 	}
 	else
 	{
 		ray->stepY = 1;
-		ray->sideDistY = (ray->map_position_y + 1.0 - ray->pp_y) * ray->deltaDistY;
+		ray->sideDistY = (ray->map_position_y + 1.0 - ray->pp_y)
+			* ray->deltaDistY;
 	}
 }
 
@@ -124,12 +127,14 @@ void	throw_ray(t_raycasting *ray, char **map)
 	}
 }
 
-/** @brief Draws a vertical wall stripe on screen based on the calculated distance to the wall. Uses raycasting data to determine height and color for each pixel column.*/
+/** @brief Draws a vertical wall stripe on screen based on the calculated 
+ * distance to the wall. Uses raycasting data to determine height and color 
+ * for each pixel column. */
 void	draw_wall(t_main *pgr, int x)
 {
 	int	line_height;
 	int	draw_start;
-	int draw_end;
+	int	draw_end;
 	int	y;
 
 	line_height = (int)(HEIGHT / pgr->ray->perpWallDist);

@@ -6,7 +6,7 @@
 /*   By: malves-b <malves-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 13:14:39 by malves-b          #+#    #+#             */
-/*   Updated: 2025/04/23 15:01:44 by malves-b         ###   ########.fr       */
+/*   Updated: 2025/04/23 19:40:40 by malves-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,9 +149,10 @@ void	print_map(char **file);//depois apagar
 
 /* ---------------------------------- UTILS --------------------------------- */
 
-void	ft_free(t_main *pgr);
+int		ft_free(t_main *pgr);
 void	*safe_calloc(t_main *pgr, size_t size);
 double	has_decimal(double nbr);
+void	my_put_pixel(t_mlx *mlx, int x, int y, int color);
 
 /* ------------------------------- RAYCASTING ------------------------------- */
 

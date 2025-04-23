@@ -6,15 +6,24 @@
 /*   By: malves-b <malves-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 18:08:51 by malves-b          #+#    #+#             */
-/*   Updated: 2025/04/21 17:51:30 by malves-b         ###   ########.fr       */
+/*   Updated: 2025/04/23 19:40:05 by malves-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub.h"
 
-double has_decimal(double nbr)
+void	my_put_pixel(t_mlx *mlx, int x, int y, int color)
 {
-	double i;
+	int	offset;
+
+	offset = (y * mlx->line_length) + (x * (mlx->bits_per_pixel / 8));
+	*((unsigned int *)(mlx->img_addr + offset)) = color;
+}
+
+double	has_decimal(double nbr)
+{
+	double	i;
+
 	return (modf(nbr, &i) > 0.001);
 }
 

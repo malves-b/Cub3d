@@ -6,7 +6,7 @@
 /*   By: malves-b <malves-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 13:14:39 by malves-b          #+#    #+#             */
-/*   Updated: 2025/04/22 18:40:04 by malves-b         ###   ########.fr       */
+/*   Updated: 2025/04/23 15:01:44 by malves-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,15 @@
 
 /* ----- COLORS -----*/
 
+#define COLOR_SKY   0x87CEEB
+#define COLOR_FLOOR 0x333333
 #define	RED	0xFF0000
+#define RED_LIGHT 0xFF6666
 #define	BROWN 0x8B4513
 #define	GRAY 0x808080
 #define GREEN 0x08000
+#define YELLOW    0xFFFF00
+
 
 /* --------------------------------- PARSING -------------------------------- */
 
@@ -156,6 +161,10 @@ void			set_player_position(t_raycasting *raycasting, char **map);
 int				key_press(int keycode, t_main *pgr);
 void			draw_player(t_main *pgr);
 void			draw_map(t_main *pgr);
+void	my_put_pixel(t_mlx *mlx, int x, int y, int color);
+
+void	render_frame(t_main *pgr);//TEST
+void	draw_background(t_main *pgr);
 
 
 

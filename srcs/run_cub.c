@@ -6,7 +6,7 @@
 /*   By: malves-b <malves-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 18:16:53 by malves-b          #+#    #+#             */
-/*   Updated: 2025/04/22 18:12:38 by malves-b         ###   ########.fr       */
+/*   Updated: 2025/04/23 14:45:19 by malves-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,7 @@ int	key_press(int keycode, t_main *pgr)
 	pp_x = (int)pgr->ray->pp_x;
 	pp_y = (int)pgr->ray->pp_y;
 	if (keycode == KEY_UP)
-	{
 		check_next_pos(pgr);
-	}
 	if (keycode == KEY_DOWN)
 	{
 		double next_x = pgr->ray->pp_x - pgr->ray->dir_x * 0.3;
@@ -84,10 +82,7 @@ int	key_press(int keycode, t_main *pgr)
 		exit(EXIT_SUCCESS);
 	}
 	ft_bzero(pgr->mlx->img_addr, WIDTH * HEIGHT);
-	draw_map(pgr);
-	draw_component(pgr, RED, pgr->ray->pp_x, pgr->ray->pp_y);
-	draw_direction(pgr);
-	
+	render_frame(pgr);
 	mlx_put_image_to_window(pgr->mlx->mlx, pgr->mlx->mlx_win, pgr->mlx->img, 0, 0);
 	return (1);
 }

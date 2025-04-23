@@ -6,13 +6,14 @@
 /*   By: malves-b <malves-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 10:39:03 by malves-b          #+#    #+#             */
-/*   Updated: 2025/04/17 18:46:16 by malves-b         ###   ########.fr       */
+/*   Updated: 2025/04/23 15:41:09 by malves-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub.h"
 
 void	free_mlx_struct(t_mlx *mlx);
+void	free_double_array(char **array);
 
 /**
  * @brief Function free memories accordingly the flag
@@ -21,7 +22,8 @@ void	free_mlx_struct(t_mlx *mlx);
  */
 void	ft_free(t_main *pgr)
 {
-	free_mlx_struct(pgr->mlx);
+	free_mlx_struct (pgr->mlx);
+	free_double_array (pgr->parse->file);
 	free (pgr->mlx);
 	free (pgr->ray);
 	free (pgr->parse);
@@ -47,4 +49,20 @@ void free_mlx_struct(t_mlx *mlx)
         free(mlx->mlx);
         mlx->mlx = NULL;
     }
+}
+
+void	free_double_array(char **array)
+{
+	int	i;
+
+	i = 0;
+	if (array && array[i])
+	{
+		while (array[i])
+		{
+			free(array[i]);
+			i++;
+		}
+	}
+	free(array);
 }

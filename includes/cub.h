@@ -6,11 +6,11 @@
 /*   By: malves-b <malves-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 13:14:39 by malves-b          #+#    #+#             */
-/*   Updated: 2025/04/23 19:40:40 by malves-b         ###   ########.fr       */
+/*   Updated: 2025/04/24 16:57:32 by malves-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef	CUB_H
+#ifndef CUB_H
 # define CUB_H
 
 # include <math.h>
@@ -36,15 +36,14 @@
 
 /* ----- COLORS -----*/
 
-#define COLOR_SKY   0x87CEEB
-#define COLOR_FLOOR 0x333333
-#define	RED	0xFF0000
-#define RED_LIGHT 0xFF6666
-#define	BROWN 0x8B4513
-#define	GRAY 0x808080
-#define GREEN 0x08000
-#define YELLOW    0xFFFF00
-
+# define COLOR_SKY		0x87CEEB
+# define COLOR_FLOOR	0x333333
+# define RED			0xFF0000
+# define RED_LIGHT		0xFF6666
+# define BROWN			0x8B4513
+# define GRAY			0x808080
+# define GREEN			0x08000
+# define YELLOW			0xFFFF00
 
 /* --------------------------------- PARSING -------------------------------- */
 
@@ -82,7 +81,7 @@ typedef struct s_player
 }	t_player;
 
 /*--------------------------------------------------- */
-typedef struct s_main t_main;
+typedef struct s_main	t_main;
 
 typedef struct s_raycasting
 {
@@ -91,26 +90,20 @@ typedef struct s_raycasting
 	int		map_position_y;
 	double	pp_x;
 	double	pp_y;
-
 	double	next_pos_x;
 	double	next_pos_y;
-
-	double	dir_x;	//Direction
-	double	dir_y;	//Direction
-
+	double	dir_x;
+	double	dir_y;
 	double	plane_vector[2];
-
-	double	sideDistX;
-	double	sideDistY;
-
-	double	deltaDistX;
-	double	deltaDistY;
-	double	perpWallDist; //comprimento do raio
-	int		stepX;
-	int		stepY;
+	double	sidedistx;
+	double	sidedisty;
+	double	dltdistx;
+	double	dltdisty;
+	double	prp_walldst;
+	int		stepx;
+	int		stepy;
 	int		hit_wall;
 	int		side;
-	t_main	*mainstruct;
 }	t_raycasting;
 
 typedef struct s_mlx
@@ -133,44 +126,51 @@ typedef struct s_main
 	t_raycasting	*ray; //raycasting
 }	t_main;
 
+/* --------------------------------- TEXTURE -------------------------------- */
+
+typedef struct s_texture
+{
+	char	*filename;
+	double	wall_x;
+	int		tex_num;
+	int		tex_x;
+
+	int		tex_y;
+	int		tex_pos;
+}	t_texture;
 
 /* --------------------------------- PARSING -------------------------------- */
 //validate_parse
-bool	check_args(int ac, char *map_file, char *prog_name);
-void	validate_texture(t_parse *parse);
-//init_parse_struct
-void	init_parse_struct(t_parse *parse);
-//read_parse_file
-void	init_file(char *file, t_parse **parse);
-bool	ft_read_file(t_parse *parse, char *file);
-void	get_number_lines(char *file, int *file_lines);
+bool				check_args(int ac, char *map_file, char *prog_name);
+void				validate_texture(t_parse *parse);
+void				init_parse_struct(t_parse *parse);
+void				init_file(char *file, t_parse **parse);
+bool				ft_read_file(t_parse *parse, char *file);
+void				get_number_lines(char *file, int *file_lines);
 //utils_parse
-void	print_map(char **file);//depois apagar 
+void				print_map(char **file);//depois apagar 
 
 /* ---------------------------------- UTILS --------------------------------- */
 
-int		ft_free(t_main *pgr);
-void	*safe_calloc(t_main *pgr, size_t size);
-double	has_decimal(double nbr);
-void	my_put_pixel(t_mlx *mlx, int x, int y, int color);
+int					ft_free(t_main *pgr);
+void				*safe_calloc(t_main *pgr, size_t size);
+double				has_decimal(double nbr);
+void				my_put_pixel(t_mlx *mlx, int x, int y, int color);
 
 /* ------------------------------- RAYCASTING ------------------------------- */
 
-t_raycasting	*init_raycasting(t_main *pgr);
-void			set_direction_vector(char dir, t_raycasting *raycasting);
-void			set_player_position(t_raycasting *raycasting, char **map);
-int				key_press(int keycode, t_main *pgr);
-void			draw_player(t_main *pgr);
-void			draw_map(t_main *pgr);
-void	my_put_pixel(t_mlx *mlx, int x, int y, int color);
-
-void	render_frame(t_main *pgr);//TEST
-void	draw_background(t_main *pgr);
-
-
+int					key_press(int keycode, t_main *pgr);
+void				set_direction_vector(char dir, t_raycasting *raycasting);
+void				set_player_position(t_raycasting *raycasting, char **map);
+void				draw_player(t_main *pgr);
+void				draw_map(t_main *pgr);
+void				my_put_pixel(t_mlx *mlx, int x, int y, int color);
+void				render_frame(t_main *pgr);//TEST
+void				draw_background(t_main *pgr);
+t_raycasting		*init_raycasting(t_main *pgr);
 
 /* -------------------------------- INIT GAME ------------------------------- */
 
-t_mlx	*init_mlx(void);
+t_mlx				*init_mlx(void);
 
 #endif

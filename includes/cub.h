@@ -6,7 +6,7 @@
 /*   By: malves-b <malves-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 13:14:39 by malves-b          #+#    #+#             */
-/*   Updated: 2025/04/24 16:57:32 by malves-b         ###   ########.fr       */
+/*   Updated: 2025/04/24 18:14:21 by malves-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,16 +128,6 @@ typedef struct s_main
 
 /* --------------------------------- TEXTURE -------------------------------- */
 
-typedef struct s_texture
-{
-	char	*filename;
-	double	wall_x;
-	int		tex_num;
-	int		tex_x;
-
-	int		tex_y;
-	int		tex_pos;
-}	t_texture;
 
 /* --------------------------------- PARSING -------------------------------- */
 //validate_parse

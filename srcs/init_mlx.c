@@ -6,7 +6,7 @@
 /*   By: malves-b <malves-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 16:42:55 by malves-b          #+#    #+#             */
-/*   Updated: 2025/04/23 19:02:00 by malves-b         ###   ########.fr       */
+/*   Updated: 2025/04/25 18:51:20 by malves-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ int	init_mlx_aux(t_mlx *mlx_data)
 	mlx_data->img = mlx_new_image(mlx_data->mlx, WIDTH, HEIGHT);
 	if (!mlx_data->img)
 	{
-		mlx_destroy_window(mlx_data->mlx, mlx_data->mlx_win);
 		free(mlx_data);
 		return (0);
 	}
@@ -48,13 +47,13 @@ t_mlx	*init_mlx(void)
 	mlx_data->mlx = mlx_init();
 	if (!mlx_data->mlx)
 		return (free(mlx_data), NULL);
+	if (!init_mlx_aux(mlx_data))
+		return (NULL);
 	mlx_data->mlx_win = mlx_new_window(mlx_data->mlx, WIDTH, HEIGHT, "CUB3D");
 	if (!mlx_data->mlx_win)
 	{
 		free(mlx_data);
 		return (NULL);
 	}
-	if (!init_mlx_aux(mlx_data))
-		return (NULL);
 	return (mlx_data);
 }

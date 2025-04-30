@@ -6,13 +6,11 @@
 /*   By: malves-b <malves-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 17:39:22 by malves-b          #+#    #+#             */
-/*   Updated: 2025/04/25 14:41:23 by malves-b         ###   ########.fr       */
+/*   Updated: 2025/04/30 17:58:04 by malves-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub.h"
-
-#include <limits.h>
 
 int		set_color(t_raycasting *ray); /* REMOVE */
 
@@ -57,16 +55,16 @@ int	set_color(t_raycasting *ray)
 	if (ray->side == 1)
 	{
 		if (ray->stepy > 0)
-			color = RED;
+			color = RED;//SOUTH
 		else
-			color = RED_LIGHT;
+			color = RED_LIGHT;//NORTH
 	}
 	else
 	{
 		if (ray->stepx > 0)
-			color = YELLOW;
+			color = YELLOW; //EAST
 		else
-			color = GREEN;
+			color = GREEN; //WEST
 	}
 	return (color);
 }

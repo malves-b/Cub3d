@@ -6,7 +6,7 @@
 /*   By: malves-b <malves-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 13:14:39 by malves-b          #+#    #+#             */
-/*   Updated: 2025/04/24 18:14:21 by malves-b         ###   ########.fr       */
+/*   Updated: 2025/04/30 17:57:56 by malves-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <stdbool.h>
+# include <limits.h>
 # include "./minilibx-linux/mlx.h"
 # include "libft.h"
 

@@ -74,7 +74,7 @@ bool	init_parse_info(t_cub *cub, char *file)
 	// printf("%s", cub->parse->so_path);
 	// printf("%s", cub->parse->we_path);
 	// printf("%s",cub->parse->ea_path);
-	printf("-parse %s", cub->parse->floor_collor);
+	//printf("-parse %s", cub->parse->floor_collor);
 	printf("-parse %s", cub->parse->ceiling_collor);
 	free(cub->parse->no_path);
 	free(cub->parse->so_path);

@@ -60,8 +60,8 @@ bool	init_parse_info(t_cub *cub, char *file)
 	init_file(file, cub->parse);
 	if(!clean_and_add( cub->parse))
 		return (false);
-	if(!val_textures(cub->parse))
-		return (false);
+	//if(!val_textures(cub->parse))
+		//return (false);
 	if(!val_map(cub->parse))
 		return (false);
 	free_array( &cub->parse->file);

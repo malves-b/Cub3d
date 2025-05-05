@@ -81,8 +81,6 @@ typedef struct s_texture
 /* --------------------------------- PARSING -------------------------------- */
 //validate_parse
 bool	check_args(int ac, char *map_file, char *prog_name);
-bool	is_valid_texture(char *path);
-bool	val_textures(t_parse *parse);
 
 //init_parse_struct
 void	init_parse_struct(t_parse *parse);

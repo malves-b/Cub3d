@@ -33,10 +33,9 @@ bool	val_map(t_parse *parse)
 			}
 			if(parse->map[x][y] != 'N' && parse->map[x][y] != 'S'
 				&& parse->map[x][y] != 'E' && parse->map[x][y] != 'W'
-				&& parse->map[x][y] != '0' && parse->map[x][y] != '1')
+				&& parse->map[x][y] != '0' && parse->map[x][y] != '1' && parse->map[x][y] != ' ' && parse->map[x][y] != '\0')
 			{
 				printf("Error\nInvalid map! The map contains invalid characters!\n");
-				printf("O CARACTERE É %c\n", parse->map[x][y]);
 				printf("posição x == %i y == %i\n", x, y);
 				return false;
 			}

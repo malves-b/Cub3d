@@ -34,9 +34,9 @@ typedef struct s_main
 
 typedef struct s_cub
 {
-	//struct s_map *s_map;
-	//struct s_player *player;
-	//truct s_texture *texture;
+	struct s_map *smap;
+	struct s_player *player;
+	struct s_texture *texture;
 	struct s_parse *parse;
 } t_cub;
 
@@ -57,14 +57,13 @@ typedef struct s_parse
 	int		parse_x;
 	int		parse_y;
 	struct s_cub *cub;
+	struct s_map *smap;
 	struct s_player *player;
 }	t_parse;
 
 typedef struct s_map
 {
 	char	**map;
-	int		height;
-	int		width;
 }	t_map;
 
 typedef struct s_player
@@ -76,7 +75,12 @@ typedef struct s_player
 
 typedef struct s_texture
 {
-	
+	char	*no_path;
+	char	*so_path;
+	char	*we_path;
+	char	*ea_path;
+	char	*floor_collor;
+	char	*ceiling_collor;
 }	t_texture;
 /* --------------------------------- PARSING -------------------------------- */
 //validate_parse
@@ -108,6 +112,12 @@ void	free_parse(t_parse *parse);
 
 //validate_map
 bool	val_map(t_parse *parse);
+
+//populate_structs
+void	populate_structs(t_parse *parse, t_cub *cub);
+void	copy_player(t_parse *parse, t_player *player);
+void	copy_map(char **src, char ***dest);
+void	copy_textures(t_parse *parse, t_texture *texture);
 
 
 /* ---------------------------------- UTILS --------------------------------- */

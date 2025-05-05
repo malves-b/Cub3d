@@ -49,10 +49,13 @@ void	init_file(char *file, t_parse *parse)
 bool	init_parse_info(t_cub *cub, char *file)
 {
 	cub->parse = malloc (sizeof(t_parse));
+	cub->smap = malloc(sizeof(t_map));
+	cub->player = malloc(sizeof(t_player));
+	cub->texture = malloc(sizeof(t_texture));
 	init_parse_struct(cub->parse);
 	get_number_lines(file, &cub->parse->file_lines);//verificação se line é menor ou == 0 
 	cub->parse->file = malloc(sizeof(char *) * (cub->parse->file_lines + 1));
-	if (!cub->parse->file || !cub->parse)
+	if (!cub->parse->file || !cub->parse || !cub->smap)
 	{
 		printf("Error\n Memory allocation error\n");
 		return (false); ///fazer algo paara exit
@@ -65,15 +68,28 @@ bool	init_parse_info(t_cub *cub, char *file)
 	if(!val_map(cub->parse))
 		return (false);
 	free_array( &cub->parse->file);
+	populate_structs(cub->parse, cub);
 	printf("\n\n");
-	printf("%s", cub->parse->no_path);
-	printf("%s", cub->parse->so_path);
-	printf("%s", cub->parse->we_path);
-	printf("%s",cub->parse->ea_path);
-	printf("%s", cub->parse->floor_collor);
-	printf("%s", cub->parse->ceiling_collor);
-	print_map( cub->parse->map);
+	// printf("%s", cub->parse->no_path);
+	// printf("%s", cub->parse->so_path);
+	// printf("%s", cub->parse->we_path);
+	// printf("%s",cub->parse->ea_path);
+	printf("-parse %s", cub->parse->floor_collor);
+	printf("-parse %s", cub->parse->ceiling_collor);
+	free(cub->parse->no_path);
+	free(cub->parse->so_path);
+	free(cub->parse->we_path);
+	free(cub->parse->ea_path);
+	free_array(&cub->parse->map);
+	print_map(cub->smap->map);
+	printf("%c--%d-%d- \n", cub->player->player, cub->player->x,cub->player->y);
+	printf("%s", cub->texture->no_path);
+	printf("%s", cub->texture->so_path);
+	printf("%s", cub->texture->we_path);
+	printf("%s",cub->texture->ea_path);
+
 	printf("\n\n");
+	//free_parse(cub->parse);
 	//validate_texture(parse);
 	return (true);
 }

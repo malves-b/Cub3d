@@ -12,15 +12,15 @@
 
 #include "../includes/cub.h"
 
-void	init_window(char **argv)
-{
-	(void)argv;
-	t_main	*pgr;
+// void	init_window(char **argv)
+// {
+// 	(void)argv;
+// 	t_main	*pgr;
 
-	ft_memset(&pgr, 0, sizeof(pgr));
-	pgr->mlx = mlx_init();
-	pgr->mlx_win = mlx_new_window(pgr->mlx, 320, 320, "CUB3D");
-}
+// 	ft_memset(&pgr, 0, sizeof(pgr));
+// 	pgr->mlx = mlx_init();
+// 	pgr->mlx_win = mlx_new_window(pgr->mlx, 320, 320, "CUB3D");
+// }
 
 int	main(int argc, char **argv)
 {
@@ -42,10 +42,10 @@ int	main(int argc, char **argv)
 	}
 	//readmap guardar em algum lugar
 	//fazer a validadação
-	free_parse(cub->parse);
+	//free_parse(cub->parse);
 	free(cub);
 	return(0);
-	init_window(argv);
+	//init_window(argv);
 
 	return 0;
 }

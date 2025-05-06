@@ -63,18 +63,11 @@ bool	init_parse_info(t_cub *cub, char *file)
 	init_file(file, cub->parse);
 	if(!clean_and_add( cub->parse))
 		return (false);
-	//if(!val_textures(cub->parse))
-		//return (false);
 	if(!val_map(cub->parse))
 		return (false);
 	free_array( &cub->parse->file);
 	populate_structs(cub->parse, cub);
 	printf("\n\n");
-	// printf("%s", cub->parse->no_path);
-	// printf("%s", cub->parse->so_path);
-	// printf("%s", cub->parse->we_path);
-	// printf("%s",cub->parse->ea_path);
-	//printf("-parse %s", cub->parse->floor_collor);
 	printf("-parse %s", cub->parse->ceiling_collor);
 	free(cub->parse->no_path);
 	free(cub->parse->so_path);

@@ -56,6 +56,9 @@ typedef struct s_parse
 	char	parse_player;
 	int		parse_x;
 	int		parse_y;
+	int		r;
+	int		g;
+	int		b;
 	struct s_cub *cub;
 	struct s_map *smap;
 	struct s_player *player;

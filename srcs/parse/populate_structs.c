@@ -13,8 +13,8 @@ void	copy_textures(t_parse *parse, t_texture *texture)
 	texture->so_path = ft_strdup(parse->so_path);
 	texture->we_path = ft_strdup(parse->we_path);
 	texture->ea_path = ft_strdup(parse->ea_path);
-	//floor
-	//ceiling
+	texture->floor_color = ft_strdup(parse->floor_color);
+	texture->ceiling_color = ft_strdup(parse->ceiling_color);
 }
 
 void	copy_player(t_parse *parse, t_player *player)

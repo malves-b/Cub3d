@@ -1,6 +1,6 @@
 NO ./textures/wall1.xpm
 SO ./textures/wall2.xpm
-F 1s5,200,10
+F 255,255,255
 WE ./textures/wall3.xpm
 EA ./textures/wall5.xpm
 C 135,206,235

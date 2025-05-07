@@ -25,18 +25,24 @@ static void number_to_hex(int nbr, char *hexa, int start)
 	hexa[start + 1] = hex_digits[nbr % 16];
 }
 
-void	ft_itoa_hex(t_parse *parse)
+void	ft_itoa_hex(t_parse *parse, char **dest_color)
 {
 	int		len;
-	//char	*temp;
+	char	*str_color = NULL;
+
+	if(str_color != NULL)
+	{
+		free(parse->hexa);
+	 	parse->hexa= NULL;
+	}
 	len = ft_count_hex(parse->r);
 	len += ft_count_hex(parse->g);
 	len += ft_count_hex(parse->b);
-	parse->hexa = malloc(sizeof(char) * (len + 1));
-	number_to_hex(parse->r, parse->hexa, 0); // r → positions 0,1
-	number_to_hex(parse->g, parse->hexa, 2); // g → positions 2,3
-	number_to_hex(parse->b, parse->hexa, 4); // b → positions 4,5
-	parse->hexa[6] = '\0';
-	//return (parse->hexa);
+	str_color = malloc(sizeof(char) * (len + 1));
+	number_to_hex(parse->r, str_color, 0); // r → positions 0,1
+	number_to_hex(parse->g, str_color, 2); // g → positions 2,3
+	number_to_hex(parse->b, str_color, 4); // b → positions 4,5
+	str_color[6] = '\0';
+	*dest_color = str_color;
 	
 }

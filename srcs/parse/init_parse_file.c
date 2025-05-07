@@ -68,11 +68,12 @@ bool	init_parse_info(t_cub *cub, char *file)
 	free_array( &cub->parse->file);
 	populate_structs(cub->parse, cub);
 	printf("\n\n");
-	printf("-parse %s", cub->parse->ceiling_color);
 	free(cub->parse->no_path);
 	free(cub->parse->so_path);
 	free(cub->parse->we_path);
 	free(cub->parse->ea_path);
+	free(cub->parse->floor_color);
+	free(cub->parse->ceiling_color);
 	free_array(&cub->parse->map);
 	print_map(cub->smap->map);
 	printf("%c--%d-%d- \n", cub->player->player, cub->player->x,cub->player->y);
@@ -80,6 +81,8 @@ bool	init_parse_info(t_cub *cub, char *file)
 	printf("%s", cub->texture->so_path);
 	printf("%s", cub->texture->we_path);
 	printf("%s",cub->texture->ea_path);
+	printf(" C hexa %s\n", cub->texture->ceiling_color);
+	printf(" F hexa %s\n", cub->texture->floor_color);
 
 	printf("\n\n");
 	//free_parse(cub->parse);

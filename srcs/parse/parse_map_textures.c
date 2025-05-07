@@ -16,9 +16,9 @@ void	add_line(char *line, t_parse *parse)
 	else if (line[i] == 'E')
 		set_texture_path(line, i, parse, &parse->ea_path);
 	else if (line[i] == 'F')
-		ft_is_f(line, i, parse);
+		validate_color(line, i, parse, &parse->floor_color);
 	else if (line[i] == 'C')
-		ft_is_c(line, i, parse);
+		validate_color(line, i, parse, &parse->ceiling_color);
 }
 
 int	check_line(char *line)

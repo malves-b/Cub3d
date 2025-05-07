@@ -105,8 +105,8 @@ int		check_line(char *line);
 
 //color_textures_parse
 void	set_texture_path(char *line, int i, t_parse *parse, char **str);
-void	ft_is_c(char *line, int i, t_parse *parse);
-void	ft_is_f(char *line, int i, t_parse *parse);
+void	validate_color(char *line, int i, t_parse *parse, char **str);
+//void	ft_is_f(char *line, int i, t_parse *parse);
 bool	validate_rgb(t_parse *parse, char *rgb);
 
 //utils_parse
@@ -125,7 +125,7 @@ void	copy_map(char **src, char ***dest);
 void	copy_textures(t_parse *parse, t_texture *texture);
 
 //rgb_to_hexa
-void	ft_itoa_hex(t_parse *parse);
+void	ft_itoa_hex(t_parse *parse, char **str_color);
 
 /* ---------------------------------- UTILS --------------------------------- */
 

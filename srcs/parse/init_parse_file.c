@@ -9,7 +9,7 @@ void	get_number_lines(char *file, int *file_lines)
 	if (fd < 0)
 	{
 		printf("Error\n the file doesn't exist!\n");
-		return ;
+		exit (1);
 	}
 	line = get_next_line(fd);
 	while (line != NULL)
@@ -44,7 +44,7 @@ bool	init_file(char *file, t_parse *parse)
 	parse->file[i] = NULL;
 	free(line);
 	close(fd);
-	
+	return (true);
 }
 
 bool	init_parse_info(t_cub *cub, char *file)
@@ -61,7 +61,8 @@ bool	init_parse_info(t_cub *cub, char *file)
 		printf("Error\n Memory allocation error\n");
 		return (false); ///fazer algo paara exit
 	}
-	init_file(file, cub->parse);
+	if(!init_file(file, cub->parse))
+		return false;
 	if(!clean_and_add( cub->parse))
 		return (false);
 	if(!val_map(cub->parse))

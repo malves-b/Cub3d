@@ -44,5 +44,10 @@ bool	val_map(t_parse *parse)
 		}
 		x++;
 	}
+	if(!parse->parse_player)
+	{
+		printf("Error\nInvalid map player, player not found!\n");
+		return (false);
+	}
 	return (true);
 }

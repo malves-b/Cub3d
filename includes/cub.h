@@ -94,7 +94,7 @@ bool	check_args(int ac, char *map_file, char *prog_name);
 void	init_parse_struct(t_parse *parse);
 
 //read_parse_file
-void	init_file(char *file, t_parse *parse);
+bool	init_file(char *file, t_parse *parse);
 void	get_number_lines(char *file, int *file_lines);
 bool	init_parse_info(t_cub *cub, char *file);
 

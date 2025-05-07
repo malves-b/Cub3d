@@ -21,7 +21,7 @@ void	get_number_lines(char *file, int *file_lines)
 	close(fd);
 }
 
-void	init_file(char *file, t_parse *parse)
+bool	init_file(char *file, t_parse *parse)
 {
 	char	*line;
 	int		fd;
@@ -32,7 +32,7 @@ void	init_file(char *file, t_parse *parse)
 	if(fd < 0)
 	{
 		printf("Error\n the file doesn't exist!\n");
-		return ;
+		return false;
 	}
 	line = get_next_line(fd);
 	while (line)
@@ -44,6 +44,7 @@ void	init_file(char *file, t_parse *parse)
 	parse->file[i] = NULL;
 	free(line);
 	close(fd);
+	
 }
 
 bool	init_parse_info(t_cub *cub, char *file)

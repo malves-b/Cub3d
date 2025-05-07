@@ -37,10 +37,10 @@ void	free_parse(t_parse *parse)
 		free(parse->we_path);
 	if(parse->ea_path != NULL)
 		free(parse->ea_path);
-	if(parse->floor_collor != NULL)
-		free(parse->floor_collor);
-	if(parse->ceiling_collor != NULL)
-		free(parse->ceiling_collor);
+	if(parse->floor_color != NULL)
+		free(parse->floor_color);
+	if(parse->ceiling_color != NULL)
+		free(parse->ceiling_color);
 	free_array(&parse->map);
 	free_array(&parse->file);
 	free(parse);

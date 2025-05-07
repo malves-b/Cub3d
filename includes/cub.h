@@ -47,8 +47,8 @@ typedef struct s_parse
 	char	*so_path;
 	char	*we_path;
 	char	*ea_path;
-	char	*floor_collor;//divide em 3 e trandforma em hexa 
-	char	*ceiling_collor;
+	char	*floor_color;//divide em 3 e trandforma em hexa 
+	char	*ceiling_color;
 	char	**map;
 	char	**file;
 	int		file_lines;
@@ -59,6 +59,7 @@ typedef struct s_parse
 	int		r;
 	int		g;
 	int		b;
+	char	*hexa;
 	struct s_cub *cub;
 	struct s_map *smap;
 	struct s_player *player;
@@ -82,8 +83,8 @@ typedef struct s_texture
 	char	*so_path;
 	char	*we_path;
 	char	*ea_path;
-	char	*floor_collor;
-	char	*ceiling_collor;
+	char	*floor_color;
+	char	*ceiling_color;
 }	t_texture;
 /* --------------------------------- PARSING -------------------------------- */
 //validate_parse
@@ -102,10 +103,11 @@ void	add_line(char *line, t_parse *parse);
 bool	clean_and_add(t_parse *parse);
 int		check_line(char *line);
 
-//parse_textures_info
+//color_textures_parse
 void	set_texture_path(char *line, int i, t_parse *parse, char **str);
 void	ft_is_c(char *line, int i, t_parse *parse);
 void	ft_is_f(char *line, int i, t_parse *parse);
+bool	validate_rgb(t_parse *parse, char *rgb);
 
 //utils_parse
 int		ft_strlen_i(char *line, int i);
@@ -122,6 +124,8 @@ void	copy_player(t_parse *parse, t_player *player);
 void	copy_map(char **src, char ***dest);
 void	copy_textures(t_parse *parse, t_texture *texture);
 
+//rgb_to_hexa
+void	ft_itoa_hex(t_parse *parse);
 
 /* ---------------------------------- UTILS --------------------------------- */
 

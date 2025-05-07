@@ -1,10 +1,21 @@
+#include <stdio.h>
+#include <stdlib.h>
 
-
-int	ft_count_hex(unsigned int nbr)
+typedef struct s_parse
 {
-	int	i;
+	int		r;
+	int		g;
+	int		b;
+	char *hexa;
+}	t_parse;
 
-	i = 0;
+
+static int	ft_count_hex(unsigned int nbr)
+{
+	int	i = 0;
+
+	if (nbr == 0)
+		return (1);
 	while (nbr != 0)
 	{
 		i++;
@@ -13,35 +24,43 @@ int	ft_count_hex(unsigned int nbr)
 	return (i);
 }
 
-void	ft_printhex(unsigned int nbr, char type)
+
+static void number_to_hex(int nbr, char *hexa, int start)
 {
-	if (nbr >= 16)
-	{
-		ft_puthexa(nbr / 16, type);
-		ft_puthexa(nbr % 16, type);
-	}
-	else
-	{
-		if (nbr <= 9)
-			ft_putchar((nbr + 48));
-		else
-		{
-			if (type == 'x')
-				ft_putchar((nbr - 10 + 'a'));
-			if (type == 'X')
-				ft_putchar((nbr - 10 + 'A'));
-		}
-	}
+	char hex_digits[] = "0123456789abcdef";
+
+	// First hex digit (most significant nibble)
+	hexa[start] = hex_digits[nbr / 16];
+
+	// Second hex digit (least significant nibble)
+	hexa[start + 1] = hex_digits[nbr % 16];
 }
 
-int	ft_puthexa(unsigned int nbr, char type)
+char	*ft_utoa_hex(t_parse *parse)
 {
-	int	i;
-
-	if (nbr == 0)
-		return (write (1, "0", 1));
-	else
-		ft_printhex(nbr, type);
-	i = ft_count_hex(nbr);
-	return (i);
+	int		len;
+	char	*temp;
+	len = ft_count_hex(parse->r);
+	len += ft_count_hex(parse->g);
+	len += ft_count_hex(parse->b);
+	parse->hexa = malloc(sizeof(char) * (len + 1));
+	number_to_hex(parse->r, parse->hexa, 0); // r → positions 0,1
+	number_to_hex(parse->g, parse->hexa, 2); // g → positions 2,3
+	number_to_hex(parse->b, parse->hexa, 4); // b → positions 4,5
+	parse->hexa[6] = '\0';
+	return (parse->hexa);
+	
 }
+
+// int main ()
+// {
+// 	t_parse *parse = malloc(sizeof(t_parse) * 1);
+// 	parse->r = 0;
+// 	parse->g = 0;
+// 	parse->b = 0;
+
+// 	printf("%s", ft_utoa_hex(parse));
+// 	free(parse->hexa);
+// 	free(parse);
+//     return 0;
+// }

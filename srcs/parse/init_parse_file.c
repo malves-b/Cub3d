@@ -68,7 +68,7 @@ bool	init_parse_info(t_cub *cub, char *file)
 	free_array( &cub->parse->file);
 	populate_structs(cub->parse, cub);
 	printf("\n\n");
-	printf("-parse %s", cub->parse->ceiling_collor);
+	printf("-parse %s", cub->parse->ceiling_color);
 	free(cub->parse->no_path);
 	free(cub->parse->so_path);
 	free(cub->parse->we_path);

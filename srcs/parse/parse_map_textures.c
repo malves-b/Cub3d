@@ -45,8 +45,8 @@ int	check_line(char *line)
 void	check_is_valid(t_parse *parse)
 {
 	if (parse->no_path != NULL && parse->so_path != NULL && parse->we_path != NULL 
-			&& parse->ea_path != NULL && parse->floor_collor != NULL 
-			&& parse->ceiling_collor != NULL)
+			&& parse->ea_path != NULL && parse->floor_color != NULL 
+			&& parse->ceiling_color != NULL)
 	{
 		parse->is_valid = true;
 	}

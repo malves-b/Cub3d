@@ -6,7 +6,7 @@
 /*   By: malves-b <malves-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 13:14:39 by malves-b          #+#    #+#             */
-/*   Updated: 2025/04/30 17:57:56 by malves-b         ###   ########.fr       */
+/*   Updated: 2025/05/08 18:53:14 by malves-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,6 +147,7 @@ int					ft_free(t_main *pgr);
 void				*safe_calloc(t_main *pgr, size_t size);
 double				has_decimal(double nbr);
 void				my_put_pixel(t_mlx *mlx, int x, int y, int color);
+int					close_program(t_main *pgr);
 
 /* ------------------------------- RAYCASTING ------------------------------- */
 

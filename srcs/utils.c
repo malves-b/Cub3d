@@ -6,11 +6,16 @@
 /*   By: malves-b <malves-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 18:08:51 by malves-b          #+#    #+#             */
-/*   Updated: 2025/04/23 19:40:05 by malves-b         ###   ########.fr       */
+/*   Updated: 2025/05/08 18:52:51 by malves-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub.h"
+
+int	close_program(t_main *pgr)
+{
+	exit(ft_free(pgr));
+}
 
 void	my_put_pixel(t_mlx *mlx, int x, int y, int color)
 {

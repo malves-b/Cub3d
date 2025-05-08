@@ -6,7 +6,7 @@
 /*   By: malves-b <malves-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 13:33:10 by malves-b          #+#    #+#             */
-/*   Updated: 2025/05/08 18:52:18 by malves-b         ###   ########.fr       */
+/*   Updated: 2025/05/08 19:22:07 by malves-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,10 @@ int	cub_init(t_main *pgr)
 	pgr->map[12] = NULL;
 	pgr->mlx = init_mlx();
 	pgr->ray = init_raycasting(pgr);
+	if (ft_init_textures(pgr))
+	{
+		close_program(pgr);
+	}
 	key_press(32, pgr);
 	mlx_hook(pgr->mlx->mlx_win, 17, 0, close_program, pgr);
 	mlx_hook(pgr->mlx->mlx_win, 2, 1L << 0, key_press, pgr);

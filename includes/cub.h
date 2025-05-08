@@ -6,7 +6,7 @@
 /*   By: malves-b <malves-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 13:14:39 by malves-b          #+#    #+#             */
-/*   Updated: 2025/05/08 18:53:14 by malves-b         ###   ########.fr       */
+/*   Updated: 2025/05/08 20:09:31 by malves-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,17 @@ typedef struct s_player
 /*--------------------------------------------------- */
 typedef struct s_main	t_main;
 
+typedef struct s_image
+{
+	void	*img_ptr;
+	char	*addr;
+	int		bpp;
+	int		line_len;
+	int		endian;
+	int		width;
+	int		height;
+}	t_image;
+
 typedef struct s_raycasting
 {
 	char	start_dir;
@@ -105,6 +116,7 @@ typedef struct s_raycasting
 	int		stepy;
 	int		hit_wall;
 	int		side;
+	// double	wall_x;/*-----*/
 }	t_raycasting;
 
 typedef struct s_mlx
@@ -125,10 +137,15 @@ typedef struct s_main
 	t_mlx			*mlx;
 	t_parse			*parse; /*---- */
 	t_raycasting	*ray; //raycasting
+	t_image			*texture_north;
+	t_image			*texture_south;
+	t_image			*texture_east;
+	t_image			*texture_west;
 }	t_main;
 
 /* --------------------------------- TEXTURE -------------------------------- */
 
+int	ft_init_textures(t_main *pgr);
 
 /* --------------------------------- PARSING -------------------------------- */
 //validate_parse

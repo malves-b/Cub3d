@@ -32,8 +32,8 @@ void	ft_itoa_hex(t_parse *parse, char **dest_color)
 
 	if(str_color != NULL)
 	{
-		free(parse->hexa);
-	 	parse->hexa= NULL;
+		free(*dest_color);
+	 	*dest_color = NULL;
 	}
 	len = ft_count_hex(parse->r);
 	len += ft_count_hex(parse->g);

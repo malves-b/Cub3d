@@ -59,7 +59,6 @@ typedef struct s_parse
 	int		r;
 	int		g;
 	int		b;
-	char	*hexa;
 	struct s_cub *cub;
 	struct s_map *smap;
 	struct s_player *player;
@@ -114,6 +113,7 @@ int		ft_strlen_i(char *line, int i);
 void	print_map(char **file);//depois apagar 
 void	free_array(char ***arr);
 void	free_parse(t_parse *parse);
+void	free_structs(t_cub *cub);
 
 //validate_map
 bool	val_map(t_parse *parse);

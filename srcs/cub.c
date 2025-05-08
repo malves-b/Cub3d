@@ -43,6 +43,7 @@ int	main(int argc, char **argv)
 	//readmap guardar em algum lugar
 	//fazer a validadação
 	//free_parse(cub->parse);
+	free_structs(cub);
 	free(cub);
 	return(0);
 	//init_window(argv);

@@ -5,6 +5,7 @@ void	populate_structs(t_parse *parse, t_cub *cub)
 	copy_map(cub->parse->map, &cub->smap->map);
 	copy_player(parse, cub->player);
 	copy_textures(parse, cub->texture);
+	free_parse(parse);
 }
 
 void	copy_textures(t_parse *parse, t_texture *texture)
@@ -32,7 +33,7 @@ void	copy_map(char **src, char ***dest)
 	lines = 0;
 	while(src[lines])
 		lines++;
-	*dest = malloc(sizeof(char *) * lines + 1);
+	*dest = malloc(sizeof(char *) * (lines + 1));
 	if(!*dest)
 	{
 		printf("Error\n Memory allocation error\n");

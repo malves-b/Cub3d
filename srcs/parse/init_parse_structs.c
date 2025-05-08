@@ -9,7 +9,6 @@ void	init_parse_struct(t_parse *parse)
 	parse->ea_path = NULL;
 	parse->floor_color = NULL;
 	parse->ceiling_color = NULL;
-	parse->hexa = NULL;
 	parse->file = NULL;
 	parse->map = NULL;
 	parse->is_valid = false;

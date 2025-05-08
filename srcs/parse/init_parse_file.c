@@ -70,13 +70,6 @@ bool	init_parse_info(t_cub *cub, char *file)
 	free_array( &cub->parse->file);
 	populate_structs(cub->parse, cub);
 	printf("\n\n");
-	free(cub->parse->no_path);
-	free(cub->parse->so_path);
-	free(cub->parse->we_path);
-	free(cub->parse->ea_path);
-	free(cub->parse->floor_color);
-	free(cub->parse->ceiling_color);
-	free_array(&cub->parse->map);
 	print_map(cub->smap->map);
 	printf("%c--%d-%d- \n", cub->player->player, cub->player->x,cub->player->y);
 	printf("%s", cub->texture->no_path);

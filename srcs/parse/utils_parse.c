@@ -50,6 +50,27 @@ void	free_parse(t_parse *parse)
 	//init_parse_struct(parse);//evita lixo de memoria
 }
 
+void	free_structs(t_cub *cub)
+{
+	if(cub->smap->map != NULL)
+		free_array(&cub->smap->map);
+	if(cub->texture->no_path != NULL)
+		free(cub->texture->no_path);
+	if(cub->texture->so_path != NULL)
+		free(cub->texture->so_path);
+	if(cub->texture->we_path != NULL)
+		free(cub->texture->we_path);
+	if(cub->texture->ea_path != NULL)
+		free(cub->texture->ea_path);
+	if(cub->texture->floor_color != NULL)
+		free(cub->texture->floor_color);
+	if(cub->texture->ceiling_color != NULL)
+		free(cub->texture->ceiling_color);
+	free(cub->smap);
+	free(cub->player);
+	free(cub->texture);
+}
+
 int	ft_strlen_i(char *line, int i)
 {
 	int j;

@@ -9,7 +9,7 @@ static bool check_is_digit(char *str)
 	{
 		if(str[i] != ',' && (str[i] < '0' && str[i] > '9'))
 		{
-			printf("Error\n Map is not valid, color is not valid!\n");
+			printf("Error\nMap is not valid, color is not valid!\n");
 			return (false);
 		}
 		i++;
@@ -17,17 +17,17 @@ static bool check_is_digit(char *str)
 	return (true);
 }
 
-void	set_texture_path(char *line, int i, t_parse *parse, char **str)
+bool	set_texture_path(char *line, int i, t_parse *parse, char **str)
 {
 	int	len;
 	int	j;
 
+	(void)parse;
 	j = 0;
 	if (*str != NULL)
 	{
-		printf("Error\n Map is not valid, textures are duplicaated!\n");
-		free_parse(parse);
-		exit (1);
+		printf("Error\nMap is not valid, textures are duplicaated!\n");
+		return (false);
 	}
 	while(line[i] != '.')
 	{
@@ -41,10 +41,11 @@ void	set_texture_path(char *line, int i, t_parse *parse, char **str)
 		j++;
 	}
 	(*str)[j] = '\0';
+	return (true);
 	//printf("parse deu certo? == %s no\n", parse->no_path);
 }
 
-void	validate_color(char *line, int i, t_parse *parse, char **str)
+bool	validate_color(char *line, int i, t_parse *parse, char **str)
 {
 	int	len;
 	int	j;
@@ -53,9 +54,10 @@ void	validate_color(char *line, int i, t_parse *parse, char **str)
 	j = 0;
 	if (*str != NULL)
 	{
-		printf("Error\n Map is not valid, Color is not valid!\n");
-		free_parse(parse);
-		exit (1);
+		printf("Error\nMap is not valid, Color is not valid!\n");
+		// free_parse(parse);
+		// free_structs(parse->cub);
+		return (false);
 	}
 	while(!ft_isdigit(line[i]))
 	i++;
@@ -69,11 +71,11 @@ void	validate_color(char *line, int i, t_parse *parse, char **str)
 	temp[j] = '\0';
 	if(!check_is_digit(temp) || !validate_rgb(parse, temp))
 	{
-		free_parse(parse);
-		exit (1);
+		return (false);
 	}
 	ft_itoa_hex(parse, str);
 	free(temp);
+	return (true);
 }
 
 bool	validate_rgb(t_parse *parse, char *rgb)

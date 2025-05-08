@@ -1,6 +1,6 @@
 #include "../../includes/cub.h"
 
-void	add_line(char *line, t_parse *parse)
+bool	add_line(char *line, t_parse *parse)
 {
 	int		i;
 
@@ -8,17 +8,18 @@ void	add_line(char *line, t_parse *parse)
 	while(line[i] == ' ')//adicionar outros espaços 
 		i++;
 	if (line[i] == 'N')
-		set_texture_path(line, i, parse, &parse->no_path);
+		return (set_texture_path(line, i, parse, &parse->no_path));
 	else if (line[i] == 'S')
-		set_texture_path(line, i, parse, &parse->so_path);
+		return (set_texture_path(line, i, parse, &parse->so_path));
 	else if (line[i] == 'W')
-		set_texture_path(line, i, parse, &parse->we_path);
+		return (set_texture_path(line, i, parse, &parse->we_path));
 	else if (line[i] == 'E')
-		set_texture_path(line, i, parse, &parse->ea_path);
+		return (set_texture_path(line, i, parse, &parse->ea_path));
 	else if (line[i] == 'F')
-		validate_color(line, i, parse, &parse->floor_color);
+		return (validate_color(line, i, parse, &parse->floor_color));
 	else if (line[i] == 'C')
-		validate_color(line, i, parse, &parse->ceiling_color);
+		return (validate_color(line, i, parse, &parse->ceiling_color));
+	return (false);
 }
 
 int	check_line(char *line)
@@ -87,7 +88,10 @@ bool	clean_and_add(t_parse *parse)
 	while(parse->file[i] != NULL)
 	{
 		if (check_line(parse->file[i]) == 1)//tem
-			add_line(parse->file[i], parse);
+		{
+			if(!add_line(parse->file[i], parse))
+			return (false);
+		}
 		else if (check_line(parse->file[i]) == 0)
 		{
 			if(parse->is_valid == true)

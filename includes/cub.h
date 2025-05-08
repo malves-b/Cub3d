@@ -89,22 +89,24 @@ typedef struct s_texture
 //validate_parse
 bool	check_args(int ac, char *map_file, char *prog_name);
 
-//init_parse_struct
-void	init_parse_struct(t_parse *parse);
+//init_struct
+void	init_struct(t_cub *cub);
 
 //read_parse_file
 bool	init_file(char *file, t_parse *parse);
 void	get_number_lines(char *file, int *file_lines);
 bool	init_parse_info(t_cub *cub, char *file);
 
-//parse textures
-void	add_line(char *line, t_parse *parse);
+//parse_map_textures
+bool	add_line(char *line, t_parse *parse);
 bool	clean_and_add(t_parse *parse);
 int		check_line(char *line);
 
 //color_textures_parse
-void	set_texture_path(char *line, int i, t_parse *parse, char **str);
-void	validate_color(char *line, int i, t_parse *parse, char **str);
+bool	set_texture_path(char *line, int i, t_parse *parse, char **str);
+bool	validate_color(char *line, int i, t_parse *parse, char **str);
+
+
 //void	ft_is_f(char *line, int i, t_parse *parse);
 bool	validate_rgb(t_parse *parse, char *rgb);
 

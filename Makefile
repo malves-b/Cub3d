@@ -9,7 +9,7 @@ MLIBX = ./includes/minilibx-linux/libmlx.a
 MLIBX_DIR = ./includes/minilibx-linux
 
 SRCS = $(SRCS_DIR)/cub.c \
-		$(SRCS_DIR)/parse/init_parse_structs.c \
+		$(SRCS_DIR)/parse/init_structs.c \
 		$(SRCS_DIR)/parse/color_textures_parse.c \
 		$(SRCS_DIR)/parse/rgb_to_hexa.c \
 		$(SRCS_DIR)/parse/parse_map_textures.c \

@@ -49,11 +49,7 @@ bool	init_file(char *file, t_parse *parse)
 
 bool	init_parse_info(t_cub *cub, char *file)
 {
-	cub->parse = malloc (sizeof(t_parse));
-	cub->smap = malloc(sizeof(t_map));
-	cub->player = malloc(sizeof(t_player));
-	cub->texture = malloc(sizeof(t_texture));
-	init_parse_struct(cub->parse);
+	init_struct(cub);
 	get_number_lines(file, &cub->parse->file_lines);//verificação se line é menor ou == 0 
 	cub->parse->file = malloc(sizeof(char *) * (cub->parse->file_lines + 1));
 	if (!cub->parse->file || !cub->parse || !cub->smap)

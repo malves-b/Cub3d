@@ -6,7 +6,7 @@
 /*   By: malves-b <malves-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 18:16:53 by malves-b          #+#    #+#             */
-/*   Updated: 2025/05/08 19:20:55 by malves-b         ###   ########.fr       */
+/*   Updated: 2025/05/09 16:12:12 by malves-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,21 @@ void	draw_direction(t_main *pgr);
 void	rotate_player(t_raycasting *ray, double angle);
 
 #define ROT_SPEED 0.05
+
+void	check_side_pos(t_main *pgr, double dir_factor)
+{
+	double	next_x;
+	double	next_y;
+
+	next_x = pgr->ray->pp_x + pgr->ray->plane_vector[0] * dir_factor;
+	next_y = pgr->ray->pp_y + pgr->ray->plane_vector[1] * dir_factor;
+	if (pgr->map[(int)(next_y + 0.01)][(int)pgr->ray->pp_x] != '1' &&
+		pgr->map[(int)(next_y - 0.01)][(int)pgr->ray->pp_x] != '1')
+		pgr->ray->pp_y = next_y;
+	if (pgr->map[(int)pgr->ray->pp_y][(int)(next_x + 0.01)] != '1' &&
+		pgr->map[(int)pgr->ray->pp_y][(int)(next_x - 0.01)] != '1')
+		pgr->ray->pp_x = next_x;
+}
 
 void	check_next_pos(t_main *pgr, double dir_factor)
 {
@@ -40,10 +55,14 @@ int	key_press(int keycode, t_main *pgr)
 
 	pp_x = (int)pgr->ray->pp_x;
 	pp_y = (int)pgr->ray->pp_y;
-	if (keycode == KEY_UP)
+	if (keycode == KEY_UP || keycode == KEY_W)
 		check_next_pos(pgr, 0.3);
-	if (keycode == KEY_DOWN)
+	if (keycode == KEY_DOWN || keycode == KEY_S)
 		check_next_pos(pgr, -0.3);
+	if (keycode == KEY_A)
+		check_side_pos(pgr, -0.3);
+	if (keycode == KEY_D)
+		check_side_pos(pgr, 0.3);
 	if (keycode == KEY_LEFT)
 		rotate_player(pgr->ray, -ROT_SPEED);
 	if (keycode == KEY_RIGHT)

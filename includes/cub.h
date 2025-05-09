@@ -6,7 +6,7 @@
 /*   By: malves-b <malves-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 13:14:39 by malves-b          #+#    #+#             */
-/*   Updated: 2025/05/08 20:09:31 by malves-b         ###   ########.fr       */
+/*   Updated: 2025/05/09 16:10:24 by malves-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,10 @@
 # define HEIGHT 600
 
 # define MOVE_SPEED 0.3
+# define KEY_W 119
+# define KEY_A 97
+# define KEY_S 115
+# define KEY_D 100
 # define KEY_ESC 65307
 # define KEY_LEFT 65361
 # define KEY_RIGHT 65363

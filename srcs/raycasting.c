@@ -6,7 +6,7 @@
 /*   By: malves-b <malves-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 17:39:22 by malves-b          #+#    #+#             */
-/*   Updated: 2025/04/30 17:58:04 by malves-b         ###   ########.fr       */
+/*   Updated: 2025/05/09 16:14:16 by malves-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int		set_color(t_raycasting *ray); /* REMOVE */
 
 void	set_delta_dist(t_main *pgr, double ray_dir_x, double ray_dir_y);
 void	set_step(t_raycasting *ray, double ray_dir_x, double ray_dir_y);
-void	throw_ray(t_raycasting *ray, char **map);
+void	ft_dda(t_raycasting *ray, char **map);
 void	draw_wall(t_main *pgr, int x);
 
 void	render_frame(t_main *pgr)
@@ -37,7 +37,7 @@ void	render_frame(t_main *pgr)
 		pgr->ray->map_position_y = (int)pgr->ray->pp_y;
 		set_delta_dist(pgr, ray_dir_x, ray_dir_y);
 		set_step(pgr->ray, ray_dir_x, ray_dir_y);
-		throw_ray(pgr->ray, pgr->map);
+		ft_dda(pgr->ray, pgr->map);
 		if (pgr->ray->side == 0)
 			pgr->ray->prp_walldst = (pgr->ray->sidedistx - pgr->ray->dltdistx);
 		else
@@ -110,7 +110,7 @@ void	set_step(t_raycasting *ray, double ray_dir_x, double ray_dir_y)
 }
 
 /** @brief Function throw ray till hit a wall */
-void	throw_ray(t_raycasting *ray, char **map)
+void	ft_dda(t_raycasting *ray, char **map)
 {
 	ray->hit_wall = 0;
 	while (ray->hit_wall == 0)

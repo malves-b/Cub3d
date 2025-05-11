@@ -6,7 +6,7 @@
 /*   By: malves-b <malves-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 17:39:22 by malves-b          #+#    #+#             */
-/*   Updated: 2025/05/09 16:14:16 by malves-b         ###   ########.fr       */
+/*   Updated: 2025/05/11 19:27:08 by malves-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	render_frame(t_main *pgr)
 	double	ray_dir_y;
 
 	x = -1;
+	ft_bzero(pgr->mlx->img_addr, WIDTH * HEIGHT * (pgr->mlx->bits_per_pixel / 8));
 	draw_background(pgr);
 	while (++x < WIDTH)
 	{
@@ -87,24 +88,24 @@ void	set_step(t_raycasting *ray, double ray_dir_x, double ray_dir_y)
 	if (ray_dir_x < 0)
 	{
 		ray->stepx = -1;
-		ray->sidedistx = (ray->pp_x - ray->map_position_x) * ray->dltdistx;
+		ray->sidedistx = (ray->pp_x - (double)ray->map_position_x) * ray->dltdistx;
 	}
 	else
 	{
 		ray->stepx = 1;
-		ray->sidedistx = (ray->map_position_x + 1.0 - ray->pp_x)
+		ray->sidedistx = ((double)ray->map_position_x + 1.0 - ray->pp_x)
 			* ray->dltdistx;
 	}
 	if (ray_dir_y < 0)
 	{
 		ray->stepy = -1;
-		ray->sidedisty = (ray->pp_y - ray->map_position_y)
+		ray->sidedisty = (ray->pp_y - (double)ray->map_position_y)
 			* ray->dltdisty;
 	}
 	else
 	{
 		ray->stepy = 1;
-		ray->sidedisty = (ray->map_position_y + 1.0 - ray->pp_y)
+		ray->sidedisty = ((double)ray->map_position_y + 1.0 - ray->pp_y)
 			* ray->dltdisty;
 	}
 }
@@ -137,19 +138,75 @@ void	ft_dda(t_raycasting *ray, char **map)
  * for each pixel column. */
 void	draw_wall(t_main *pgr, int x)
 {
-	int	line_height;
-	int	draw_start;
-	int	draw_end;
-	int	y;
+	int		line_height;
+	int		draw_start;/**/
+	int		draw_end;
+	int		y;
+	int		tex_x;
+	int		tex_y;
+	double	step;
+	double	tex_pos;
+	t_image	*texture;
 
+	// Calcula a altura da linha a desenhar
 	line_height = (int)(HEIGHT / pgr->ray->prp_walldst);
+	
+	// Calcula onde começar e terminar de desenhar
 	draw_start = -line_height / 2 + HEIGHT / 2;
 	if (draw_start < 0)
 		draw_start = 0;
 	draw_end = line_height / 2 + HEIGHT / 2;
 	if (draw_end >= HEIGHT)
 		draw_end = HEIGHT - 1;
+
+	// Escolhe a textura baseada na direção
+	if (pgr->ray->side == 1)
+	{
+		if (pgr->ray->stepy > 0)
+			texture = pgr->texture_south; // SOUTH
+		else
+		{
+			texture = pgr->texture_north; // NORTH
+			puts("NORTH: ");
+		}
+	}
+	else
+	{
+		if (pgr->ray->stepx > 0)
+			texture = pgr->texture_east; // EAST
+		else
+			texture = pgr->texture_west; // WEST
+	}
+
+	// Calcula a posição x na textura
+	if (pgr->ray->side == 0)
+		pgr->ray->wall_x = pgr->ray->pp_y + pgr->ray->prp_walldst * pgr->ray->dir_y;
+	else
+		pgr->ray->wall_x = pgr->ray->pp_x + pgr->ray->prp_walldst * pgr->ray->dir_x;
+
+	pgr->ray->wall_x -= floor(pgr->ray->wall_x);
+
+	tex_x = (int)(pgr->ray->wall_x * (double)texture->width);
+
+	if (pgr->ray->side == 0 && pgr->ray->dir_x > 0)
+		tex_x = texture->width - tex_x - 1;
+	if (pgr->ray->side == 1 && pgr->ray->dir_y < 0)
+		tex_x = texture->width - tex_x - 1;
+
+	// Calcula passo e posição inicial da textura
+	step = 1.0 * texture->height / line_height;
+	tex_pos = (draw_start - HEIGHT / 2 + line_height / 2) * step;
+
+	// Loop para desenhar a parede com textura
 	y = draw_start;
 	while (y < draw_end)
-		my_put_pixel(pgr->mlx, x, y++, set_color(pgr->ray));
+	{
+		tex_y = (int)tex_pos & (texture->height - 1);
+		tex_pos += step;
+		int color = *(int *)(texture->addr + (tex_y * texture->line_len + tex_x * (texture->bpp / 8)));
+		my_put_pixel(pgr->mlx, x, y, color);
+		y++;
+
+		printf()
+	}
 }

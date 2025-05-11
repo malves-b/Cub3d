@@ -6,7 +6,7 @@
 /*   By: malves-b <malves-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 13:14:39 by malves-b          #+#    #+#             */
-/*   Updated: 2025/05/09 16:10:24 by malves-b         ###   ########.fr       */
+/*   Updated: 2025/05/11 16:27:33 by malves-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,9 @@ typedef struct s_raycasting
 	int		stepy;
 	int		hit_wall;
 	int		side;
-	// double	wall_x;/*-----*/
+
+
+	double	wall_x;/*-----*/
 }	t_raycasting;
 
 typedef struct s_mlx

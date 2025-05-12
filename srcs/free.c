@@ -6,7 +6,7 @@
 /*   By: malves-b <malves-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 10:39:03 by malves-b          #+#    #+#             */
-/*   Updated: 2025/05/12 13:34:46 by malves-b         ###   ########.fr       */
+/*   Updated: 2025/05/12 14:57:46 by malves-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	free_double_array(char **array)
 	free(array);
 }
 
-void free_textures(t_main *pgr)
+void	free_textures(t_main *pgr)
 {
 	mlx_destroy_image(pgr->mlx->mlx, pgr->texture_north->img_ptr);
 	free (pgr->texture_north);

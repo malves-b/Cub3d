@@ -6,7 +6,7 @@
 /*   By: malves-b <malves-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 13:14:39 by malves-b          #+#    #+#             */
-/*   Updated: 2025/05/12 12:01:01 by malves-b         ###   ########.fr       */
+/*   Updated: 2025/05/12 15:51:21 by malves-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ typedef struct s_parse
 	char	*ceiling_path;
 	char	**map;
 	char	**file;
-	int		file_lines;//ver se precisa
+	int		file_lines;
 	bool	no;
 	bool	so;
 	bool	we;
@@ -122,7 +122,14 @@ typedef struct s_raycasting
 	int		side;
 
 
-	double	wall_x;/*-----*/
+	double	wall_x;//draw_wall
+	double	step;//draw_wall
+	double	tex_pos;//draw_wall
+	int		tex_x;//draw_wall
+	int		tex_y;//draw_wall
+	int		line_height;
+	int		draw_start;
+	int		draw_end;
 }	t_raycasting;
 
 typedef struct s_mlx
@@ -153,7 +160,7 @@ typedef struct s_main
 
 int					ft_init_textures(t_main *pgr);
 t_image				*get_wall_texture(t_main *pgr);
-
+void				calc_x(t_main *pgr, double ray_dir_x, double ray_dir_y, int tex_width);
 
 /* --------------------------------- PARSING -------------------------------- */
 //validate_parse

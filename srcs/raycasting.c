@@ -6,13 +6,11 @@
 /*   By: malves-b <malves-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 17:39:22 by malves-b          #+#    #+#             */
-/*   Updated: 2025/05/12 13:27:36 by malves-b         ###   ########.fr       */
+/*   Updated: 2025/05/12 15:50:19 by malves-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub.h"
-
-int		set_color(t_raycasting *ray); /* REMOVE */
 
 void	set_delta_dist(t_main *pgr, double ray_dir_x, double ray_dir_y);
 void	set_step(t_raycasting *ray, double ray_dir_x, double ray_dir_y);
@@ -27,7 +25,6 @@ void	render_frame(t_main *pgr)
 	double	ray_dir_y;
 
 	x = -1;
-	ft_bzero(pgr->mlx->img_addr, WIDTH * HEIGHT * (pgr->mlx->bits_per_pixel / 8));
 	draw_background(pgr);
 	while (++x < WIDTH)
 	{
@@ -49,27 +46,6 @@ void	render_frame(t_main *pgr)
 		pgr->mlx->img, 0, 0);
 }
 
-int	set_color(t_raycasting *ray)
-{
-	int	color;
-
-	if (ray->side == 1)
-	{
-		if (ray->stepy > 0)
-			color = RED;//SOUTH
-		else
-			color = RED_LIGHT;//NORTH
-	}
-	else
-	{
-		if (ray->stepx > 0)
-			color = YELLOW; //EAST
-		else
-			color = GREEN; //WEST
-	}
-	return (color);
-}
-
 void	set_delta_dist(t_main *pgr, double ray_dir_x, double ray_dir_y)
 {
 	if (ray_dir_x == 0)
@@ -88,7 +64,8 @@ void	set_step(t_raycasting *ray, double ray_dir_x, double ray_dir_y)
 	if (ray_dir_x < 0)
 	{
 		ray->stepx = -1;
-		ray->sidedistx = (ray->pp_x - (double)ray->map_position_x) * ray->dltdistx;
+		ray->sidedistx = (ray->pp_x - (double)ray->map_position_x)
+			* ray->dltdistx;
 	}
 	else
 	{
@@ -141,10 +118,7 @@ void	draw_wall(t_main *pgr, int x, double ray_dir_x, double ray_dir_y)
 	int		line_height;
 	int		draw_start;
 	int		draw_end;
-	int		tex_x;
-	int		tex_y;
-	double	step;
-	double	tex_pos;
+	int		color;
 	t_image	*texture;
 
 	line_height = (int)(HEIGHT / pgr->ray->prp_walldst);
@@ -155,21 +129,17 @@ void	draw_wall(t_main *pgr, int x, double ray_dir_x, double ray_dir_y)
 	if (draw_end >= HEIGHT)
 		draw_end = HEIGHT - 1;
 	texture = get_wall_texture(pgr);
-	if (pgr->ray->side == 0)
-		pgr->ray->wall_x = pgr->ray->pp_y + pgr->ray->prp_walldst * ray_dir_y;
-	else
-		pgr->ray->wall_x = pgr->ray->pp_x + pgr->ray->prp_walldst * ray_dir_x;
-	pgr->ray->wall_x -= floor(pgr->ray->wall_x);
-	tex_x = (int)(pgr->ray->wall_x * (double)texture->width);
-	if ((pgr->ray->side == 0 && ray_dir_x < 0) || (pgr->ray->side == 1 && ray_dir_y > 0))
-		tex_x = texture->width - tex_x - 1;
-	step = 1.0 * texture->height / line_height;
-	tex_pos = (draw_start - HEIGHT / 2 + line_height / 2) * step;
+	calc_x(pgr, ray_dir_x, ray_dir_y, texture->width);
+	pgr->ray->step = 1.0 * texture->height / line_height;
+	pgr->ray->tex_pos = (draw_start - HEIGHT / 2 + line_height / 2) * pgr->ray->step;
 	while (draw_start++ < draw_end)
 	{
-		tex_y = (int)tex_pos & (texture->height - 1);
-		tex_pos += step;
-		int color = *(int *)(texture->addr + (tex_y * texture->line_len + tex_x * (texture->bpp / 8)));
+		pgr->ray->tex_y = (int)pgr->ray->tex_pos & (texture->height - 1);
+		pgr->ray->tex_pos += pgr->ray->step;
+		color = *(int *)(texture->addr + (pgr->ray->tex_y * texture->line_len
+					+ pgr->ray->tex_x * (texture->bpp / 8)));
 		my_put_pixel(pgr->mlx, x, draw_start - 1, color);
 	}
 }
+
+

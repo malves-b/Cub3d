@@ -1,66 +1,61 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
-typedef struct s_parse
+int	ft_isdigit(int c)
 {
-	int		r;
-	int		g;
-	int		b;
-	char *hexa;
-}	t_parse;
+	return (c >= '0' && c <= '9');
+}
 
 
-static int	ft_count_hex(unsigned int nbr)
+char	*clean_rgb_string(const char *input)
 {
-	int	i = 0;
+	int		i = 0, j = 0, count = 0;
+	const char	*tmp;
+	char	*output;
 
-	if (nbr == 0)
-		return (1);
-	while (nbr != 0)
-	{
+	// Pular até o primeiro dígito
+	while (input[i] && !ft_isdigit(input[i]))
 		i++;
-		nbr = nbr / 16;
+	tmp = &input[i];
+
+	// Contar caracteres não espaços
+	while (tmp[j])
+	{
+		if (tmp[j] != ' ')
+			count++;
+		j++;
 	}
-	return (i);
+
+	output = malloc(count + 1); // aloca apenas o necessário
+	if (!output)
+		return (NULL);
+
+	j = 0;
+	while (*tmp)
+	{
+		if (*tmp != ' ')
+			output[j++] = *tmp;
+		tmp++;
+	}
+	output[j] = '\0';
+	return (output);
 }
 
-
-static void number_to_hex(int nbr, char *hexa, int start)
+int	main(void)
 {
-	char hex_digits[] = "0123456789abcdef";
+	const char *str = "F     25      5,     255,255";
+	char *cleaned = clean_rgb_string(str);
 
-	// First hex digit (most significant nibble)
-	hexa[start] = hex_digits[nbr / 16];
+	if (!cleaned)
+	{
+		printf("Erro ao alocar memória\n");
+		return (1);
+	}
 
-	// Second hex digit (least significant nibble)
-	hexa[start + 1] = hex_digits[nbr % 16];
+	printf("Original: \"%s\"\n", str);
+	printf("Limpa:    \"%s\"\n", cleaned);
+
+	free(cleaned);
+	return (0);
 }
-
-char	*ft_utoa_hex(t_parse *parse)
-{
-	int		len;
-	char	*temp;
-	len = ft_count_hex(parse->r);
-	len += ft_count_hex(parse->g);
-	len += ft_count_hex(parse->b);
-	parse->hexa = malloc(sizeof(char) * (len + 1));
-	number_to_hex(parse->r, parse->hexa, 0); // r → positions 0,1
-	number_to_hex(parse->g, parse->hexa, 2); // g → positions 2,3
-	number_to_hex(parse->b, parse->hexa, 4); // b → positions 4,5
-	parse->hexa[6] = '\0';
-	return (parse->hexa);
-	
-}
-
-// int main ()
-// {
-// 	t_parse *parse = malloc(sizeof(t_parse) * 1);
-// 	parse->r = 0;
-// 	parse->g = 0;
-// 	parse->b = 0;
-
-// 	printf("%s", ft_utoa_hex(parse));
-// 	free(parse->hexa);
-// 	free(parse);
-//     return 0;
-// }

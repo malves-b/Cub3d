@@ -12,7 +12,10 @@ static bool check_is_digit(char *str)
 		//printf("%c CHECK character is DIGIT\n", str[i]);
 		if(str[i] != ',' && !(str[i] > '0' && str[i] < '9'))
 		{
-			printf("Error\nMap is not valid, color is not valid!\n");
+			printf("--%c--\n", str[i]);
+			printf("--%i--\n", i);
+			printf("--%s--", str);
+			printf("Error\nMap is not valid, color is not valid22222!\n");
 			return (false);
 		}
 		i++;
@@ -20,14 +23,14 @@ static bool check_is_digit(char *str)
 	return (true);
 }
 
-bool	set_texture_path(char *line, int i, t_parse *parse, char **str)
+bool	set_texture_path(char *line, int i, t_parse *parse, char **str_struct)
 {
 	int	len;
 	int	j;
 
 	(void)parse;
 	j = 0;
-	if (*str != NULL)
+	if (*str_struct != NULL)
 	{
 		printf("Error\nMap is not valid, textures are duplicaated!\n");
 		return (false);
@@ -37,50 +40,36 @@ bool	set_texture_path(char *line, int i, t_parse *parse, char **str)
 		i++;
 	}
 	len = ft_strlen_i(line, i);
-	*str = malloc(sizeof(char) * len + 1);
+	*str_struct = malloc(sizeof(char) * len + 1);
 	while (line[i] != '\0')
 	{
-		(*str)[j] = line[i++];
+		(*str_struct)[j] = line[i++];
 		j++;
 	}
-	(*str)[j] = '\0';
+	(*str_struct)[j] = '\0';
 	return (true);
-	//printf("parse deu certo? == %s no\n", parse->no_path);
 }
 
-bool	validate_color(char *line, int i, t_parse *parse, char **str)
+bool	validate_color(char *line, int i, t_parse *parse, char **str_struct)
 {
-	int	len;
 	int	j;
 	char *temp;
+	(void)i;
 	
 	j = 0;
-	if (*str != NULL)
+	if (*str_struct != NULL)
 	{
-		printf("Error\nMap is not valid, Color is not valid!\n");
-		// free_parse(parse);
-		// free_structs(parse->cub);
+		printf("Error\nMap is not valid, Color is not valid3333!\n");
 		return (false);
 	}
-	printf("%s line ---", line);
-	while(!ft_isdigit(line[i]))//AQUIIIIIIIIIIIIIICRLH
-		i++;
-	len = ft_strlen_i(line, i);
-	temp = malloc(sizeof(char) * len + 1);
-	while (line[i] != '\0')
-	{
-		temp[j] = line[i++];
-		j++;
-	}
-	temp[j] = '\0';
-	printf("aaaaaaaaaaaaaaaaaaaaaaaaa\n");
+	temp = clean_rgb_string(line);
 	if(!check_is_digit(temp) || !validate_rgb(parse, temp))
 	{
 		free(temp);
 		return (false);
 	}
-	ft_itoa_hex(parse, str);
-	printf("%s temp_color\n", temp);
+	ft_itoa_hex(parse, str_struct);
+	printf(" temp_color%s\n", temp);
 	free(temp);
 	return (true);
 }
@@ -104,7 +93,7 @@ bool	validate_rgb(t_parse *parse, char *rgb)
 	parse->g = ft_atoi(split[1]);
 	parse->b = ft_atoi(split[2]);
 //	printf("%i- r\n%i- g\n%i- b\n", parse->r, parse->g,parse->b);
-	if((parse->r < 0 && parse->r > 255 )|| (parse->g < 0 && parse->g > 255) || (parse->b < 0 && parse->b > 255))
+	if((parse->r < 0 || parse->r > 255 ) || (parse->g < 0 || parse->g > 255) || (parse->b < 0 || parse->b > 255))
 	{
 		printf("Erro: formato RGB inválidoaaaaaaaa!\n");
 		free_array(&split);

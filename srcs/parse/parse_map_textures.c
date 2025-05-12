@@ -5,7 +5,7 @@ bool	add_line(char *line, t_parse *parse)
 	int		i;
 
 	i = 0;
-	while(line[i] == ' ')//adicionar outros espaços 
+	while(line[i] == ' '  || (line[i] >= 9 && line[i] <= 13))//adicionar outros espaços 
 		i++;
 	if (line[i] == 'N')
 		return (set_texture_path(line, i, parse, &parse->no_path));

@@ -1,6 +1,6 @@
 #include "../../includes/cub.h"
 
-void	get_number_lines(char *file, int *file_lines)
+bool	get_number_lines(char *file, int *file_lines)
 {
 	char	*line;
 	int		fd;
@@ -9,7 +9,8 @@ void	get_number_lines(char *file, int *file_lines)
 	if (fd < 0)
 	{
 		printf("Error\n the file doesn't exist!\n");
-		exit (1);
+		close(fd);
+		return (false);
 	}
 	line = get_next_line(fd);
 	while (line != NULL)
@@ -19,6 +20,7 @@ void	get_number_lines(char *file, int *file_lines)
 		line = get_next_line(fd);
 	}
 	close(fd);
+	return (true);
 }
 
 bool	init_file(char *file, t_parse *parse)
@@ -32,6 +34,7 @@ bool	init_file(char *file, t_parse *parse)
 	if(fd < 0)
 	{
 		printf("Error\n the file doesn't exist!\n");
+		close(fd);
 		return false;
 	}
 	line = get_next_line(fd);
@@ -50,12 +53,13 @@ bool	init_file(char *file, t_parse *parse)
 bool	init_parse_info(t_cub *cub, char *file)
 {
 	init_struct(cub);
-	get_number_lines(file, &cub->parse->file_lines);//verificação se line é menor ou == 0 
+	if(!(get_number_lines(file, &cub->parse->file_lines)))//verificação se line é menor ou == 0 
+		return(false);
 	cub->parse->file = malloc(sizeof(char *) * (cub->parse->file_lines + 1));
 	if (!cub->parse->file || !cub->parse || !cub->smap)
 	{
 		printf("Error\n Memory allocation error\n");
-		return (false); ///fazer algo paara exit
+		return (false);
 	}
 	if(!init_file(file, cub->parse))
 		return false;

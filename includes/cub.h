@@ -94,7 +94,7 @@ void	init_struct(t_cub *cub);
 
 //read_parse_file
 bool	init_file(char *file, t_parse *parse);
-void	get_number_lines(char *file, int *file_lines);
+bool	get_number_lines(char *file, int *file_lines);
 bool	init_parse_info(t_cub *cub, char *file);
 
 //parse_map_textures
@@ -128,6 +128,9 @@ void	copy_textures(t_parse *parse, t_texture *texture);
 
 //rgb_to_hexa
 void	ft_itoa_hex(t_parse *parse, char **str_color);
+
+//utils_textures_color
+char	*clean_rgb_string(const char *input);
 
 /* ---------------------------------- UTILS --------------------------------- */
 

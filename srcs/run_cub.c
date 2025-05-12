@@ -6,7 +6,7 @@
 /*   By: malves-b <malves-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 18:16:53 by malves-b          #+#    #+#             */
-/*   Updated: 2025/05/11 18:46:59 by malves-b         ###   ########.fr       */
+/*   Updated: 2025/05/12 11:36:08 by malves-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,6 @@ void	check_next_pos(t_main *pgr, double dir_factor)
 
 int	key_press(int keycode, t_main *pgr)
 {
-	int	pp_x;
-	int	pp_y;
-
-	pp_x = (int)pgr->ray->pp_x;
-	pp_y = (int)pgr->ray->pp_y;
 	if (keycode == KEY_UP || keycode == KEY_W)
 		check_next_pos(pgr, 0.3);
 	if (keycode == KEY_DOWN || keycode == KEY_S)
@@ -63,10 +58,10 @@ int	key_press(int keycode, t_main *pgr)
 		check_side_pos(pgr, -0.3);
 	if (keycode == KEY_D)
 		check_side_pos(pgr, 0.3);
-	// if (keycode == KEY_LEFT)
-	// 	rotate_player(pgr->ray, -ROT_SPEED);
-	// if (keycode == KEY_RIGHT)
-	// 	rotate_player(pgr->ray, ROT_SPEED);
+	if (keycode == KEY_LEFT)
+		rotate_player(pgr->ray, -ROT_SPEED);
+	if (keycode == KEY_RIGHT)
+		rotate_player(pgr->ray, ROT_SPEED);
 	if (keycode == KEY_ESC)
 		exit(ft_free(pgr));
 	ft_bzero(pgr->mlx->img_addr, WIDTH * HEIGHT);

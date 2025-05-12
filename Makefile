@@ -15,6 +15,7 @@ SRCS = $(SRCS_DIR)/main.c \
 	$(SRCS_DIR)/utils.c $(SRCS_DIR)/init_raycasting.c \
 	$(SRCS_DIR)/run_cub.c $(SRCS_DIR)/raycasting.c \
 	$(SRCS_DIR)/raycasting_utils.c $(SRCS_DIR)/textures_settings.c \
+	$(SRCS_DIR)/textures_utils.c \
 	$(PARSE_DIR)/init_parse_structs.c $(PARSE_DIR)/read_parse_file.c \
 	$(PARSE_DIR)/utils_parse.c $(PARSE_DIR)/validate_parse.c
 

@@ -6,7 +6,7 @@
 /*   By: malves-b <malves-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 13:14:39 by malves-b          #+#    #+#             */
-/*   Updated: 2025/05/11 16:27:33 by malves-b         ###   ########.fr       */
+/*   Updated: 2025/05/12 12:01:01 by malves-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,7 +151,9 @@ typedef struct s_main
 
 /* --------------------------------- TEXTURE -------------------------------- */
 
-int	ft_init_textures(t_main *pgr);
+int					ft_init_textures(t_main *pgr);
+t_image				*get_wall_texture(t_main *pgr);
+
 
 /* --------------------------------- PARSING -------------------------------- */
 //validate_parse

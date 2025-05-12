@@ -6,7 +6,7 @@
 /*   By: malves-b <malves-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 17:39:22 by malves-b          #+#    #+#             */
-/*   Updated: 2025/05/11 19:27:08 by malves-b         ###   ########.fr       */
+/*   Updated: 2025/05/12 12:49:01 by malves-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int		set_color(t_raycasting *ray); /* REMOVE */
 void	set_delta_dist(t_main *pgr, double ray_dir_x, double ray_dir_y);
 void	set_step(t_raycasting *ray, double ray_dir_x, double ray_dir_y);
 void	ft_dda(t_raycasting *ray, char **map);
-void	draw_wall(t_main *pgr, int x);
+void	draw_wall(t_main *pgr, int x, double ray_dir_x, double ray_dir_y);
 
 void	render_frame(t_main *pgr)
 {
@@ -43,7 +43,7 @@ void	render_frame(t_main *pgr)
 			pgr->ray->prp_walldst = (pgr->ray->sidedistx - pgr->ray->dltdistx);
 		else
 			pgr->ray->prp_walldst = (pgr->ray->sidedisty - pgr->ray->dltdisty);
-		draw_wall(pgr, x);
+		draw_wall(pgr, x, ray_dir_x, ray_dir_y);
 	}
 	mlx_put_image_to_window(pgr->mlx->mlx, pgr->mlx->mlx_win,
 		pgr->mlx->img, 0, 0);
@@ -136,7 +136,7 @@ void	ft_dda(t_raycasting *ray, char **map)
 /** @brief Draws a vertical wall stripe on screen based on the calculated 
  * distance to the wall. Uses raycasting data to determine height and color 
  * for each pixel column. */
-void	draw_wall(t_main *pgr, int x)
+void	draw_wall(t_main *pgr, int x, double ray_dir_x, double ray_dir_y)
 {
 	int		line_height;
 	int		draw_start;/**/
@@ -160,37 +160,19 @@ void	draw_wall(t_main *pgr, int x)
 		draw_end = HEIGHT - 1;
 
 	// Escolhe a textura baseada na direção
-	if (pgr->ray->side == 1)
-	{
-		if (pgr->ray->stepy > 0)
-			texture = pgr->texture_south; // SOUTH
-		else
-		{
-			texture = pgr->texture_north; // NORTH
-			puts("NORTH: ");
-		}
-	}
-	else
-	{
-		if (pgr->ray->stepx > 0)
-			texture = pgr->texture_east; // EAST
-		else
-			texture = pgr->texture_west; // WEST
-	}
+	texture = get_wall_texture(pgr);
 
 	// Calcula a posição x na textura
 	if (pgr->ray->side == 0)
-		pgr->ray->wall_x = pgr->ray->pp_y + pgr->ray->prp_walldst * pgr->ray->dir_y;
+		pgr->ray->wall_x = pgr->ray->pp_y + pgr->ray->prp_walldst * ray_dir_y;
 	else
-		pgr->ray->wall_x = pgr->ray->pp_x + pgr->ray->prp_walldst * pgr->ray->dir_x;
+		pgr->ray->wall_x = pgr->ray->pp_x + pgr->ray->prp_walldst * ray_dir_x;
 
 	pgr->ray->wall_x -= floor(pgr->ray->wall_x);
 
 	tex_x = (int)(pgr->ray->wall_x * (double)texture->width);
 
-	if (pgr->ray->side == 0 && pgr->ray->dir_x > 0)
-		tex_x = texture->width - tex_x - 1;
-	if (pgr->ray->side == 1 && pgr->ray->dir_y < 0)
+	if ((pgr->ray->side == 0 && ray_dir_x < 0) || (pgr->ray->side == 1 && ray_dir_y > 0))
 		tex_x = texture->width - tex_x - 1;
 
 	// Calcula passo e posição inicial da textura
@@ -206,7 +188,5 @@ void	draw_wall(t_main *pgr, int x)
 		int color = *(int *)(texture->addr + (tex_y * texture->line_len + tex_x * (texture->bpp / 8)));
 		my_put_pixel(pgr->mlx, x, y, color);
 		y++;
-
-		printf()
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: malves-b <malves-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 18:23:31 by malves-b          #+#    #+#             */
-/*   Updated: 2025/05/11 17:01:46 by malves-b         ###   ########.fr       */
+/*   Updated: 2025/05/12 11:35:29 by malves-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@ t_image	*load_texture(t_main *pgr, char *path);
 
 int	ft_init_textures(t_main *pgr)
 {
-	pgr->texture_north = load_texture(pgr, "/home/malves-b/sgoinfre/Rank_04/Cub3d/textures/n.xpm");
-	pgr->texture_south = load_texture(pgr, "/home/malves-b/sgoinfre/Rank_04/Cub3d/textures/s.xpm");
-	pgr->texture_west = load_texture(pgr, "/home/malves-b/sgoinfre/Rank_04/Cub3d/textures/w.xpm");
-	pgr->texture_east = load_texture(pgr, "/home/malves-b/sgoinfre/Rank_04/Cub3d/textures/e.xpm");
+	pgr->texture_north = load_texture(pgr, "/home/malves-b/Common-core/Cub3d/textures/n.xpm");
+	pgr->texture_south = load_texture(pgr, "/home/malves-b/Common-core/Cub3d/textures/s.xpm");
+	pgr->texture_west = load_texture(pgr, "/home/malves-b/Common-core/Cub3d/textures/w.xpm");
+	pgr->texture_east = load_texture(pgr, "/home/malves-b/Common-core/Cub3d/textures/e.xpm");
 	if (!pgr->texture_north || !pgr->texture_south || !pgr->texture_east
 		|| !pgr->texture_west)
 		return (1);

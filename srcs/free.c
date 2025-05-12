@@ -6,7 +6,7 @@
 /*   By: malves-b <malves-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 10:39:03 by malves-b          #+#    #+#             */
-/*   Updated: 2025/04/23 19:40:20 by malves-b         ###   ########.fr       */
+/*   Updated: 2025/05/12 13:34:46 by malves-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	free_mlx_struct(t_mlx *mlx);
 void	free_double_array(char **array);
+void	free_textures(t_main *pgr);
 
 /**
  * @brief Function free memories accordingly the flag
@@ -22,6 +23,7 @@ void	free_double_array(char **array);
  */
 int	ft_free(t_main *pgr)
 {
+	free_textures (pgr);
 	free_mlx_struct (pgr->mlx);
 	free_double_array (pgr->parse->file);
 	free (pgr->mlx);
@@ -66,4 +68,16 @@ void	free_double_array(char **array)
 		}
 	}
 	free(array);
+}
+
+void free_textures(t_main *pgr)
+{
+	mlx_destroy_image(pgr->mlx->mlx, pgr->texture_north->img_ptr);
+	free (pgr->texture_north);
+	mlx_destroy_image(pgr->mlx->mlx, pgr->texture_east->img_ptr);
+	free (pgr->texture_east);
+	mlx_destroy_image(pgr->mlx->mlx, pgr->texture_west->img_ptr);
+	free (pgr->texture_west);
+	mlx_destroy_image(pgr->mlx->mlx, pgr->texture_south->img_ptr);
+	free (pgr->texture_south);
 }

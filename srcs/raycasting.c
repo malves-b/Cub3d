@@ -6,7 +6,7 @@
 /*   By: malves-b <malves-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 17:39:22 by malves-b          #+#    #+#             */
-/*   Updated: 2025/05/12 12:49:01 by malves-b         ###   ########.fr       */
+/*   Updated: 2025/05/12 13:27:36 by malves-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,54 +139,37 @@ void	ft_dda(t_raycasting *ray, char **map)
 void	draw_wall(t_main *pgr, int x, double ray_dir_x, double ray_dir_y)
 {
 	int		line_height;
-	int		draw_start;/**/
+	int		draw_start;
 	int		draw_end;
-	int		y;
 	int		tex_x;
 	int		tex_y;
 	double	step;
 	double	tex_pos;
 	t_image	*texture;
 
-	// Calcula a altura da linha a desenhar
 	line_height = (int)(HEIGHT / pgr->ray->prp_walldst);
-	
-	// Calcula onde começar e terminar de desenhar
 	draw_start = -line_height / 2 + HEIGHT / 2;
 	if (draw_start < 0)
 		draw_start = 0;
 	draw_end = line_height / 2 + HEIGHT / 2;
 	if (draw_end >= HEIGHT)
 		draw_end = HEIGHT - 1;
-
-	// Escolhe a textura baseada na direção
 	texture = get_wall_texture(pgr);
-
-	// Calcula a posição x na textura
 	if (pgr->ray->side == 0)
 		pgr->ray->wall_x = pgr->ray->pp_y + pgr->ray->prp_walldst * ray_dir_y;
 	else
 		pgr->ray->wall_x = pgr->ray->pp_x + pgr->ray->prp_walldst * ray_dir_x;
-
 	pgr->ray->wall_x -= floor(pgr->ray->wall_x);
-
 	tex_x = (int)(pgr->ray->wall_x * (double)texture->width);
-
 	if ((pgr->ray->side == 0 && ray_dir_x < 0) || (pgr->ray->side == 1 && ray_dir_y > 0))
 		tex_x = texture->width - tex_x - 1;
-
-	// Calcula passo e posição inicial da textura
 	step = 1.0 * texture->height / line_height;
 	tex_pos = (draw_start - HEIGHT / 2 + line_height / 2) * step;
-
-	// Loop para desenhar a parede com textura
-	y = draw_start;
-	while (y < draw_end)
+	while (draw_start++ < draw_end)
 	{
 		tex_y = (int)tex_pos & (texture->height - 1);
 		tex_pos += step;
 		int color = *(int *)(texture->addr + (tex_y * texture->line_len + tex_x * (texture->bpp / 8)));
-		my_put_pixel(pgr->mlx, x, y, color);
-		y++;
+		my_put_pixel(pgr->mlx, x, draw_start - 1, color);
 	}
 }

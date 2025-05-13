@@ -6,7 +6,7 @@
 /*   By: malves-b <malves-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 17:39:22 by malves-b          #+#    #+#             */
-/*   Updated: 2025/05/12 15:50:19 by malves-b         ###   ########.fr       */
+/*   Updated: 2025/05/13 12:43:08 by malves-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,23 +115,23 @@ void	ft_dda(t_raycasting *ray, char **map)
  * for each pixel column. */
 void	draw_wall(t_main *pgr, int x, double ray_dir_x, double ray_dir_y)
 {
-	int		line_height;
+	int		l_hgt;
 	int		draw_start;
 	int		draw_end;
 	int		color;
 	t_image	*texture;
 
-	line_height = (int)(HEIGHT / pgr->ray->prp_walldst);
-	draw_start = -line_height / 2 + HEIGHT / 2;
+	l_hgt = (int)(HEIGHT / pgr->ray->prp_walldst);
+	draw_start = -l_hgt / 2 + HEIGHT / 2;
 	if (draw_start < 0)
 		draw_start = 0;
-	draw_end = line_height / 2 + HEIGHT / 2;
+	draw_end = l_hgt / 2 + HEIGHT / 2;
 	if (draw_end >= HEIGHT)
 		draw_end = HEIGHT - 1;
 	texture = get_wall_texture(pgr);
 	calc_x(pgr, ray_dir_x, ray_dir_y, texture->width);
-	pgr->ray->step = 1.0 * texture->height / line_height;
-	pgr->ray->tex_pos = (draw_start - HEIGHT / 2 + line_height / 2) * pgr->ray->step;
+	pgr->ray->step = 1.0 * texture->height / l_hgt;
+	pgr->ray->tex_pos = (draw_start - HEIGHT / 2 + l_hgt / 2) * pgr->ray->step;
 	while (draw_start++ < draw_end)
 	{
 		pgr->ray->tex_y = (int)pgr->ray->tex_pos & (texture->height - 1);
@@ -141,5 +141,3 @@ void	draw_wall(t_main *pgr, int x, double ray_dir_x, double ray_dir_y)
 		my_put_pixel(pgr->mlx, x, draw_start - 1, color);
 	}
 }
-
-

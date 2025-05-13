@@ -6,7 +6,7 @@
 /*   By: malves-b <malves-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 15:00:26 by malves-b          #+#    #+#             */
-/*   Updated: 2025/05/12 15:50:44 by malves-b         ###   ########.fr       */
+/*   Updated: 2025/05/13 12:38:30 by malves-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,15 +35,15 @@ void	draw_background(t_main *pgr)
 }
 
 /** @brief Function calc the value of x position in the texture*/
-void	calc_x(t_main *pgr, double ray_dir_x, double ray_dir_y, int tex_width)
+void	calc_x(t_main *pgr, double dir_x, double dir_y, int t_wdth)
 {
 	if (pgr->ray->side == 0)
-		pgr->ray->wall_x = pgr->ray->pp_y + pgr->ray->prp_walldst * ray_dir_y;
+		pgr->ray->wall_x = pgr->ray->pp_y + pgr->ray->prp_walldst * dir_y;
 	else
-		pgr->ray->wall_x = pgr->ray->pp_x + pgr->ray->prp_walldst * ray_dir_x;
+		pgr->ray->wall_x = pgr->ray->pp_x + pgr->ray->prp_walldst * dir_x;
 	pgr->ray->wall_x -= floor(pgr->ray->wall_x);
-	pgr->ray->tex_x = (int)(pgr->ray->wall_x * (double)tex_width);
-	if ((pgr->ray->side == 0 && ray_dir_x < 0)
-		|| (pgr->ray->side == 1 && ray_dir_y > 0))
-		pgr->ray->tex_x = tex_width - pgr->ray->tex_x - 1;
+	pgr->ray->tex_x = (int)(pgr->ray->wall_x * (double)t_wdth);
+	if ((pgr->ray->side == 0 && dir_x < 0)
+		|| (pgr->ray->side == 1 && dir_y > 0))
+		pgr->ray->tex_x = t_wdth - pgr->ray->tex_x - 1;
 }

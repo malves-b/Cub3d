@@ -6,7 +6,7 @@
 /*   By: malves-b <malves-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 13:14:39 by malves-b          #+#    #+#             */
-/*   Updated: 2025/05/12 15:51:21 by malves-b         ###   ########.fr       */
+/*   Updated: 2025/05/13 12:36:59 by malves-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,8 +120,6 @@ typedef struct s_raycasting
 	int		stepy;
 	int		hit_wall;
 	int		side;
-
-
 	double	wall_x;//draw_wall
 	double	step;//draw_wall
 	double	tex_pos;//draw_wall
@@ -160,7 +158,7 @@ typedef struct s_main
 
 int					ft_init_textures(t_main *pgr);
 t_image				*get_wall_texture(t_main *pgr);
-void				calc_x(t_main *pgr, double ray_dir_x, double ray_dir_y, int tex_width);
+void				calc_x(t_main *pgr, double dir_x, double dir_y, int t_wdth);
 
 /* --------------------------------- PARSING -------------------------------- */
 //validate_parse

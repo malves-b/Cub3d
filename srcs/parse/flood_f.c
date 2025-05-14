@@ -97,13 +97,14 @@ bool scan_area(t_parse *parse)
 	if(!init_overlay(&ff))
 	{
 		printf("Error\n Memory allocation error\n");
-	//	free_ff(&ff)
+		free_ff(&ff);
 		return (false);
 	}
 	flood_fill(&ff, parse->parse_y, parse->parse_x, &invalid);
 	if(invalid == true)
 	{
 		printf("Erro: caractere inválido encontrado no mapa\n");
+		free_ff(&ff);
 		return (false);
 	}
 	print_ff(ff.overlay, &ff);
@@ -112,6 +113,7 @@ bool scan_area(t_parse *parse)
 		printf("Erro: mapa não está fechado\n");
 		return (false);
 	}
+	free_ff(&ff);
 	return (true);
 
 

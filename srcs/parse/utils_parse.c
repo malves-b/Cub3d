@@ -84,17 +84,18 @@ void	free_int_array(t_ff *ff)
 			i++;
 		}
 	}
+	free(ff->overlay);
 }
 void	free_ff(t_ff *ff)
 {
-	free_array(&ff->map_ff);
+	//free_array(&ff->overlay);
 	free_int_array(ff);
-	free(ff);
+	//free(ff);
 }
 
 int ft_exit(t_cub *cub)
 {
-	free_ff(cub->ff);
+	//free_ff(cub->ff);
 	free_parse(cub->parse);
 	free_structs(cub);
 	free(cub);

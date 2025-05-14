@@ -7,15 +7,15 @@ static bool check_is_digit(char *str)
 
 	i = 0;
 	//printf("%s temp CHECK IS DIGIT\n", str);
-	while(str[i] != '\n')
+	while(str[i] != '\0')
 	{
 		//printf("%c CHECK character is DIGIT\n", str[i]);
-		if(str[i] != ',' && !(str[i] > '0' && str[i] < '9'))
+		if(str[i] != ',' && !(str[i] >= '0' && str[i] <= '9'))
 		{
 			printf("--%c--\n", str[i]);
 			printf("--%i--\n", i);
 			printf("--%s--", str);
-			printf("Error\nMap is not valid, color is not valid22222!\n");
+			printf("Error\nMap is not valid, color is not valid!\n");
 			return (false);
 		}
 		i++;
@@ -52,14 +52,19 @@ bool	set_texture_path(char *line, int i, t_parse *parse, char **str_struct)
 
 bool	validate_color(char *line, int i, t_parse *parse, char **str_struct)
 {
-	int	j;
+	//int	j;
 	char *temp;
 	(void)i;
 	
-	j = 0;
+	//j = 0;
 	if (*str_struct != NULL)
 	{
-		printf("Error\nMap is not valid, Color is not valid3333!\n");
+		printf("Error\nMap is not valid, Color is not valid!\n");
+		return (false);
+	}
+	if(!check_letters(line))
+	{
+		printf("Error\nMap is not valid, Color is not valid!\n");
 		return (false);
 	}
 	temp = clean_rgb_string(line);
@@ -95,7 +100,7 @@ bool	validate_rgb(t_parse *parse, char *rgb)
 //	printf("%i- r\n%i- g\n%i- b\n", parse->r, parse->g,parse->b);
 	if((parse->r < 0 || parse->r > 255 ) || (parse->g < 0 || parse->g > 255) || (parse->b < 0 || parse->b > 255))
 	{
-		printf("Erro: formato RGB inválidoaaaaaaaa!\n");
+		printf("Erro: formato RGB inválido!\n");
 		free_array(&split);
 		return (false);
 	}

@@ -1,5 +1,9 @@
 #include "../../includes/cub.h"
 
+int	ft_isspace(char c)
+{
+	return (c == ' ' || (c >= 9 && c <= 13));
+}
 
 static int ft_count(const char *temp)
 {
@@ -26,10 +30,6 @@ char	*clean_rgb_string(const char *input)
 
 	while (input[i] && !ft_isdigit(input[i]))
 	{
-		if((input[i] == '-' || input[i] == '+'))
-		{
-			break ;
-		}	
 		i++;
 	}
 	temp = &input[i];
@@ -45,4 +45,27 @@ char	*clean_rgb_string(const char *input)
 	}
 	output[i] = '\0';
 	return (output);
+}
+
+
+bool check_letters(char *str)
+{
+	int i = 0;
+	//bool c_f = false;
+
+	while (ft_isspace(str[i]))
+	{
+		printf("aquiiii");
+		i++;
+	}
+	if(str[i] != 'C' && str[i] != 'F' )
+		return (false);
+	i++;
+	while(str[i] != '\0')
+	{
+		if(!ft_isspace(str[i]) && !ft_isdigit(str[i]) && str[i] != ',')
+			return (false);
+		i++;
+	}
+	return (true);
 }

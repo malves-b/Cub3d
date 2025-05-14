@@ -131,6 +131,8 @@ void	ft_itoa_hex(t_parse *parse, char **str_color);
 
 //utils_textures_color
 char	*clean_rgb_string(const char *input);
+bool	check_letters(char *str);
+int		ft_isspace(char c);
 
 /* ---------------------------------- UTILS --------------------------------- */
 

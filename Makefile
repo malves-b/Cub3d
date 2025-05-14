@@ -18,6 +18,7 @@ SRCS = $(SRCS_DIR)/cub.c \
 		$(SRCS_DIR)/parse/utils_parse.c \
 		$(SRCS_DIR)/parse/validate_args.c \
 		$(SRCS_DIR)/parse/validate_map.c \
+		$(SRCS_DIR)/parse/flood_f.c \
 		$(SRCS_DIR)/parse/populate_structs.c 
 
 

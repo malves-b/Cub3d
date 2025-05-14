@@ -19,6 +19,7 @@ bool	add_line(char *line, t_parse *parse)
 		return (validate_color(line, i, parse, &parse->floor_color));
 	else if (line[i] == 'C')
 		return (validate_color(line, i, parse, &parse->ceiling_color));
+	printf("Error!\nInvalid texture or color\n");
 	return (false);
 }
 
@@ -90,7 +91,7 @@ bool	clean_and_add(t_parse *parse)
 		if (check_line(parse->file[i]) == 1)//tem
 		{
 			if(!add_line(parse->file[i], parse))
-			return (false);
+				return (false);
 		}
 		else if (check_line(parse->file[i]) == 0)
 		{

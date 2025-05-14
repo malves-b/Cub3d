@@ -36,10 +36,12 @@ int	main(int argc, char **argv)
 	}
 	if (!init_parse_info(cub, argv[1]))
 	{
-		free_array( &cub->parse->file);
-		free_parse(cub->parse);
-		free_structs(cub);
-		free(cub);
+		// free_array( &cub->parse->file);
+		// //colocar o free ff
+		// free_parse(cub->parse);
+		// free_structs(cub);
+		//free(cub);
+		ft_exit(cub);
 		return (1);
 	}
 	//readmap guardar em algum lugar

@@ -34,6 +34,7 @@ typedef struct s_main
 
 typedef struct s_cub
 {
+	struct s_ff *ff;
 	struct s_map *smap;
 	struct s_player *player;
 	struct s_texture *texture;
@@ -74,6 +75,7 @@ typedef struct s_ff
 	int		**overlay;
 	int		width;
 	int		height;
+	struct s_cub *cub;
 }	t_ff;
 
 typedef struct s_map
@@ -128,6 +130,8 @@ void	print_map(char **file);//depois apagar
 void	free_array(char ***arr);
 void	free_parse(t_parse *parse);
 void	free_structs(t_cub *cub);
+int		ft_exit(t_cub *cub);
+void	free_ff(t_ff *ff);
 
 //validate_map
 bool	val_map(t_parse *parse);
@@ -149,6 +153,9 @@ int		ft_isspace(char c);
 //utils_map
 char **make_rectangular(char **map, int height, t_parse *parse);
 void remove_newline(char *str);
+
+//flood_fill
+bool	scan_area(t_parse *parse);
 
 /* ---------------------------------- UTILS --------------------------------- */
 

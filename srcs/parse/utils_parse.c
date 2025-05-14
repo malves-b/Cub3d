@@ -70,6 +70,36 @@ void	free_structs(t_cub *cub)
 	free(cub->player);
 	free(cub->texture);
 }
+void	free_int_array(t_ff *ff)
+{
+	int i;
+	
+	i = 0;
+	if(ff->overlay)
+	{
+		while (i < ff->height)
+		{
+			free(ff->overlay[i]);
+			ff->overlay[i] = NULL;
+			i++;
+		}
+	}
+}
+void	free_ff(t_ff *ff)
+{
+	free_array(&ff->map_ff);
+	free_int_array(ff);
+	free(ff);
+}
+
+int ft_exit(t_cub *cub)
+{
+	free_ff(cub->ff);
+	free_parse(cub->parse);
+	free_structs(cub);
+	free(cub);
+	return (1);
+}
 
 int	ft_strlen_i(char *line, int i)
 {
@@ -83,3 +113,4 @@ int	ft_strlen_i(char *line, int i)
 	}
 	return(j);
 }
+

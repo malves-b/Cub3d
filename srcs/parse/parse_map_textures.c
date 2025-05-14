@@ -65,8 +65,8 @@ void	add_map(t_parse *parse, int i)
 		parse->file_lines++;
 		j++;
 	}
-	parse->map = malloc(sizeof(char*) * (parse->file_lines + 1));
-	if(!parse->map)
+	parse->temp_map = malloc(sizeof(char*) * (parse->file_lines + 1));
+	if(!parse->temp_map)
 	{
 		printf("Error\n Memory allocation error\n");
 		exit (1) ; ///fazer algo paara exit
@@ -74,11 +74,13 @@ void	add_map(t_parse *parse, int i)
 	j = 0;
 	while(parse->file[i] != NULL)
 	{
-		parse->map[j] = ft_strdup(parse->file[i++]);
+		remove_newline(parse->file[i]);
+		parse->temp_map[j] = ft_strdup(parse->file[i++]);
 		j++;
 	}
-	parse->map[j] = NULL;
-	//print_map(parse->map);
+	parse->temp_map[j] = NULL;
+	parse->map = make_rectangular(parse->temp_map, parse->file_lines, parse);
+	free_array(&parse->temp_map);
 }
 
 bool	clean_and_add(t_parse *parse)
@@ -98,11 +100,16 @@ bool	clean_and_add(t_parse *parse)
 			if(parse->is_valid == true)
 			{
 				add_map(parse, i);
+				if(parse->map == NULL)
+				{
+					printf("Error\nIvalid map!\n");
+					return (false);
+				}
 				break ;
 			}
 			else
 			{
-				printf("Invalid_map\n\n");
+				printf("Invalid_map\n");
 				//free_parse(parse);
 				//ENCONTRAR FORMAS DE DAR FREE NO CUBO(OU RETORNA PARA A MAIN)
 				//error message (IDEIA fazer uma função para mensagem de erro personalizada)

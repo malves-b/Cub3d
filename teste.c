@@ -1,27 +1,26 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdbool.h>
-
-int	ft_isdigit(int c)
+void	add_map(t_parse *parse, int i)
 {
-	return (c >= '0' && c <= '9');
+	int j;
+
+	j = i;
+	parse->file_lines = 0;
+	while(parse->file[j] != NULL)
+	{
+		parse->file_lines++;
+		j++;
+	}
+	parse->map = malloc(sizeof(char*) * (parse->file_lines + 1));
+	if(!parse->map)
+	{
+		printf("Error\n Memory allocation error\n");
+		exit (1) ; ///fazer algo paara exit
+	}
+	j = 0;
+	while(parse->file[i] != NULL)
+	{
+		parse->map[j] = ft_strdup(parse->file[i++]);
+		j++;
+	}
+	parse->map[j] = NULL;
+	//print_map(parse->map);
 }
-
-i
-// int	main(void)
-// {
-// 	const char *str = "F     - -   25      5,     255,255";
-// 	char *cleaned = clean_rgb_string(str);
-
-// 	if (!cleaned)
-// 	{
-// 		printf("Erro ao alocar memória\n");
-// 		return (1);
-// 	}
-
-// 	printf("Original: \"%s\"\n", str);
-// 	printf("Limpa:    \"%s\"\n", cleaned);
-
-// 	free(cleaned);
-// 	return (0);
-// }

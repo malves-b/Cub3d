@@ -50,8 +50,10 @@ typedef struct s_parse
 	char	*floor_color;//divide em 3 e trandforma em hexa 
 	char	*ceiling_color;
 	char	**map;
+	char	**temp_map;
 	char	**file;
 	int		file_lines;
+	int		max_width;
 	bool	is_valid;
 	char	parse_player;
 	int		parse_x;
@@ -62,7 +64,17 @@ typedef struct s_parse
 	struct s_cub *cub;
 	struct s_map *smap;
 	struct s_player *player;
+	struct s_flood *ff;
 }	t_parse;
+
+
+typedef struct s_ff
+{
+	char	**map_ff;
+	int		**overlay;
+	int		width;
+	int		height;
+}	t_ff;
 
 typedef struct s_map
 {
@@ -133,6 +145,10 @@ void	ft_itoa_hex(t_parse *parse, char **str_color);
 char	*clean_rgb_string(const char *input);
 bool	check_letters(char *str);
 int		ft_isspace(char c);
+
+//utils_map
+char **make_rectangular(char **map, int height, t_parse *parse);
+void remove_newline(char *str);
 
 /* ---------------------------------- UTILS --------------------------------- */
 

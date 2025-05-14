@@ -1,18 +1,18 @@
 #include "../../includes/cub.h"
 
-static int	ft_count_hex(unsigned int nbr)
-{
-	int	i = 0;
+// static int	ft_count_hex(unsigned int nbr)
+// {
+// 	int	i = 0;
 
-	if (nbr == 0)
-		return (1);
-	while (nbr != 0)
-	{
-		i++;
-		nbr = nbr / 16;
-	}
-	return (i);
-}
+// 	if (nbr == 0)
+// 		return (1);
+// 	while (nbr != 0)
+// 	{
+// 		i++;
+// 		nbr = nbr / 16;
+// 	}
+// 	return (i);
+// }
 
 static void number_to_hex(int nbr, char *hexa, int start)
 {
@@ -27,7 +27,7 @@ static void number_to_hex(int nbr, char *hexa, int start)
 
 void	ft_itoa_hex(t_parse *parse, char **dest_color)
 {
-	int		len;
+	//int		len;
 	char	*str_color = NULL;
 
 	if(str_color != NULL)
@@ -35,10 +35,13 @@ void	ft_itoa_hex(t_parse *parse, char **dest_color)
 		free(*dest_color);
 	 	*dest_color = NULL;
 	}
-	len = ft_count_hex(parse->r);
-	len += ft_count_hex(parse->g);
-	len += ft_count_hex(parse->b);
-	str_color = malloc(sizeof(char) * (len + 1));
+	// len = ft_count_hex(parse->r);
+	// printf("%iLEN AQUI1\n", len);
+	// len += ft_count_hex(parse->g);
+	// printf("%iLEN AQUI2\n", len);
+	// len += ft_count_hex(parse->b);
+	// printf("%iLEN AQUI3\n", len);
+	str_color = malloc(sizeof(char) * (6 +1));
 	number_to_hex(parse->r, str_color, 0); // r → positions 0,1
 	number_to_hex(parse->g, str_color, 2); // g → positions 2,3
 	number_to_hex(parse->b, str_color, 4); // b → positions 4,5

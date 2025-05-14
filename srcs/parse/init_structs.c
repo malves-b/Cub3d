@@ -10,6 +10,8 @@ void	init_parse_struct(t_parse *parse)
 	parse->ceiling_color = NULL;
 	parse->file = NULL;
 	parse->map = NULL;
+	parse->temp_map = NULL;
+	parse->max_width = 0;
 	parse->is_valid = false;
 	parse->file_lines = 0;
 	parse->parse_player = '\0';

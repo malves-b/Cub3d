@@ -6,7 +6,7 @@ void print_map(char **file)
 
 	while (file[i])
 	{
-		printf("%s", file[i]);
+		printf("%s\n", file[i]);
 		i++;
 	}
 }
@@ -83,33 +83,3 @@ int	ft_strlen_i(char *line, int i)
 	}
 	return(j);
 }
-
-
-
-// char	*rm_space(char *str)
-// {
-// 	char	*result;
-// 	char	prev;
-// 	bool	inside_quotes;
-// 	size_t	j;
-// 	size_t	i;
-
-// 	result = (char *)malloc(ft_strlen(str) + 1);
-// 	if (!result)
-// 		return (NULL);
-// 	j = 0;
-// 	i = 0;
-// 	inside_quotes = false;
-// 	while (str[i])
-// 	{
-// 		if (i > 0)
-// 			prev = result[j - 1];
-// 		else
-// 			prev = '\0';
-// 		if (process_char(str[i], &prev, &result[j], &inside_quotes))
-// 			j++;
-// 		i++;
-// 	}
-// 	result[j] = '\0';
-// 	return (result);
-// }

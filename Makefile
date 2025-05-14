@@ -9,17 +9,18 @@ MLIBX = ./includes/minilibx-linux/libmlx.a
 MLIBX_DIR = ./includes/minilibx-linux
 
 SRCS = $(SRCS_DIR)/cub.c \
-		$(SRCS_DIR)/parse/init_structs.c \
-		$(SRCS_DIR)/parse/color_textures_parse.c \
-		$(SRCS_DIR)/parse/rgb_to_hexa.c \
-		$(SRCS_DIR)/parse/utils_textures_color.c \
-		$(SRCS_DIR)/parse/parse_map_textures.c \
-		$(SRCS_DIR)/parse/init_parse_file.c \
-		$(SRCS_DIR)/parse/utils_parse.c \
 		$(SRCS_DIR)/parse/validate_args.c \
+		$(SRCS_DIR)/parse/init_structs.c \
+		$(SRCS_DIR)/parse/init_parse_file.c \
+		$(SRCS_DIR)/parse/color_textures_parse.c \
+		$(SRCS_DIR)/parse/parse_map_textures.c \
+		$(SRCS_DIR)/parse/rgb_to_hexa.c \
 		$(SRCS_DIR)/parse/validate_map.c \
 		$(SRCS_DIR)/parse/flood_f.c \
-		$(SRCS_DIR)/parse/populate_structs.c 
+		$(SRCS_DIR)/parse/populate_structs.c \
+		$(SRCS_DIR)/parse/utils_map.c \
+		$(SRCS_DIR)/parse/utils_parse.c \
+		$(SRCS_DIR)/parse/utils_textures_color.c 
 
 
 CC = cc

@@ -20,6 +20,7 @@ SRCS = $(SRCS_DIR)/cub.c \
 		$(SRCS_DIR)/parse/populate_structs.c \
 		$(SRCS_DIR)/parse/utils_map.c \
 		$(SRCS_DIR)/parse/utils_parse.c \
+		$(SRCS_DIR)/parse/validate_texture.c \
 		$(SRCS_DIR)/parse/utils_textures_color.c 
 
 

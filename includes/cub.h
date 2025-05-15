@@ -142,6 +142,9 @@ void	copy_player(t_parse *parse, t_player *player);
 void	copy_map(char **src, char ***dest);
 void	copy_textures(t_parse *parse, t_texture *texture);
 
+//validate_textures
+bool validate_texture(t_parse *parse);
+
 //rgb_to_hexa
 void	ft_itoa_hex(t_parse *parse, char **str_color);
 
@@ -156,6 +159,7 @@ void remove_newline(char *str);
 
 //flood_fill
 bool	scan_area(t_parse *parse);
+
 
 /* ---------------------------------- UTILS --------------------------------- */
 

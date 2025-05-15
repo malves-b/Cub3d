@@ -6,7 +6,7 @@
 /*   By: malves-b <malves-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/05 18:03:48 by malves-b          #+#    #+#             */
-/*   Updated: 2025/04/24 16:09:40 by malves-b         ###   ########.fr       */
+/*   Updated: 2025/05/15 10:26:52 by malves-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_raycasting	*init_raycasting(t_main *pgr)
 	t_raycasting	*ray;
 
 	ray = safe_calloc(pgr, sizeof(t_raycasting));
-	set_player_position(ray, pgr->map);
+	set_player_position(ray, pgr->smap->map);
 	set_direction_vector(ray->start_dir, ray);
 	ray->dltdistx = fabs(1 / ray->dir_x);
 	ray->dltdisty = fabs(1 / ray->dir_y);

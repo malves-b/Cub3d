@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: malves-b <malves-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/03 17:21:21 by pemirand          #+#    #+#             */
-/*   Updated: 2025/04/14 18:52:26 by malves-b         ###   ########.fr       */
+/*   Created: 2023/10/03 17:21:21 by malves-b          #+#    #+#             */
+/*   Updated: 2025/05/15 10:07:22 by malves-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,5 +74,4 @@ char			*get_next_line(int fd);
 char			*ft_substr(char const *s, unsigned int start, size_t len);
 char			*ft_strjoin_get(char *stash, char *temp);
 int				ft_check(char *stash);
-
 #endif

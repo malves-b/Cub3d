@@ -6,7 +6,7 @@
 /*   By: malves-b <malves-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 15:00:26 by malves-b          #+#    #+#             */
-/*   Updated: 2025/05/13 12:38:30 by malves-b         ###   ########.fr       */
+/*   Updated: 2025/05/15 11:21:24 by malves-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ void	draw_background(t_main *pgr)
 		while (x < WIDTH)
 		{
 			if (y < HEIGHT / 2)
-				my_put_pixel(pgr->mlx, x, y, COLOR_SKY);
+				my_put_pixel(pgr->mlx, x, y, pgr->texture->ceiling_color);
 			else
-				my_put_pixel(pgr->mlx, x, y, COLOR_FLOOR);
+				my_put_pixel(pgr->mlx, x, y, pgr->texture->floor_color);
 			x++;
 		}
 		y++;

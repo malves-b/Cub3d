@@ -6,7 +6,7 @@
 /*   By: malves-b <malves-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 17:39:22 by malves-b          #+#    #+#             */
-/*   Updated: 2025/05/13 12:43:08 by malves-b         ###   ########.fr       */
+/*   Updated: 2025/05/15 10:29:42 by malves-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	render_frame(t_main *pgr)
 		pgr->ray->map_position_y = (int)pgr->ray->pp_y;
 		set_delta_dist(pgr, ray_dir_x, ray_dir_y);
 		set_step(pgr->ray, ray_dir_x, ray_dir_y);
-		ft_dda(pgr->ray, pgr->map);
+		ft_dda(pgr->ray, pgr->smap->map);
 		if (pgr->ray->side == 0)
 			pgr->ray->prp_walldst = (pgr->ray->sidedistx - pgr->ray->dltdistx);
 		else

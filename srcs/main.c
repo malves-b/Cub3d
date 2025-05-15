@@ -6,7 +6,7 @@
 /*   By: malves-b <malves-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 13:33:10 by malves-b          #+#    #+#             */
-/*   Updated: 2025/05/11 19:05:47 by malves-b         ###   ########.fr       */
+/*   Updated: 2025/05/15 10:49:56 by malves-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,6 @@
 
 int	cub_init(t_main *pgr)
 {
-	pgr->map = ft_calloc(sizeof(char *), 13);
-	pgr->map[0] = "11111111111111111111111";
-	pgr->map[1] = "10000000000000000000001";
-	pgr->map[2] = "10011N00000000000000001";
-	pgr->map[3] = "10000000000000001100001";
-	pgr->map[4] = "11111111111100001100001";
-	pgr->map[5] = "11111111111100000000001";
-	pgr->map[6] = "11111111111100000000001";
-	pgr->map[7] = "11111111111100000000001";
-	pgr->map[8] = "11111111111100000000001";
-	pgr->map[9] = "11111111111100000000001";
-	pgr->map[10] = "11111111111100000000001";
-	pgr->map[11] = "11111111111111111111111";
-	pgr->map[12] = NULL;
 	pgr->mlx = init_mlx();
 	pgr->ray = init_raycasting(pgr);
 	if (ft_init_textures(pgr))
@@ -50,9 +36,11 @@ int	main(int argc, char **argv)
 	cub = NULL;
 	cub = safe_calloc(cub, sizeof(t_main));
 	cub->parse = safe_calloc(cub, sizeof(t_parse));
-	init_parse_struct(cub->parse);
-	if (!ft_read_file(cub->parse, argv[1]))
+	if (!init_parse_info(cub, argv[1]))
+	{
+		ft_exit(cub);
 		return (1);
+	}
 	cub_init(cub);
 	return (0);
 }

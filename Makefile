@@ -16,8 +16,19 @@ SRCS = $(SRCS_DIR)/main.c \
 	$(SRCS_DIR)/run_cub.c $(SRCS_DIR)/raycasting.c \
 	$(SRCS_DIR)/raycasting_utils.c $(SRCS_DIR)/textures_settings.c \
 	$(SRCS_DIR)/textures_utils.c \
-	$(PARSE_DIR)/init_parse_structs.c $(PARSE_DIR)/read_parse_file.c \
-	$(PARSE_DIR)/utils_parse.c $(PARSE_DIR)/validate_parse.c
+	$(PARSE_DIR)/validate_args.c \
+	$(PARSE_DIR)/init_structs.c \
+	$(PARSE_DIR)/init_parse_file.c \
+	$(PARSE_DIR)/color_textures_parse.c \
+	$(PARSE_DIR)/parse_map_textures.c \
+	$(PARSE_DIR)/rgb_to_hexa.c \
+	$(PARSE_DIR)/validate_map.c \
+	$(PARSE_DIR)/flood_f.c \
+	$(PARSE_DIR)/populate_structs.c \
+	$(PARSE_DIR)/utils_map.c \
+	$(PARSE_DIR)/utils_parse.c \
+	$(PARSE_DIR)/validate_texture.c \
+	$(PARSE_DIR)/utils_textures_color.c 
 
 CC = cc
 CFLAGS = -Wall -Werror -Wextra -g
@@ -55,5 +66,3 @@ fclean: clean
 	@echo "$(BROWN)EXE REMOVED$(R)"
 
 re: fclean all
-
-.PHONY: all clean fclean re

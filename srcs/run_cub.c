@@ -6,7 +6,7 @@
 /*   By: malves-b <malves-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/26 18:16:53 by malves-b          #+#    #+#             */
-/*   Updated: 2025/05/12 11:36:08 by malves-b         ###   ########.fr       */
+/*   Updated: 2025/05/15 10:29:17 by malves-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,11 @@ void	check_side_pos(t_main *pgr, double dir_factor)
 
 	next_x = pgr->ray->pp_x + pgr->ray->plane_vector[0] * dir_factor;
 	next_y = pgr->ray->pp_y + pgr->ray->plane_vector[1] * dir_factor;
-	if (pgr->map[(int)(next_y + 0.01)][(int)pgr->ray->pp_x] != '1' &&
-		pgr->map[(int)(next_y - 0.01)][(int)pgr->ray->pp_x] != '1')
+	if (pgr->smap->map[(int)(next_y + 0.01)][(int)pgr->ray->pp_x] != '1' &&
+		pgr->smap->map[(int)(next_y - 0.01)][(int)pgr->ray->pp_x] != '1')
 		pgr->ray->pp_y = next_y;
-	if (pgr->map[(int)pgr->ray->pp_y][(int)(next_x + 0.01)] != '1' &&
-		pgr->map[(int)pgr->ray->pp_y][(int)(next_x - 0.01)] != '1')
+	if (pgr->smap->map[(int)pgr->ray->pp_y][(int)(next_x + 0.01)] != '1' &&
+		pgr->smap->map[(int)pgr->ray->pp_y][(int)(next_x - 0.01)] != '1')
 		pgr->ray->pp_x = next_x;
 }
 
@@ -40,11 +40,11 @@ void	check_next_pos(t_main *pgr, double dir_factor)
 
 	next_x = pgr->ray->pp_x + pgr->ray->dir_x * dir_factor;
 	next_y = pgr->ray->pp_y + pgr->ray->dir_y * dir_factor;
-	if (pgr->map[(int)(next_y + 0.01)][(int)pgr->ray->pp_x] != '1' &&
-		pgr->map[(int)(next_y - 0.01)][(int)pgr->ray->pp_x] != '1')
+	if (pgr->smap->map[(int)(next_y + 0.01)][(int)pgr->ray->pp_x] != '1' &&
+		pgr->smap->map[(int)(next_y - 0.01)][(int)pgr->ray->pp_x] != '1')
 		pgr->ray->pp_y = next_y;
-	if (pgr->map[(int)pgr->ray->pp_y][(int)(next_x + 0.01)] != '1' &&
-		pgr->map[(int)pgr->ray->pp_y][(int)(next_x - 0.01)] != '1')
+	if (pgr->smap->map[(int)pgr->ray->pp_y][(int)(next_x + 0.01)] != '1' &&
+		pgr->smap->map[(int)pgr->ray->pp_y][(int)(next_x - 0.01)] != '1')
 		pgr->ray->pp_x = next_x;
 }
 

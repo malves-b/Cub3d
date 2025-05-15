@@ -1,14 +1,19 @@
-NO ./textures/wall1.xpm
-SO ./textures/wall2.xpm
+NO ./home/malves-b/sgoinfre/Rank_04/Cub3d/textures/n.xpm
+
+
+
+SO ./home/malves-b/sgoinfre/Rank_04/Cub3d/textures/s.xpm
+WE ./home/malves-b/sgoinfre/Rank_04/Cub3d/textures/w.xpm
+EA ./home/malves-b/sgoinfre/Rank_04/Cub3d/textures/e.xpm
+
 F 155,255,0
-WE ./textures/wall3.xpm
-EA ./textures/wall5.xpm
+
 C	  25          5 ,255,255
 
 1111111111111111111111
 1000000100000000000001
-1000000100000000000001
-100000100000000S000001
+10S000000000000000001
+1111111110000000000111
 1000000001000000100001
 100000000000000100001
 1111111111111111111111

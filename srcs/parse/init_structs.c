@@ -41,9 +41,8 @@ void	init_player(t_player *player)
 	player->y = 0;
 }
 
-void	init_struct(t_cub *cub)
+void	init_struct(t_main *cub)
 {
-	cub->parse = malloc (sizeof(t_parse));
 	cub->smap = malloc(sizeof(t_map));
 	cub->player = malloc(sizeof(t_player));
 	cub->texture = malloc(sizeof(t_texture));

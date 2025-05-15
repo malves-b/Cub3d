@@ -50,7 +50,7 @@ void	free_parse(t_parse *parse)
 	//init_parse_struct(parse);//evita lixo de memoria
 }
 
-void	free_structs(t_cub *cub)
+void	free_structs(t_main *cub)
 {
 	if(cub->smap->map != NULL)
 		free_array(&cub->smap->map);
@@ -93,7 +93,7 @@ void	free_ff(t_ff *ff)
 	//free(ff);
 }
 
-int ft_exit(t_cub *cub)
+int ft_exit(t_main *cub)
 {
 	//free_ff(cub->ff);
 	free_parse(cub->parse);

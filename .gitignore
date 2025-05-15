@@ -1,6 +1,1 @@
-*.exe
-output
-.vscode
-.history
-*.o
 includes/minilibx-linux/

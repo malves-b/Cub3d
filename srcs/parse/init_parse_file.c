@@ -50,7 +50,7 @@ bool	init_file(char *file, t_parse *parse)
 	return (true);
 }
 
-bool	init_parse_info(t_cub *cub, char *file)
+bool	init_parse_info(t_main *cub, char *file)
 {
 	init_struct(cub);
 	if(!(get_number_lines(file, &cub->parse->file_lines)))//verificação se line é menor ou == 0 
@@ -68,6 +68,8 @@ bool	init_parse_info(t_cub *cub, char *file)
 	if(!val_map(cub->parse))
 		return (false);
 	free_array( &cub->parse->file);
+	if(!validate_texture(cub->parse))
+		return (false);
 	if(!scan_area(cub->parse))
 		return (false);
 	populate_structs(cub->parse, cub);

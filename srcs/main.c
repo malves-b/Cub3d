@@ -1,56 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub.c                                              :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: malves-b <malves-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 13:33:10 by malves-b          #+#    #+#             */
-/*   Updated: 2025/02/13 16:02:15 by malves-b         ###   ########.fr       */
+/*   Updated: 2025/05/15 10:49:56 by malves-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cub.h"
 
-// void	init_window(char **argv)
-// {
-// 	(void)argv;
-// 	t_main	*pgr;
-
-// 	ft_memset(&pgr, 0, sizeof(pgr));
-// 	pgr->mlx = mlx_init();
-// 	pgr->mlx_win = mlx_new_window(pgr->mlx, 320, 320, "CUB3D");
-// }
+int	cub_init(t_main *pgr)
+{
+	pgr->mlx = init_mlx();
+	pgr->ray = init_raycasting(pgr);
+	if (ft_init_textures(pgr))
+	{
+		close_program(pgr);
+	}
+	key_press(32, pgr);
+	mlx_hook(pgr->mlx->mlx_win, 17, 0, close_program, pgr);
+	mlx_hook(pgr->mlx->mlx_win, 2, 1L << 0, key_press, pgr);
+	mlx_loop(pgr->mlx->mlx);
+	return (0);
+}
 
 int	main(int argc, char **argv)
 {
-	t_cub *cub;
+	t_main	*cub;
 
-	if (!check_args(argc ,argv[1], argv[0]))
+	if (!check_args(argc, argv[1], argv[0]))
 		return (1);
-	cub = malloc (sizeof(t_cub)); //colocar essas duas linhas em um arquivo de init structs
-	if (!cub)
-	{
-		printf("Error\n Memory allocation error\n");
-		return (1);
-	}
+	cub = NULL;
+	cub = safe_calloc(cub, sizeof(t_main));
+	cub->parse = safe_calloc(cub, sizeof(t_parse));
 	if (!init_parse_info(cub, argv[1]))
 	{
-		// free_array( &cub->parse->file);
-		// //colocar o free ff
-		// free_parse(cub->parse);
-		// free_structs(cub);
-		//free(cub);
 		ft_exit(cub);
 		return (1);
 	}
-	//readmap guardar em algum lugar
-	//fazer a validadação
-	//free_parse(cub->parse);
-	free_structs(cub);
-	free(cub);
-	return(0);
-	//init_window(argv);
-
-	return 0;
+	cub_init(cub);
+	return (0);
 }

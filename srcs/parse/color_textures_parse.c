@@ -17,19 +17,18 @@ static bool	check_is_digit(char *str)
 	return (true);
 }
 
-bool	set_texture_path(char *line, int i, t_parse *parse, char **str_struct)
+bool	set_texture_path(char *line, int i, char **str_struct)
 {
 	int	len;
 	int	j;
 
-	(void)parse;
 	j = 0;
 	if (*str_struct != NULL)
 	{
 		printf("Error\nMap is not valid, textures are duplicaated!\n");
 		return (false);
 	}
-	while(line[i] != '/')
+	while (line[i] != '/')
 	{
 		i++;
 	}
@@ -45,35 +44,31 @@ bool	set_texture_path(char *line, int i, t_parse *parse, char **str_struct)
 	return (true);
 }
 
-bool	validate_color(char *line, int i, t_parse *parse, char **str_struct)
+bool	validate_color(char *line, t_parse *parse, char **str_struct)
 {
-	//int	j;
-	char *temp;
-	(void)i;
-	
-	//j = 0;
+	char	*temp;
+
 	if (*str_struct != NULL)
 	{
 		printf("Error\nMap is not valid, Color is not valid!\n");
 		return (false);
 	}
-	if(!check_letters(line))
+	if (!check_letters(line))
 	{
 		printf("Error\nMap is not valid, Color is not valid!\n");
 		return (false);
 	}
 	temp = clean_rgb_string(line);
-	if(!check_is_digit(temp) || !validate_rgb(parse, temp))
+	if (!check_is_digit(temp) || !validate_rgb(parse, temp))
 	{
 		free(temp);
 		return (false);
 	}
 	ft_itoa_hex(parse, str_struct);
-	if(parse->f_or_c == 1)
+	if (parse->f_or_c == 1)
 		parse->hexa_floor = rgb_to_hex(parse);
-	else if(parse->f_or_c == 2)
+	else if (parse->f_or_c == 2)
 		parse->hexa_ceiling = rgb_to_hex(parse);
-	printf(" temp_color%s\n", temp);
 	free(temp);
 	return (true);
 }
@@ -82,12 +77,12 @@ bool	validate_rgb(t_parse *parse, char *rgb)
 {
 	char	**split;
 	int		i;
-	
+
 	i = 0;
 	split = ft_split(rgb, ',');
-	while(split[i])
+	while (split[i])
 		i++;
-	if(i != 3)
+	if (i != 3)
 	{
 		printf("Erro: formato RGB inválido!\n");
 		free_array(&split);
@@ -96,8 +91,8 @@ bool	validate_rgb(t_parse *parse, char *rgb)
 	parse->r = ft_atoi(split[0]);
 	parse->g = ft_atoi(split[1]);
 	parse->b = ft_atoi(split[2]);
-//	printf("%i- r\n%i- g\n%i- b\n", parse->r, parse->g,parse->b);
-	if((parse->r < 0 || parse->r > 255 ) || (parse->g < 0 || parse->g > 255) || (parse->b < 0 || parse->b > 255))
+	if ((parse->r < 0 || parse->r > 255) || (parse->g < 0 || parse->g > 255)
+		|| (parse->b < 0 || parse->b > 255))
 	{
 		printf("Erro: formato RGB inválido!\n");
 		free_array(&split);

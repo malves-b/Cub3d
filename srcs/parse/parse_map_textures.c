@@ -8,22 +8,22 @@ bool	add_line(char *line, t_parse *parse)
 	while(line[i] == ' '  || (line[i] >= 9 && line[i] <= 13))//adicionar outros espaços 
 		i++;
 	if (line[i] == 'N')
-		return (set_texture_path(line, i, parse, &parse->no_path));
+		return (set_texture_path(line, i, &parse->no_path));
 	else if (line[i] == 'S')
-		return (set_texture_path(line, i, parse, &parse->so_path));
+		return (set_texture_path(line, i, &parse->so_path));
 	else if (line[i] == 'W')
-		return (set_texture_path(line, i, parse, &parse->we_path));
+		return (set_texture_path(line, i, &parse->we_path));
 	else if (line[i] == 'E')
-		return (set_texture_path(line, i, parse, &parse->ea_path));
+		return (set_texture_path(line, i, &parse->ea_path));
 	else if (line[i] == 'F')
 	{
 		parse->f_or_c = 1;
-		return (validate_color(line, i, parse, &parse->floor_color));
+		return (validate_color(line, parse, &parse->floor_color));
 	}
 	else if (line[i] == 'C')
 	{
 		parse->f_or_c = 2;
-		return (validate_color(line, i, parse, &parse->ceiling_color));
+		return (validate_color(line, parse, &parse->ceiling_color));
 	}
 	printf("Error!\nInvalid texture or color\n");
 	return (false);

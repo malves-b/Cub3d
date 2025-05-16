@@ -51,3 +51,9 @@ bool	val_map(t_parse *parse)
 	}
 	return (true);
 }
+
+void	exit_map_message(t_parse *parse)
+{
+	printf("Error\nIvalid map!\n");
+	ft_exit(parse->cub);
+}

@@ -239,14 +239,13 @@ int		check_line(char *line);
 //color_textures_parse
 bool	set_texture_path(char *line, int i, char **str);
 bool	validate_color(char *line, t_parse *parse, char **str);
+int		ft_strlen_i(char *line, int i);
 
 
 //void	ft_is_f(char *line, int i, t_parse *parse);
 bool	validate_rgb(t_parse *parse, char *rgb);
 
-//utils_parse
-int		ft_strlen_i(char *line, int i);
-void	print_map(char **file);//depois apagar 
+//free_parse
 void	free_array(char ***arr);
 void	free_parse(t_parse *parse);
 void	free_structs(t_main *cub);
@@ -255,7 +254,7 @@ void	free_ff(t_ff *ff);
 
 //validate_map
 bool	val_map(t_parse *parse);
-
+void	exit_map_message(t_parse *parse);
 
 //populate_structs
 void	populate_structs(t_parse *parse, t_main *cub);
@@ -280,7 +279,7 @@ int		ft_isspace(char c);
 char	**make_rectangular(char **map, int height, t_parse *parse);
 void	remove_newline(char *str);
 void	check_texture_is_valid(t_parse *parse);
-void	 exit_map_message(t_parse *parse);
+
 
 //flood_fill
 bool	scan_area(t_parse *parse);

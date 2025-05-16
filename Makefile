@@ -26,7 +26,7 @@ SRCS = $(SRCS_DIR)/main.c \
 	$(PARSE_DIR)/flood_f.c \
 	$(PARSE_DIR)/populate_structs.c \
 	$(PARSE_DIR)/utils_map.c \
-	$(PARSE_DIR)/utils_parse.c \
+	$(PARSE_DIR)/free_parse.c \
 	$(PARSE_DIR)/validate_texture.c \
 	$(PARSE_DIR)/utils_textures_color.c 
 

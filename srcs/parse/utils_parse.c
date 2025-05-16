@@ -99,7 +99,7 @@ int ft_exit(t_main *cub)
 	free_parse(cub->parse);
 	free_structs(cub);
 	free(cub);
-	return (1);
+	return (0);
 }
 
 int	ft_strlen_i(char *line, int i)

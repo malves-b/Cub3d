@@ -56,7 +56,7 @@ bool	init_parse_info(t_main *cub, char *file)
 	if (!(get_number_lines(file, &cub->parse->file_lines)))
 		return (false);
 	cub->parse->file = malloc(sizeof(char *) * (cub->parse->file_lines + 1));
-	if (!cub->parse->file || !cub->parse || !cub->smap)
+	if (!cub->parse->file)
 	{
 		printf("Error\n Memory allocation error\n");
 		return (false);
@@ -73,6 +73,5 @@ bool	init_parse_info(t_main *cub, char *file)
 	if (!scan_area(cub->parse))
 		return (false);
 	populate_structs(cub->parse, cub);
-	printf("\n\n");
 	return (true);
 }

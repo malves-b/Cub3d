@@ -46,6 +46,11 @@ void	init_struct(t_main *cub)
 	cub->smap = malloc(sizeof(t_map));
 	cub->player = malloc(sizeof(t_player));
 	cub->texture = malloc(sizeof(t_texture));
+	if (!cub->player|| !cub->texture || !cub->smap)
+	{
+		printf("Error\n Memory allocation error\n");
+		exit (1);
+	}
 	init_parse_struct(cub->parse);
 	init_smap(cub->smap);
 	init_texture(cub->texture);

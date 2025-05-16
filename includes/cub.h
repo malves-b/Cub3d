@@ -75,7 +75,7 @@ typedef struct s_parse
 	int		hexa_floor;
 	int		hexa_ceiling;
 	int		f_or_c;
-	struct s_cub *cub;
+	struct s_main	*cub;
 	struct s_map *smap;
 	struct s_player *player;
 	struct s_flood *ff;
@@ -235,6 +235,7 @@ bool	add_line(char *line, t_parse *parse);
 bool	clean_and_add(t_parse *parse);
 int		check_line(char *line);
 
+
 //color_textures_parse
 bool	set_texture_path(char *line, int i, char **str);
 bool	validate_color(char *line, t_parse *parse, char **str);
@@ -254,6 +255,7 @@ void	free_ff(t_ff *ff);
 
 //validate_map
 bool	val_map(t_parse *parse);
+
 
 //populate_structs
 void	populate_structs(t_parse *parse, t_main *cub);
@@ -275,8 +277,10 @@ bool	check_letters(char *str);
 int		ft_isspace(char c);
 
 //utils_map
-char **make_rectangular(char **map, int height, t_parse *parse);
+char	**make_rectangular(char **map, int height, t_parse *parse);
 void	remove_newline(char *str);
+void	check_texture_is_valid(t_parse *parse);
+void	 exit_map_message(t_parse *parse);
 
 //flood_fill
 bool	scan_area(t_parse *parse);

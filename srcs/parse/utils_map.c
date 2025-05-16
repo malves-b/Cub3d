@@ -63,3 +63,19 @@ char **make_rectangular(char **map, int height, t_parse *parse)
 	map_rec[height] = NULL;
 	return (map_rec);
 }
+
+void	check_texture_is_valid(t_parse *parse)
+{
+	if (parse->no_path != NULL && parse->so_path != NULL
+		&& parse->we_path != NULL && parse->ea_path != NULL
+		&& parse->floor_color != NULL && parse->ceiling_color != NULL)
+	{
+		parse->is_valid = true;
+	}
+}
+
+void	 exit_map_message(t_parse *parse)
+{
+		printf("Error\nIvalid map!\n");
+		ft_exit(parse->cub);
+}

@@ -1,56 +1,33 @@
 #include "../../includes/cub.h"
 
-// static int	ft_count_hex(unsigned int nbr)
-// {
-// 	int	i = 0;
-
-// 	if (nbr == 0)
-// 		return (1);
-// 	while (nbr != 0)
-// 	{
-// 		i++;
-// 		nbr = nbr / 16;
-// 	}
-// 	return (i);
-// }
-
-static void number_to_hex(int nbr, char *hexa, int start)
+static void	number_to_hex(int nbr, char *hexa, int start)
 {
-	char hex_digits[] = "0123456789abcdef";
+	char	hex_digits[17];
 
-	// First hex digit (most significant nibble)
+	ft_strlcpy(hex_digits, "0123456789abcdef", 17);
 	hexa[start] = hex_digits[nbr / 16];
-
-	// Second hex digit (least significant nibble)
 	hexa[start + 1] = hex_digits[nbr % 16];
 }
 
 void	ft_itoa_hex(t_parse *parse, char **dest_color)
 {
-	//int		len;
-	char	*str_color = NULL;
+	char	*str_color;
 
-	if(str_color != NULL)
+	str_color = NULL;
+	if (str_color != NULL)
 	{
 		free(*dest_color);
-	 	*dest_color = NULL;
+		*dest_color = NULL;
 	}
-	// len = ft_count_hex(parse->r);
-	// printf("%iLEN AQUI1\n", len);
-	// len += ft_count_hex(parse->g);
-	// printf("%iLEN AQUI2\n", len);
-	// len += ft_count_hex(parse->b);
-	// printf("%iLEN AQUI3\n", len);
 	str_color = malloc(sizeof(char) * (6 +1));
-	number_to_hex(parse->r, str_color, 0); // r → positions 0,1
-	number_to_hex(parse->g, str_color, 2); // g → positions 2,3
-	number_to_hex(parse->b, str_color, 4); // b → positions 4,5
+	number_to_hex(parse->r, str_color, 0);
+	number_to_hex(parse->g, str_color, 2);
+	number_to_hex(parse->b, str_color, 4);
 	str_color[6] = '\0';
 	*dest_color = str_color;
-	
- }
+}
 
-int rgb_to_hex(t_parse *parse)
+int	rgb_to_hex(t_parse *parse)
 {
-	return (parse->r * 256 * 256) + (parse->g * 256) + parse->b;
+	return ((parse->r * 256 * 256) + (parse->g * 256) + parse->b);
 }

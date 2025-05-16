@@ -16,10 +16,10 @@ t_image	*load_texture(t_main *pgr, char *path);
 
 int	ft_init_textures(t_main *pgr)
 {
-	pgr->texture_north = load_texture(pgr, "/home/malves-b/sgoinfre/Rank_04/Cub3d/textures/n.xpm");
-	pgr->texture_south = load_texture(pgr, "/home/malves-b/sgoinfre/Rank_04/Cub3d/textures/s.xpm");
-	pgr->texture_west = load_texture(pgr, "/home/malves-b/sgoinfre/Rank_04/Cub3d/textures/w.xpm");
-	pgr->texture_east = load_texture(pgr, "/home/malves-b/sgoinfre/Rank_04/Cub3d/textures/e.xpm");
+	pgr->texture_north = load_texture(pgr, pgr->texture->no_path);
+	pgr->texture_south = load_texture(pgr, pgr->texture->so_path);
+	pgr->texture_west = load_texture(pgr, pgr->texture->we_path);
+	pgr->texture_east = load_texture(pgr, pgr->texture->ea_path);
 	if (!pgr->texture_north || !pgr->texture_south || !pgr->texture_east
 		|| !pgr->texture_west)
 		return (1);

@@ -80,8 +80,8 @@ bool	init_parse_info(t_main *cub, char *file)
 	printf("%s", cub->texture->so_path);
 	printf("%s", cub->texture->we_path);
 	printf("%s",cub->texture->ea_path);
-	printf(" C hexa %s\n", cub->texture->ceiling_color);
-	printf(" F hexa %s\n", cub->texture->floor_color);
+	printf(" C hexa %d\n", cub->texture->ceiling_color);
+	printf(" F hexa %d\n", cub->texture->floor_color);
 
 	printf("\n\n");
 	//free_parse(cub->parse);

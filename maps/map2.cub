@@ -1,13 +1,12 @@
-NO ./home/malves-b/sgoinfre/Rank_04/Cub3d/textures/n.xpm
+NO ./mnt/c/storage/42/42_cub3D/textures/n.xpm
 
 
+SO ./mnt/c/storage/42/42_cub3D/textures/s.xpm
+WE ./mnt/c/storage/42/42_cub3D/textures/w.xpm
+EA ./mnt/c/storage/42/42_cub3D/textures/e.xpm
 
-SO ./home/malves-b/sgoinfre/Rank_04/Cub3d/textures/s.xpm
-WE ./home/malves-b/sgoinfre/Rank_04/Cub3d/textures/w.xpm
-EA ./home/malves-b/sgoinfre/Rank_04/Cub3d/textures/e.xpm
-
-C 255,255,255
-F 255,255,255
+C 11, 26, 215
+F 255, 128, 64
 
 
 

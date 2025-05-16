@@ -30,8 +30,8 @@ void	init_texture(t_texture *texture)
 	texture->so_path = NULL;
 	texture->we_path = NULL;
 	texture->ea_path = NULL;
-	texture->floor_color = NULL;
-	texture->ceiling_color = NULL;
+	//texture->floor_color = NULL;
+	//texture->ceiling_color = NULL;
 }
 
 void	init_player(t_player *player)

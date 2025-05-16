@@ -48,4 +48,9 @@ void	ft_itoa_hex(t_parse *parse, char **dest_color)
 	str_color[6] = '\0';
 	*dest_color = str_color;
 	
+ }
+
+int rgb_to_hex(t_parse *parse)
+{
+	return (parse->r * 256 * 256) + (parse->g * 256) + parse->b;
 }

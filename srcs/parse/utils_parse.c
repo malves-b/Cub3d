@@ -62,10 +62,10 @@ void	free_structs(t_main *cub)
 		free(cub->texture->we_path);
 	if(cub->texture->ea_path != NULL)
 		free(cub->texture->ea_path);
-	if(cub->texture->floor_color != NULL)
-		free(cub->texture->floor_color);
-	if(cub->texture->ceiling_color != NULL)
-		free(cub->texture->ceiling_color);
+	//if(cub->texture->floor_color != NULL)
+	//	free(cub->texture->floor_color);
+//	if(cub->texture->ceiling_color != NULL)
+//		free(cub->texture->ceiling_color);
 	free(cub->smap);
 	free(cub->player);
 	free(cub->texture);

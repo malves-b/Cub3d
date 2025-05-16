@@ -1,20 +1,14 @@
 #include "../../includes/cub.h"
 
-static bool check_is_digit(char *str)
+static bool	check_is_digit(char *str)
 {
 	int	i;
 
-
 	i = 0;
-	//printf("%s temp CHECK IS DIGIT\n", str);
-	while(str[i] != '\0')
+	while (str[i] != '\0')
 	{
-		//printf("%c CHECK character is DIGIT\n", str[i]);
-		if(str[i] != ',' && !(str[i] >= '0' && str[i] <= '9'))
+		if (str[i] != ',' && !(str[i] >= '0' && str[i] <= '9'))
 		{
-			printf("--%c--\n", str[i]);
-			printf("--%i--\n", i);
-			printf("--%s--", str);
 			printf("Error\nMap is not valid, color is not valid!\n");
 			return (false);
 		}
@@ -35,10 +29,11 @@ bool	set_texture_path(char *line, int i, t_parse *parse, char **str_struct)
 		printf("Error\nMap is not valid, textures are duplicaated!\n");
 		return (false);
 	}
-	while(line[i] != '.')
+	while(line[i] != '/')
 	{
 		i++;
 	}
+	remove_newline(line);
 	len = ft_strlen_i(line, i);
 	*str_struct = malloc(sizeof(char) * len + 1);
 	while (line[i] != '\0')
@@ -74,6 +69,10 @@ bool	validate_color(char *line, int i, t_parse *parse, char **str_struct)
 		return (false);
 	}
 	ft_itoa_hex(parse, str_struct);
+	if(parse->f_or_c == 1)
+		parse->hexa_floor = rgb_to_hex(parse);
+	else if(parse->f_or_c == 2)
+		parse->hexa_ceiling = rgb_to_hex(parse);
 	printf(" temp_color%s\n", temp);
 	free(temp);
 	return (true);

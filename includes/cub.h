@@ -72,6 +72,9 @@ typedef struct s_parse
 	int		r;
 	int		g;
 	int		b;
+	int		hexa_floor;
+	int		hexa_ceiling;
+	int		f_or_c;
 	struct s_cub *cub;
 	struct s_map *smap;
 	struct s_player *player;
@@ -106,8 +109,8 @@ typedef struct s_texture
 	char	*so_path;
 	char	*we_path;
 	char	*ea_path;
-	char	*floor_color;
-	char	*ceiling_color;
+	int		floor_color;
+	int		ceiling_color;
 }	t_texture;
 
 /*--------------------------------------------------- */
@@ -264,6 +267,8 @@ bool validate_texture(t_parse *parse);
 //rgb_to_hexa
 void	ft_itoa_hex(t_parse *parse, char **str_color);
 
+int rgb_to_hex(t_parse *parse);
+
 //utils_textures_color
 char	*clean_rgb_string(const char *input);
 bool	check_letters(char *str);
@@ -271,7 +276,7 @@ int		ft_isspace(char c);
 
 //utils_map
 char **make_rectangular(char **map, int height, t_parse *parse);
-void remove_newline(char *str);
+void	remove_newline(char *str);
 
 //flood_fill
 bool	scan_area(t_parse *parse);

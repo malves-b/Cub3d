@@ -104,13 +104,13 @@ bool	validate_rgb(t_parse *parse, char *rgb)
 
 int	ft_strlen_i(char *line, int i)
 {
-	int j;
+	int	j;
 
 	j = 0;
-	while(line[i] != '\0')
+	while (line[i] != '\0')
 	{
 		j++;
 		i++;
 	}
-	return(j);
+	return (j);
 }

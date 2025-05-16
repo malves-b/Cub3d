@@ -30,8 +30,6 @@ void	init_texture(t_texture *texture)
 	texture->so_path = NULL;
 	texture->we_path = NULL;
 	texture->ea_path = NULL;
-	//texture->floor_color = NULL;
-	//texture->ceiling_color = NULL;
 }
 
 void	init_player(t_player *player)
@@ -46,7 +44,7 @@ void	init_struct(t_main *cub)
 	cub->smap = malloc(sizeof(t_map));
 	cub->player = malloc(sizeof(t_player));
 	cub->texture = malloc(sizeof(t_texture));
-	if (!cub->player|| !cub->texture || !cub->smap)
+	if (!cub->player || !cub->texture || !cub->smap)
 	{
 		printf("Error\n Memory allocation error\n");
 		exit (1);

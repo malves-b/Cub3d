@@ -236,8 +236,8 @@ bool	clean_and_add(t_parse *parse);
 int		check_line(char *line);
 
 //color_textures_parse
-bool	set_texture_path(char *line, int i, t_parse *parse, char **str);
-bool	validate_color(char *line, int i, t_parse *parse, char **str);
+bool	set_texture_path(char *line, int i, char **str);
+bool	validate_color(char *line, t_parse *parse, char **str);
 
 
 //void	ft_is_f(char *line, int i, t_parse *parse);

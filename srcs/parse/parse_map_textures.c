@@ -118,7 +118,7 @@ bool	clean_and_add(t_parse *parse)
 		}
 		else if (check_line(parse->file[i]) == 0)
 		{
-			if(final_check_map(parse, i))
+			if (final_check_map(parse, i))
 				break ;
 		}
 		else if (check_line(parse->file[i]) == 3)

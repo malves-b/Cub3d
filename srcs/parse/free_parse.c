@@ -87,7 +87,6 @@ void	free_ff(t_ff *ff)
 int	ft_exit(t_main *cub)
 {
 	free_parse(cub->parse);
-	//free_structs(cub);
 	free(cub);
 	return (0);
 }

@@ -45,7 +45,6 @@ static bool	check_is_valid(char *texture)
 	if (fd < 0)
 	{
 		printf("Error\nThe texture doesn't exist!\n");
-		//close(fd);
 		return (false);
 	}
 	close(fd);

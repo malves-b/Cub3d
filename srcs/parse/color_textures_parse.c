@@ -97,7 +97,7 @@ bool	validate_rgb(t_parse *parse, char *rgb)
 		i++;
 	if (i != 3)
 	{
-		printf("Error/nRGB invalid!\n");
+		printf("Error\nRGB invalid!\n");
 		free_array(&split);
 		return (false);
 	}
@@ -107,7 +107,7 @@ bool	validate_rgb(t_parse *parse, char *rgb)
 	if ((parse->r < 0 || parse->r > 255) || (parse->g < 0 || parse->g > 255)
 		|| (parse->b < 0 || parse->b > 255))
 	{
-		printf("Error/nRGB invalid!\n");
+		printf("Error\nRGB invalid!\n");
 		free_array(&split);
 		return (false);
 	}

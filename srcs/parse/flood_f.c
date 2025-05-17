@@ -56,7 +56,7 @@ static bool	check_overlay(t_ff *ff)
 	int	i;
 
 	i = 0;
-	while (i < ff->height)
+	while (i < ff->width)
 	{
 		if (ff->overlay[0][i] != 0 || ff->overlay[ff->height - 1][i] != 0)
 		{
@@ -87,13 +87,13 @@ static bool	init_ff(t_ff *ff, bool *invalid, t_parse *parse)
 	flood_fill(ff, parse->parse_y, parse->parse_x, invalid);
 	if (*invalid == true)
 	{
-		printf("Erro: caractere inválido encontrado no mapa\n");
+		printf("Error\nInvalid character in map file\n");
 		free_ff(ff);
 		return (false);
 	}
 	if (!check_overlay(ff))
 	{
-		printf("Erro: mapa não está fechado\n");
+		printf("Error\nMap is not closed\n");
 		return (false);
 	}
 	free_ff(ff);

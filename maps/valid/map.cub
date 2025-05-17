@@ -1,12 +1,12 @@
-NO ./textures/materias/wood1.xpm
+NO /textures/n.xpm
 
 
 F 25,25,25
 
-            SO ./textures/materias/wall_rock.xpm
+            SO /textures/s.xpm
 
-    WE ./textures/materias/wall_rock2.xpm
-EA ./textures/materias/wood2.xpm
+    WE /textures/w.xpm
+EA /textures/e.xpm
 
 
 C 200,200,200
@@ -26,5 +26,5 @@ C 200,200,200
 11111111111100000000001
 11111111111100000000001
 11111111111100000000001
-111111111111000000N0001
+111111111111000000000S1
 11111111111111111111111

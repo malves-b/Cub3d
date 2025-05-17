@@ -79,8 +79,14 @@ bool	val_map(t_parse *parse)
 
 void	exit_map_message(t_main *cub)
 {
-	printf("Error\nIvalid map!\n");
+	printf("Error\nInvalid map!\n");
 	free_parse(cub->parse);
 	free(cub);
 	exit (1);
+}
+
+void	validate_map(t_parse *parse)
+{
+	if (parse->map == NULL)
+		exit_map_message(parse->cub);
 }

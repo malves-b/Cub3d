@@ -249,6 +249,7 @@ void				free_ff(t_ff *ff);
 //validate_map
 bool				val_map(t_parse *parse);
 void				exit_map_message(t_main *cub);
+void				validate_map(t_parse *parse);
 
 //populate_structs
 void				populate_structs(t_parse *parse, t_main *cub);

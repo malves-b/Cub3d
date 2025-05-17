@@ -1,15 +1,15 @@
-NO textures/amauri.xpm
+NO /textures/n.xpm
 
 
 F 150,150,200
 
-            SO textures/amauri.xpm
+            SO /textures/s.xpm
 
-    WE textures/amauri.xpm
-EA textures/amauri.xpm
+    WE /textures/w.xpm
+EA /textures/e.xpm
 
 
-C 150,150,200
+C 150,150,10
 
 
 
@@ -24,12 +24,12 @@ C 150,150,200
 101010101
 101010101
 101010101
-10  10001
+101010001
 101010101
 101010101
 101010101
 101010101
-1N1000101
+1E1000101
 101111101
 100000001
 111111111

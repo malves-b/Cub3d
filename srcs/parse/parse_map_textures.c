@@ -91,10 +91,17 @@ void	add_map(t_parse *parse, int i)
 	free_array(&parse->temp_map);
 }
 
-static void	validate_map(t_parse *parse)
+static bool	final_check_map(t_parse *parse, int i)
 {
-	if (parse->map == NULL)
+	if (parse->is_valid == true)
+	{
+		add_map(parse, i);
+		validate_map(parse);
+		return (true);
+	}
+	else
 		exit_map_message(parse->cub);
+	return (false);
 }
 
 bool	clean_and_add(t_parse *parse)
@@ -111,15 +118,11 @@ bool	clean_and_add(t_parse *parse)
 		}
 		else if (check_line(parse->file[i]) == 0)
 		{
-			if (parse->is_valid == true)
-			{
-				add_map(parse, i);
-				validate_map(parse);
+			if(final_check_map(parse, i))
 				break ;
-			}
-			else
-				exit_map_message(parse->cub);
 		}
+		else if (check_line(parse->file[i]) == 3)
+			exit_map_message(parse->cub);
 		check_texture_is_valid(parse);
 		i++;
 	}

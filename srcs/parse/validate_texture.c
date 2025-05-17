@@ -40,6 +40,7 @@ static bool	check_is_valid(char *texture)
 {
 	int	fd;
 
+	fd = 0;
 	fd = open(texture, O_RDONLY);
 	if (fd < 0)
 	{

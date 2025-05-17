@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   flood_f.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jesilva- <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/17 16:33:23 by jesilva-          #+#    #+#             */
+/*   Updated: 2025/05/17 16:33:24 by jesilva-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/cub.h"
 
 bool	init_overlay(t_ff *ff)
@@ -15,7 +27,7 @@ bool	init_overlay(t_ff *ff)
 		if (!ff->overlay[i])
 			return (false);
 		j = 0;
-		while (j < ff->width)
+		while (j <= ff->width)
 			ff->overlay[i][j++] = 0;
 		i++;
 	}
@@ -48,7 +60,6 @@ static bool	check_overlay(t_ff *ff)
 	{
 		if (ff->overlay[0][i] != 0 || ff->overlay[ff->height - 1][i] != 0)
 		{
-			printf("to cansada");
 			return (false);
 		}
 		i++;
@@ -58,7 +69,6 @@ static bool	check_overlay(t_ff *ff)
 	{
 		if (ff->overlay[i][0] != 0 || ff->overlay[i][ff->width - 1] != 0)
 		{
-			printf("aqui");
 			return (false);
 		}
 		i++;

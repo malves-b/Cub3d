@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   validate_map.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jesilva- <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/17 16:35:22 by jesilva-          #+#    #+#             */
+/*   Updated: 2025/05/17 16:35:24 by jesilva-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/cub.h"
 
 static bool	check_player_valid(t_parse *parse, int x, int y)
@@ -65,8 +77,10 @@ bool	val_map(t_parse *parse)
 	return (true);
 }
 
-void	exit_map_message(t_parse *parse)
+void	exit_map_message(t_main *cub)
 {
 	printf("Error\nIvalid map!\n");
-	ft_exit(parse->cub);
+	free_parse(cub->parse);
+	free(cub);
+	exit (1);
 }

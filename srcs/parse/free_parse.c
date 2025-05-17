@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   free_parse.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jesilva- <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/17 16:33:31 by jesilva-          #+#    #+#             */
+/*   Updated: 2025/05/17 16:33:34 by jesilva-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/cub.h"
 
 void	free_array(char ***arr)
@@ -31,8 +43,10 @@ void	free_parse(t_parse *parse)
 		free(parse->floor_color);
 	if (parse->ceiling_color != NULL)
 		free(parse->ceiling_color);
-	free_array(&parse->map);
-	free_array(&parse->file);
+	if (parse->map != NULL)
+		free_array(&parse->map);
+	if (parse->file != NULL)
+		free_array(&parse->file);
 	free(parse);
 }
 
@@ -73,7 +87,7 @@ void	free_ff(t_ff *ff)
 int	ft_exit(t_main *cub)
 {
 	free_parse(cub->parse);
-	free_structs(cub);
+	//free_structs(cub);
 	free(cub);
 	return (0);
 }

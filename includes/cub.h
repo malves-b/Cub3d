@@ -58,6 +58,7 @@ typedef struct s_parse
 	struct s_map		*smap;
 	struct s_player		*player;
 	struct s_flood		*ff;
+	//struct s_texture	*texture;
 	char				*no_path;
 	char				*so_path;
 	char				*we_path;
@@ -247,7 +248,7 @@ void				free_ff(t_ff *ff);
 
 //validate_map
 bool				val_map(t_parse *parse);
-void				exit_map_message(t_parse *parse);
+void				exit_map_message(t_main *cub);
 
 //populate_structs
 void				populate_structs(t_parse *parse, t_main *cub);
@@ -256,7 +257,7 @@ void				copy_map(char **src, char ***dest);
 void				copy_textures(t_parse *parse, t_texture *texture);
 
 //validate_textures
-bool				validate_texture(t_parse *parse);
+bool				validate_path_texture(t_parse *parse);
 
 //rgb_to_hexa
 void				ft_itoa_hex(t_parse *parse, char **str_color);

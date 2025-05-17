@@ -1,9 +1,9 @@
-NO ./mnt/c/storage/42/42_cub3D/textures/n.xpm
+NO /textures/n.xpm
 
 
-SO ./mnt/c/storage/42/42_cub3D/textures/s.xpm
-WE ./mnt/c/storage/42/42_cub3D/textures/w.xpm
-EA ./mnt/c/storage/42/42_cub3D/textures/e.xpm
+SO /textures/s.xpm
+WE /textures/w.xpm
+EA /textures/e.xpm
 
 C 11, 26, 215
 F 255, 128, 64

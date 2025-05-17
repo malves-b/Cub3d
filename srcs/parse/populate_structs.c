@@ -1,7 +1,27 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   populate_structs.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jesilva- <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/17 16:34:23 by jesilva-          #+#    #+#             */
+/*   Updated: 2025/05/17 16:34:25 by jesilva-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/cub.h"
 
 void	populate_structs(t_parse *parse, t_main *cub)
 {
+	cub->smap = malloc(sizeof(t_map));
+	cub->player = malloc(sizeof(t_player));
+	cub->texture = malloc(sizeof(t_texture));
+	if (!cub->player || !cub->texture || !cub->smap)
+	{
+		printf("Error\n Memory allocation error\n");
+		exit (1);
+	}
 	copy_map(cub->parse->map, &cub->smap->map);
 	copy_player(parse, cub->player);
 	copy_textures(parse, cub->texture);

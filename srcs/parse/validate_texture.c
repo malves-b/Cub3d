@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   validate_texture.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jesilva- <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/17 16:35:39 by jesilva-          #+#    #+#             */
+/*   Updated: 2025/05/17 16:35:40 by jesilva-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/cub.h"
 
 static bool	check_format(char *texture_path)
@@ -31,8 +43,8 @@ static bool	check_is_valid(char *texture)
 	fd = open(texture, O_RDONLY);
 	if (fd < 0)
 	{
-		printf("Error\n the texture doesn't exist!\n");
-		close(fd);
+		printf("Error\nThe texture doesn't exist!\n");
+		//close(fd);
 		return (false);
 	}
 	close(fd);
@@ -52,7 +64,7 @@ static bool	check_texture_valid(t_parse *parse)
 	return (true);
 }
 
-bool	validate_texture(t_parse *parse)
+bool	validate_path_texture(t_parse *parse)
 {
 	if (!check_texture_format(parse))
 		return (false);

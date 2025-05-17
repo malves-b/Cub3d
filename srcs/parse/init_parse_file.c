@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init_parse_file.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jesilva- <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/17 16:33:45 by jesilva-          #+#    #+#             */
+/*   Updated: 2025/05/17 16:33:47 by jesilva-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/cub.h"
 
 bool	get_number_lines(char *file, int *file_lines)
@@ -68,7 +80,7 @@ bool	init_parse_info(t_main *cub, char *file)
 	if (!val_map(cub->parse))
 		return (false);
 	free_array(&cub->parse->file);
-	if (!validate_texture(cub->parse))
+	if (!validate_path_texture(cub->parse))
 		return (false);
 	if (!scan_area(cub->parse))
 		return (false);

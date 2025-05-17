@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   color_textures_parse.c                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jesilva- <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/17 16:33:12 by jesilva-          #+#    #+#             */
+/*   Updated: 2025/05/17 16:33:14 by jesilva-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/cub.h"
 
 static bool	check_is_digit(char *str)
@@ -32,6 +44,7 @@ bool	set_texture_path(char *line, int i, char **str_struct)
 	{
 		i++;
 	}
+	i++;
 	remove_newline(line);
 	len = ft_strlen_i(line, i);
 	*str_struct = malloc(sizeof(char) * len + 1);
@@ -84,7 +97,7 @@ bool	validate_rgb(t_parse *parse, char *rgb)
 		i++;
 	if (i != 3)
 	{
-		printf("Erro: formato RGB inválido!\n");
+		printf("Error/nRGB invalid!\n");
 		free_array(&split);
 		return (false);
 	}
@@ -94,7 +107,7 @@ bool	validate_rgb(t_parse *parse, char *rgb)
 	if ((parse->r < 0 || parse->r > 255) || (parse->g < 0 || parse->g > 255)
 		|| (parse->b < 0 || parse->b > 255))
 	{
-		printf("Erro: formato RGB inválido!\n");
+		printf("Error/nRGB invalid!\n");
 		free_array(&split);
 		return (false);
 	}

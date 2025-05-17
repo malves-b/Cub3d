@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse_map_textures.c                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jesilva- <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/17 16:34:07 by jesilva-          #+#    #+#             */
+/*   Updated: 2025/05/17 16:34:10 by jesilva-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/cub.h"
 
 bool	add_line(char *line, t_parse *parse)
@@ -82,7 +94,7 @@ void	add_map(t_parse *parse, int i)
 static void	validate_map(t_parse *parse)
 {
 	if (parse->map == NULL)
-		exit_map_message(parse);
+		exit_map_message(parse->cub);
 }
 
 bool	clean_and_add(t_parse *parse)
@@ -106,7 +118,7 @@ bool	clean_and_add(t_parse *parse)
 				break ;
 			}
 			else
-				exit_map_message(parse);
+				exit_map_message(parse->cub);
 		}
 		check_texture_is_valid(parse);
 		i++;

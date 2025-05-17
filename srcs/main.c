@@ -36,6 +36,7 @@ int	main(int argc, char **argv)
 	cub = NULL;
 	cub = safe_calloc(cub, sizeof(t_main));
 	cub->parse = safe_calloc(cub, sizeof(t_parse));
+	cub->parse->cub = cub;
 	if (!init_parse_info(cub, argv[1]))
 	{
 		ft_exit(cub);

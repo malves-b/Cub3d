@@ -1,14 +1,11 @@
-NO ./home/malves-b/sgoinfre/Rank_04/Cub3d/textures/n.xpm
+NO /textures/Test_NO.xpm
+SO /textures/Test_SO.xpm
+WE /textures/Test_WE.xpm
 
 
+F 155,255,255
 
-SO ./home/malves-b/sgoinfre/Rank_04/Cub3d/textures/s.xpm
-WE ./home/malves-b/sgoinfre/Rank_04/Cub3d/textures/w.xpm
-EA ./home/malves-b/sgoinfre/Rank_04/Cub3d/textures/e.xpm
-
-F 155,255,0
-
-C	  25          5 ,255,255
+C	  25          5 ,255,2566666
 
 1111111111111111111111
 1000000100000000000001

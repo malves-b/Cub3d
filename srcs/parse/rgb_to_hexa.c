@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   rgb_to_hexa.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jesilva- <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/17 16:34:43 by jesilva-          #+#    #+#             */
+/*   Updated: 2025/05/17 16:34:45 by jesilva-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/cub.h"
 
 static void	number_to_hex(int nbr, char *hexa, int start)
@@ -29,5 +41,5 @@ void	ft_itoa_hex(t_parse *parse, char **dest_color)
 
 int	rgb_to_hex(t_parse *parse)
 {
-	return ((parse->r * 256 * 256) + (parse->g * 256) + parse->b);
+	return ((parse->r << 16) | (parse->g << 8) | parse->b);
 }

@@ -1,4 +1,0 @@
-Formula calc raios:
-
-Multiplicador = 2 * (x/320) - 1;
-

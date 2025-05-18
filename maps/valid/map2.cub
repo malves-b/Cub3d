@@ -5,8 +5,9 @@ SO /textures/s.xpm
 WE /textures/w.xpm
 EA /textures/e.xpm
 
-C 11, 26, 215
-F 255, 128, 64
+C 100,255,255
+F	 50,50,50
+
 
 
 

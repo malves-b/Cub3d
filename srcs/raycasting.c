@@ -6,7 +6,7 @@
 /*   By: malves-b <malves-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 17:39:22 by malves-b          #+#    #+#             */
-/*   Updated: 2025/05/15 10:29:42 by malves-b         ###   ########.fr       */
+/*   Updated: 2025/05/18 16:44:31 by malves-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,7 +132,7 @@ void	draw_wall(t_main *pgr, int x, double ray_dir_x, double ray_dir_y)
 	calc_x(pgr, ray_dir_x, ray_dir_y, texture->width);
 	pgr->ray->step = 1.0 * texture->height / l_hgt;
 	pgr->ray->tex_pos = (draw_start - HEIGHT / 2 + l_hgt / 2) * pgr->ray->step;
-	while (draw_start++ < draw_end)
+	while (draw_start++ <= draw_end)
 	{
 		pgr->ray->tex_y = (int)pgr->ray->tex_pos & (texture->height - 1);
 		pgr->ray->tex_pos += pgr->ray->step;

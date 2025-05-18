@@ -16,7 +16,7 @@ static bool	check_format(char *texture_path)
 {
 	if (!ft_strnstr(texture_path, ".xpm", ft_strlen(texture_path)))
 	{
-		printf("Please try again with the corrects informations! \n");
+		printf("Error\nPlease try again with the corrects informations! ");
 		printf("Texture is not valid\n");
 		return (false);
 	}

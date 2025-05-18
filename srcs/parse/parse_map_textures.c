@@ -53,10 +53,16 @@ int	check_line(char *line)
 		if (line[i] == '1')
 			return (0);
 		if (line[i] == 'N' || line[i] == 'S' || line[i] == 'W'
-			|| line[i] == 'E' || line[i] == 'F' || line[i] == 'C')
+			|| line[i] == 'E')
 		{
+			if (line[i + 1] == '1' || line[i + 1] == '0')
+			{
+				return (3);
+			}
 			return (1);
 		}
+		if (line[i] == 'F' || line[i] == 'C')
+			return (1);
 		i++;
 	}
 	return (3);

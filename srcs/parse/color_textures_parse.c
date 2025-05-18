@@ -37,7 +37,7 @@ bool	set_texture_path(char *line, int i, char **str_struct)
 	j = 0;
 	if (*str_struct != NULL)
 	{
-		printf("Error\nMap is not valid, textures are duplicaated!\n");
+		printf("Error\nMap is not valid, textures are duplicated!\n");
 		return (false);
 	}
 	while (line[i] != '/')

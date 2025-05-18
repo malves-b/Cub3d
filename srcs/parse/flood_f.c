@@ -94,6 +94,7 @@ static bool	init_ff(t_ff *ff, bool *invalid, t_parse *parse)
 	if (!check_overlay(ff))
 	{
 		printf("Error\nMap is not closed\n");
+		free_ff(ff);
 		return (false);
 	}
 	free_ff(ff);
